@@ -37,13 +37,37 @@ export type {
 };
 
 /**
- * Projects
+ * Page
  *
  *
  */
-export interface Project extends SanityDocument {
-  _type: "project";
+export interface Page extends SanityDocument {
+  _type: "page";
 
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Blocks — `array`
+   *
+   *
+   */
+  blocks: Array<SanityKeyed<Projet>>;
+}
+
+export type Project = {
+  _type: "project";
   /**
    * Title — `string`
    *
@@ -98,6 +122,13 @@ export interface Project extends SanityDocument {
    *
    */
   category?: "education" | "healthcare" | "environment";
-}
+};
 
-export type Documents = Project;
+export type Documents = Page;
+
+/**
+ * This interface is a stub. It was referenced in your sanity schema but
+ * the definition was not actually found. Future versions of
+ * sanity-codegen will let you type this explicity.
+ */
+type Projet = any;

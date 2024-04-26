@@ -1,6 +1,9 @@
-import {secureHeapUsed} from 'crypto'
-import projects from './projects'
+import project from './blocks/project-schema'
+import page from './documents/page-schema'
 
-export const schemaTypes = [projects]
+const documentTypes = [page]
+const blockTypes = [project]
+
+export const schemaTypes = [...documentTypes, ...blockTypes]
 
 export default schemaTypes
