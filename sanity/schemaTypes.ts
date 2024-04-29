@@ -63,7 +63,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  blocks: Array<SanityKeyed<Projet>>;
+  blocks: Array<SanityKeyed<Project>>;
 }
 
 export type Project = {
@@ -125,10 +125,3 @@ export type Project = {
 };
 
 export type Documents = Page;
-
-/**
- * This interface is a stub. It was referenced in your sanity schema but
- * the definition was not actually found. Future versions of
- * sanity-codegen will let you type this explicity.
- */
-type Projet = any;
