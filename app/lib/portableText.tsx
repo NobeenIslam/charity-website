@@ -4,11 +4,14 @@ import { ReactNode } from "react";
 interface Props {
   children?: ReactNode;
   value?: any;
-  // any props that come into the component
 }
 
 const components = {
+  block: {
+    h1: ({ children }: any) => <h1 className="text-2xl">{children}</h1>,
+  },
   marks: {
+    strong:({ children }: any) => <strong className="font-bold">{children}</strong>,
     link: ({ children, value }: Props) => {
       const rel = !value.href.startsWith("/")
         ? "noreferrer noopener"
