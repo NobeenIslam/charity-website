@@ -1,6 +1,14 @@
-import { getProjects } from "./queries";
+import { Projects } from "@/components/Projects";
+import { getPageBySlug, getProjects } from "./queries";
+import { renderBlocks } from "./lib/renderBlocks";
 
 export default async function Home() {
-  const projects = await getProjects();
-  return <div>{JSON.stringify(projects)}</div>;
+  const pageData = await getPageBySlug("Home");
+  console.log(pageData);
+  return (
+    <div>
+      Hello
+      {renderBlocks(pageData.blocks)}
+    </div>
+  );
 }
