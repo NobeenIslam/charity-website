@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.3",
     "@portabletext/react": "^3.0.18",
     "@sanity/client": "^6.15.20",
     "class-variance-authority": "^0.7.0",
