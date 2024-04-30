@@ -10,8 +10,13 @@ const components = {
   block: {
     h1: ({ children }: any) => <h1 className="text-2xl">{children}</h1>,
   },
+  listItem: ({ children }: any) => (
+    <li>
+      <span>{children}</span>
+    </li>
+  ),
   marks: {
-    strong:({ children }: any) => <strong className="font-bold">{children}</strong>,
+    strong: ({ children }: any) => <b className="font-bold">{children}</b>,
     link: ({ children, value }: Props) => {
       const rel = !value.href.startsWith("/")
         ? "noreferrer noopener"
