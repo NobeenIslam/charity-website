@@ -7,7 +7,6 @@ export async function generateStaticParams() {
     await getAllSlugs();
 
   const slugArray = slugsObjects.map((slugObject) => {
-    console.log(slugObject);
     return { slug: slugObject.slug.current.split("/") };
   });
 
@@ -17,13 +16,12 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  console.log({ params });
 
   const pageData = await getPageBySlug(slug);
   return (
     <div>
       Hello
-      {renderBlocks(pageData.blocks)}
+      {renderBlocks(pageData?.blocks)}
     </div>
   );
 }
