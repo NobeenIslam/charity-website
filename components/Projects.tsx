@@ -1,3 +1,5 @@
+"use client";
+
 import { PortableText } from "@/app/lib/portableText";
 import { Project } from "@/sanity/schemaTypes";
 
