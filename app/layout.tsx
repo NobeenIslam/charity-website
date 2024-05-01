@@ -2,12 +2,32 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./styles/globals.css";
 import { roboto as robotoVariable } from "./styles";
+import localFont from "next/font/local";
 
-
-const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
+const roboto = localFont({
   variable: "--font-roboto" satisfies typeof robotoVariable,
+  src: [
+    {
+      path: "./fonts/Roboto-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roboto-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Roboto-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roboto-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
