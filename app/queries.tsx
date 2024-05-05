@@ -2,15 +2,16 @@ import { Page, Project } from "@/sanity/schemaTypes";
 import { client } from "./lib/client";
 import { groq } from "next-sanity";
 
-const getAllSlugsQuery = groq`*[_type == "page" ]{slug}`;
+//Defined to exclude Home page which will have no slug
+const allSlugsQuery = groq`*[_type == "page"  && defined(slug.current)]{slug}`;
 
 export async function getAllSlugs(): Promise<any> {
-  return client.fetch(getAllSlugsQuery);
+  return client.fetch(allSlugsQuery);
 }
 
-const createPageBySlugQuery = (slug: string) => {
+const pageBySlugQuery = (slug: string) => {
   return groq`
-    *[_type == "page" && slug.current == "${slug}"]{
+    *[_type == "page" && slug.current == "${slug}" ]{
       title,
       "slug": slug.current,
       blocks[] {
@@ -21,7 +22,7 @@ const createPageBySlugQuery = (slug: string) => {
 };
 
 export async function getPageBySlug(slug: string): Promise<Page> {
-  return client.fetch(createPageBySlugQuery(slug));
+  return client.fetch(pageBySlugQuery(slug));
 }
 
 const projectsQuery = groq`*[_type == "project"]{
@@ -30,4 +31,14 @@ const projectsQuery = groq`*[_type == "project"]{
 
 export async function getProjects(): Promise<Project> {
   return client.fetch(projectsQuery);
+}
+
+const homepageQuery = groq`*[_type == "page" && title == "Home"]{
+  _id,
+  title,
+  blocks
+}[0]`;
+
+export async function getHomePage(): Promise<Page> {
+  return client.fetch(homepageQuery);
 }
