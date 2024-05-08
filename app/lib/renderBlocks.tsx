@@ -1,4 +1,4 @@
-import { Projects } from "@/components/Projects";
+import { Projects } from "@/app/components/Projects";
 
 export function renderBlocks(blocks: any[]) {
   if (!blocks) {
