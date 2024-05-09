@@ -17,8 +17,8 @@ export default function NotFound() {
             width={500}
             height={300}
           ></Image>
-          <Button asChild variant={"link"}>
-            <Link href={"/"}>Go Home</Link>
+          <Button href={"/"} variant={"default"}>
+            Go Home
           </Button>
         </div>
       </div>
