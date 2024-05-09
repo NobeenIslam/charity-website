@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.18",
+    "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.15.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -17,6 +19,7 @@
     "lucide-react": "^0.372.0",
     "next": "14.2.2",
     "next-sanity": "^9.0.10",
+    "prettier-eslint": "^16.3.0",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
@@ -29,7 +32,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "postcss": "^8",
-    "prettier": "^2.8.8",
+    "prettier": "2.8.8",
     "sanity-codegen": "^0.9.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
