@@ -1,5 +1,4 @@
 import type { StorybookConfig } from "@storybook/nextjs";
-import * as path from "path";
 
 const config: StorybookConfig = {
   stories: ["../app/components/ui/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -33,7 +32,6 @@ const config: StorybookConfig = {
           },
         },
       ],
-      include: path.resolve(__dirname, "../"),
     });
 
     return config;
