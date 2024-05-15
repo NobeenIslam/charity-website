@@ -8,22 +8,22 @@ const roboto = localFont({
   variable: "--font-roboto" satisfies typeof robotoVariable,
   src: [
     {
-      path: "./fonts/Roboto-Regular.ttf",
+      path: "../public/fonts/Roboto-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./fonts/Roboto-Italic.ttf",
+      path: "../public/fonts/Roboto-Italic.ttf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "./fonts/Roboto-Bold.ttf",
+      path: "../public/fonts/Roboto-Bold.ttf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./fonts/Roboto-BoldItalic.ttf",
+      path: "../public/fonts/Roboto-BoldItalic.ttf",
       weight: "700",
       style: "italic",
     },
