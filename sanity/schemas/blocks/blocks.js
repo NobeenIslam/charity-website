@@ -7,6 +7,6 @@ export default () => {
     type: 'array',
     of: [...allBlocks],
     codegen: {required: true},
-    validation: (Rule: any) => [Rule.required().min(1).error('At least 1 block is required')],
+    validation: (Rule) => [Rule.required().min(1).error('At least 1 block is required')],
   }
 }

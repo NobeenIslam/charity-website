@@ -26,7 +26,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "sanity/schemas/blocks/blocks.ts"
+    "sanity/schemas/blocks/blocks.js",
+    "sanity/schemas/blocks/project-schema.js",
+    "sanity/schemas/documents/page-schema.js"
   ],
   "exclude": ["node_modules"]
 }

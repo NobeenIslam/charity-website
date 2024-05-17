@@ -1,5 +1,5 @@
 import project from './blocks/project-schema'
-import page from './documents/page-schema'
+import page from './documents/page-schema.js'
 
 const documentTypes = [page]
 const blockTypes = [project]

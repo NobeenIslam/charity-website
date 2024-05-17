@@ -12,6 +12,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "schemas/blocks/blocks.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "schemas/blocks/blocks.js",
+    "schemas/blocks/project-schema.js",
+    "schemas/documents/page-schema.js"
+  ],
   "exclude": ["node_modules"]
 }
