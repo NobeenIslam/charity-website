@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} font-sans`}>
-        <main>{children}</main>
+        <main className="gutter">{children}</main>
       </body>
     </html>
   );

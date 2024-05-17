@@ -49,3 +49,9 @@
     --colour-deep-space: #242456;
   }
 }
+
+@layer utilities {
+  .gutter {
+    @apply mx-auto p-4 sm:p-6 lg:p-8 xl:p-10;
+  }
+}
