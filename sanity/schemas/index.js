@@ -1,4 +1,4 @@
-import project from './blocks/project-schema'
+import project from './blocks/project-schema.js'
 import page from './documents/page-schema.js'
 
 const documentTypes = [page]
