@@ -1,4 +1,4 @@
-import { Page, Project } from "@/sanity/schemaTypes";
+import { Page, Project } from "@/app/lib/schemaTypes";
 import { client } from "./lib/client";
 import { groq } from "next-sanity";
 
