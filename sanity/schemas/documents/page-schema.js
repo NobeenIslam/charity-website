@@ -1,7 +1,6 @@
 import blocks from '../blocks/blocks'
-import { defineType } from 'sanity'
 
-export default defineType({
+export default ({
   name: 'page',
   title: 'Page',
   type: 'document',

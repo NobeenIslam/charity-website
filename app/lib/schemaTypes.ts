@@ -15,7 +15,7 @@ import type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-} from 'sanity-codegen'
+} from "sanity-codegen";
 
 export type {
   SanityReference,
@@ -34,7 +34,7 @@ export type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-}
+};
 
 /**
  * Page
@@ -42,52 +42,52 @@ export type {
  *
  */
 export interface Page extends SanityDocument {
-  _type: 'page'
+  _type: "page";
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: {_type: 'slug'; current: string}
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Blocks — `array`
    *
    *
    */
-  blocks: Array<SanityKeyed<Project>>
+  blocks: Array<SanityKeyed<Project>>;
 }
 
 export type Project = {
-  _type: 'project'
+  _type: "project";
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: {_type: 'slug'; current: string}
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Description — `text`
    *
    *
    */
-  description?: string
+  description?: string;
 
   /**
    * Main Image — `image`
@@ -95,11 +95,11 @@ export type Project = {
    *
    */
   mainImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
-    crop?: SanityImageCrop
-    hotspot?: SanityImageHotspot
-  }
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 
   /**
    * Body — `array`
@@ -109,19 +109,19 @@ export type Project = {
   body?: Array<
     | SanityKeyed<SanityBlock>
     | SanityKeyed<{
-        _type: 'image'
-        asset: SanityReference<SanityImageAsset>
-        crop?: SanityImageCrop
-        hotspot?: SanityImageHotspot
+        _type: "image";
+        asset: SanityReference<SanityImageAsset>;
+        crop?: SanityImageCrop;
+        hotspot?: SanityImageHotspot;
       }>
-  >
+  >;
 
   /**
    * Category — `string`
    *
    *
    */
-  category?: 'education' | 'healthcare' | 'environment'
-}
+  category?: "education" | "healthcare" | "environment";
+};
 
-export type Documents = Page
+export type Documents = Page;

@@ -1,6 +1,5 @@
-import {defineType} from 'sanity'
 
-export default defineType({
+export default ({
   name: 'project',
   title: 'Project',
   type: 'object',

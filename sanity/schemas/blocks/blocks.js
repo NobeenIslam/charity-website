@@ -1,9 +1,8 @@
-import {defineField} from 'sanity'
 
 const allBlocks = [{type: 'project', title: 'Project'}]
 
 export default () => {
-  return defineField({
+  return ({
     title: 'Blocks',
     name: 'blocks',
     type: 'array',
