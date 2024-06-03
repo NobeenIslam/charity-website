@@ -66,6 +66,41 @@ export interface Page extends SanityDocument {
   blocks: Array<SanityKeyed<Project>>;
 }
 
+/**
+ * Navigation Bar
+ *
+ *
+ */
+export interface NavBar extends SanityDocument {
+  _type: "navBar";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Navigation Items — `array`
+   *
+   *
+   */
+  navItems?: Array<SanityKeyed<NavItem>>;
+
+  /**
+   * Logo — `image`
+   *
+   *
+   */
+  logo?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+}
+
 export type Project = {
   _type: "project";
   /**
@@ -124,4 +159,21 @@ export type Project = {
   category?: "education" | "healthcare" | "environment";
 };
 
-export type Documents = Page;
+export type NavItem = {
+  _type: "navItem";
+  /**
+   * Nav Item Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Nav Item Link — `string`
+   *
+   *
+   */
+  link?: string;
+};
+
+export type Documents = Page | NavBar;
