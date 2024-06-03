@@ -1,4 +1,4 @@
-import { Page, Project } from "@/app/lib/schemaTypes";
+import { Page, Project, NavBar } from "@/app/lib/schemaTypes";
 import { client } from "./lib/client";
 import { groq } from "next-sanity";
 
@@ -41,4 +41,18 @@ const homepageQuery = groq`*[_type == "page" && title == "Home"]{
 
 export async function getHomePage(): Promise<Page> {
   return client.fetch(homepageQuery);
+}
+
+const navBarQuery = groq`*[_type == "navBar"]{
+  title,
+  navItems[]{
+    title,
+    link
+  },
+  "logo": logo.asset->
+}[0]
+`;
+
+export async function getNavBar(): Promise<NavBar> {
+  return client.fetch(navBarQuery);
 }
