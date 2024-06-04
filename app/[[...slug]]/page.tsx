@@ -14,6 +14,7 @@ export async function generateStaticParams() {
     return { slug: slug.current.split("/") };
   });
 
+  //For homepage route
   paths.push({ slug: [""] });
 
   return paths;
