@@ -1,3 +1,31 @@
-export default function NavBar() {
-  return <div>Hello</div>;
-}
+"use client";
+
+import { NavBar as NavBarType } from "@/app/lib/schemaTypes";
+import React from "react";
+import { Button } from "../Button";
+import Image from "next/image";
+
+
+export interface NavBarProps extends NavBarType {}
+
+const NavBar = ({ navItems, logo }: NavBarProps) => {
+  console.log(navItems, logo);
+
+  const navLinks = navItems?.map((navItem) => {
+    return (
+      <Button key={navItem.title} href={navItem.link} variant={"link"}>
+        {navItem.title}
+      </Button>
+    );
+  });
+  return (
+    <div className="sticky top-0 z-50 flex items-center p-1 bg-white border-b border-gray-200">
+      <div className="flex-shrink-0">
+      <Image src={logo.url} width={100} height={100} alt="charity-logo" />
+      </div>
+      <div className="flex space-x-4">{navLinks}</div>
+    </div>
+  );
+};
+
+export { NavBar };
