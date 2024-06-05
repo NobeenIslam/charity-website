@@ -12,9 +12,13 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.19",
     "@portabletext/react": "^3.0.18",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.15.20",
+    "@svgr/webpack": "^8.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
