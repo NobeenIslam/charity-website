@@ -77,10 +77,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        dropdown: {
+          from: { transform: "translateY(-10%)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        dropdown: "dropdown 0.5s ease-in-out forwards",
       },
     },
   },
