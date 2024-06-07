@@ -25,6 +25,7 @@
     "lucide-react": "^0.372.0",
     "next": "14.2.2",
     "next-sanity": "^9.0.10",
+    "next-sanity-image": "^6.1.1",
     "prettier-eslint": "^16.3.0",
     "react": "^18",
     "react-dom": "^18",
