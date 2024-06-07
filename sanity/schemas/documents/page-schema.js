@@ -1,6 +1,6 @@
 import blocks from '../blocks/blocks'
 
-export default {
+export default ({
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -21,4 +21,4 @@ export default {
     },
     blocks(),
   ],
-}
+}) 

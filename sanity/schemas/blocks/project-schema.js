@@ -1,4 +1,5 @@
-export default {
+
+export default ({
   name: 'project',
   title: 'Project',
   type: 'object',
@@ -60,4 +61,4 @@ export default {
       },
     },
   ],
-}
+})
