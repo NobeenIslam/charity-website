@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  NavBar as NavBarType,
-  SanityImageAsset,
-  SanityImageCrop,
-  SanityImageHotspot,
-} from "@/app/lib/schemaTypes";
+import { NavBar as NavBarType } from "@/app/lib/schemaTypes";
 import React, { useState } from "react";
 import { Button } from "../Button";
 import Image from "next/image";
@@ -14,15 +9,11 @@ import CrossSvg from "@/public/icons/cross.svg";
 import { useMediaQuery } from "@mui/material";
 import { breakpoint } from "@/app/lib/breakpoints";
 import { MobileNavMenu } from "./MobileNavMenu";
+import { client } from "@/app/lib/client";
+import { useNextSanityImage } from "next-sanity-image";
 
-export interface NavBarProps extends Omit<NavBarType, "logo"> {
-  logo?: {
-    _type: "image";
-    asset: SanityImageAsset; // Directly use SanityImageAsset type
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-}
+export interface NavBarProps extends NavBarType {}
+
 const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -31,7 +22,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
-  console.log(logo);
+  const imageProps = useNextSanityImage(client, logo, {});
 
   const navLinks = navItems?.map((navItem) => {
     return (
@@ -43,12 +34,9 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   return (
     <div className="sticky top-0 z-50 flex items-center p-1 bg-white border-b border-gray-200">
       <div className="flex-shrink-0">
-        <Image
-          src={logo?.asset?.url || ""}
-          width={50}
-          height={50}
-          alt="charity-logo"
-        />
+        {logo && (
+          <Image {...imageProps} width={50} height={50} alt="charity-logo" />
+        )}
       </div>
       {isMobile ? (
         <div className="ml-auto mr-2">

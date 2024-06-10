@@ -42,7 +42,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <div className={`${roboto.variable} font-sans`}>
+      <div
+        className={`${roboto.variable} font-sans`}
+      >
         <Story />
       </div>
     ),

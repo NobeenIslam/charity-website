@@ -49,7 +49,7 @@ const navBarQuery = groq`*[_type == "navBar"]{
     title,
     link
   },
-  logo{...,asset->}
+  logo
 }[0]
 `;
 

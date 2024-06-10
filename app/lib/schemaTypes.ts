@@ -93,7 +93,7 @@ export interface NavBar extends SanityDocument {
    *
    *
    */
-  logo?: {
+  logo: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;

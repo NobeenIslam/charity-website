@@ -1,4 +1,3 @@
-
 export default {
   name: 'navBar',
   title: 'Navigation Bar',
@@ -19,6 +18,8 @@ export default {
       name: 'logo',
       title: 'Logo',
       type: 'image',
+      codegen: { required: true },
+      validation: (Rule) => Rule.required(),
     },
   ],
 }
