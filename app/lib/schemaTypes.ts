@@ -63,7 +63,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  blocks: Array<SanityKeyed<Project>>;
+  blocks: Array<SanityKeyed<Project> | SanityKeyed<HomepageHero>>;
 }
 
 /**
@@ -174,6 +174,64 @@ export type NavItem = {
    *
    */
   link?: string;
+};
+
+export type HomepageHero = {
+  _type: "homepageHero";
+  /**
+   * Heading — `string`
+   *
+   *
+   */
+  heading?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Background Image — `image`
+   *
+   *
+   */
+  backgroundImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * CTA — `object`
+   *
+   *
+   */
+  ctaButton?: {
+    _type: "ctaButton";
+    /**
+     * Button Text — `string`
+     *
+     *
+     */
+    buttonText?: string;
+
+    /**
+     * Button - Accessible Label — `string`
+     *
+     * This will help screen reader users understand where the link will redirect them to.
+     */
+    buttonAccessibleLabel?: string;
+
+    /**
+     * Button Link — `string`
+     *
+     *
+     */
+    buttonLink?: string;
+  };
 };
 
 export type Documents = Page | NavBar;
