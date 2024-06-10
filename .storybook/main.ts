@@ -34,6 +34,18 @@ const config: StorybookConfig = {
       ],
     });
 
+    // Remove the existing rule for loading SVGs
+    const fileLoaderRule: any = config?.module?.rules?.find((rule: any) =>
+      rule.test?.test?.(".svg")
+    );
+    fileLoaderRule.exclude = /\.svg$/;
+
+    // Add SVGR loader to handle SVG imports as React components
+    config?.module?.rules?.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
     return config;
   },
 };
