@@ -1,6 +1,6 @@
 "use client";
 
-import { NavBar as NavBarType } from "@/app/lib/schemaTypes";
+import { NavBar as NavBarType } from "../../../lib/schemaTypes";
 import React, { useState } from "react";
 import { Button } from "../Button";
 import Image from "next/image";
