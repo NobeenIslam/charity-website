@@ -186,18 +186,18 @@ export type HomepageHero = {
   heading?: string;
 
   /**
-   * Description — `text`
+   * Description — `array`
    *
    *
    */
-  description?: string;
+  description?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Background Image — `image`
    *
    *
    */
-  backgroundImage?: {
+  backgroundImage: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
