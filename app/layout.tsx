@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css";
 import { roboto as robotoVariable } from "./styles";
 import localFont from "next/font/local";
-import { NavBar } from "./components/ui/NavBar";
+import { NavBar } from "./components/NavBar";
 import { getNavBar } from "./queries";
 
 const roboto = localFont({
@@ -48,7 +48,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} font-sans`}>
         <NavBar {...navBar} />
-        <main className="gutter">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
