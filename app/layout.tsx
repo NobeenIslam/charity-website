@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css";
 import { roboto as robotoVariable } from "./styles";
 import localFont from "next/font/local";
-import { NavBar } from "./components/ui/NavBar";
+import { NavBar } from "./components/NavBar";
 import { getNavBar } from "./queries";
 
 const roboto = localFont({

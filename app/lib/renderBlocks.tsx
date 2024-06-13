@@ -1,5 +1,5 @@
-import { Projects } from "../components/Projects";
-import { HomepageHero } from "../components/HomePageHero"
+import { Projects } from "../components/blocks/Projects";
+import { HomepageHero } from "../components/blocks/HomePageHero";
 import React from "react";
 
 export function renderBlocks(blocks: any[]) {
@@ -15,10 +15,10 @@ export function renderBlocks(blocks: any[]) {
 export function renderSanityBlock(block: any) {
   switch (block._type) {
     case "project":
-      return <Projects key={block._key} {...block} />
+      return <Projects key={block._key} {...block} />;
     case "homepageHero":
-      return <HomepageHero key={block._key} {...block} ></HomepageHero>
+      return <HomepageHero key={block._key} {...block}></HomepageHero>;
     default:
-      return <div>Something has gone wrong with your block</div>
+      return <div>Something has gone wrong with your block</div>;
   }
 }
