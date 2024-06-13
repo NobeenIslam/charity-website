@@ -1,5 +1,5 @@
-import { Page, Project, NavBar } from "@/app/lib/schemaTypes";
-import { client } from "./lib/client";
+import { Page, Project, NavBar } from "@/app/utilities/schemaTypes";
+import { client } from "./utilities/client";
 import { groq } from "next-sanity";
 
 //Defined to exclude Home page which will have no slug

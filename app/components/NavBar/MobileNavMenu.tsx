@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "../ui/Button"; // Assuming you have a Button component
-import { NavItem } from "@/app/lib/schemaTypes";
+import { NavItem } from "@/app/utilities/schemaTypes";
 
 interface MobileNavMenuProps {
   navItems: NavItem[];
