@@ -1,8 +1,8 @@
 "use client";
 
-import { NavBar as NavBarType } from "../../../lib/schemaTypes";
+import { NavBar as NavBarType } from "../../lib/schemaTypes";
 import React, { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../ui/Button";
 import Image from "next/image";
 import BurgerSvg from "@/public/icons/burger.svg";
 import CrossSvg from "@/public/icons/cross.svg";

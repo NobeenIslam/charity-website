@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { PortableText } from "../../lib/portableText";
-import { HomepageHero as SanityHomepageHeroType } from "../../lib/schemaTypes";
-import { Button } from "../ui/Button";
-import { client } from "../../lib/client";
+import { PortableText } from "../../../lib/portableText";
+import { HomepageHero as SanityHomepageHeroType } from "../../../lib/schemaTypes";
+import { Button } from "../../ui/Button";
+import { client } from "../../../lib/client";
 import { useNextSanityImage } from "next-sanity-image";
 
 export interface HomepageHeroProps extends SanityHomepageHeroType {}

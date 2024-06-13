@@ -1,4 +1,11 @@
-const navBarMock = {
+import { NavBar as SanityNavBarType } from "../../lib/schemaTypes";
+
+const navBarMock: SanityNavBarType = {
+  _createdAt: "2024-05-30T16:18:12Z",
+  _id: "24a19ee7-1fdf-40b9-aaa0-2d7acc5a8227",
+  _rev: "3Or4KZ4fs6tqQwsTuSwpfH",
+  _type: "navBar",
+  _updatedAt: "2024-06-04T09:43:49Z",
   logo: {
     _type: "image",
     asset: {
