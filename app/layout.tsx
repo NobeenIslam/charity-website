@@ -48,7 +48,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} font-sans`}>
         <NavBar {...navBar} />
-        <main className="gutter">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
