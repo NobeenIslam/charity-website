@@ -270,14 +270,14 @@ export type InfoPanel = {
    *
    */
   backgroundColour?:
-    | "bg-red-500"
-    | "bg-green-500"
-    | "bg-blue-500"
-    | "bg-yellow-500"
-    | "bg-indigo-500"
-    | "bg-purple-500"
-    | "bg-pink-500"
-    | "bg-gray-500";
+    | "bg-red-200"
+    | "bg-green-200"
+    | "bg-blue-200"
+    | "bg-yellow-200"
+    | "bg-indigo-200"
+    | "bg-purple-200"
+    | "bg-pink-200"
+    | "bg-gray-200";
 };
 
 export type Documents = Page | NavBar;
