@@ -1,6 +1,7 @@
 import { Projects } from "../components/blocks/Projects";
 import { HomepageHero } from "../components/blocks/HomePageHero";
 import { InfoPanel } from "../components/blocks/InfoPanel";
+import { EngagementBanner } from "../components/blocks/EngagementBanner";
 import React from "react";
 
 export function renderBlocks(blocks: any[]) {
@@ -22,6 +23,8 @@ export function renderSanityBlock(block: any) {
       return <HomepageHero key={block._key} {...block}></HomepageHero>;
     case "infoPanel":
       return <InfoPanel key={block._key} {...block}></InfoPanel>;
+    case "engagementBanner":
+      return <EngagementBanner key={block._key} {...block}></EngagementBanner>;
     default:
       return <div>Something has gone wrong with your block</div>;
   }
