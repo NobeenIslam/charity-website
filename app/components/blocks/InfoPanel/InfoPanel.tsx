@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { PortableText } from "../../../lib/portableText";
-import { InfoPanel as SanityInfoPanelType } from "../../../lib/schemaTypes";
-import { client } from "../../../lib/client";
+import { PortableText } from "../../../utilities/portableText";
+import { InfoPanel as SanityInfoPanelType } from "../../../utilities/schemaTypes";
+import { client } from "../../../utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 
