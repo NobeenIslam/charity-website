@@ -1,3 +1,5 @@
+import {coloursField} from '../misc/colours'
+
 export default {
   name: 'infoPanel',
   title: 'Info Panel',
@@ -24,5 +26,6 @@ export default {
       codegen: {required: true},
       validation: (Rule) => Rule.required(),
     },
+    coloursField('backgroundColour', 'Background Colour'),
   ],
 }
