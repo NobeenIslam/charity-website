@@ -1,5 +1,5 @@
 import { getAllSlugs, getHomePage, getPageBySlug } from "../queries";
-import { renderBlocks } from "../lib/renderBlocks";
+import { renderBlocks } from "../utilities/renderBlocks";
 
 export const dynamicParams = false;
 

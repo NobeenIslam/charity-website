@@ -1,15 +1,15 @@
 "use client";
 
-import { NavBar as NavBarType } from "../../lib/schemaTypes";
+import { NavBar as NavBarType } from "../../utilities/schemaTypes";
 import React, { useState } from "react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
 import BurgerSvg from "@/public/icons/burger.svg";
 import CrossSvg from "@/public/icons/cross.svg";
 import { useMediaQuery } from "@mui/material";
-import { breakpoint } from "@/app/lib/breakpoints";
+import { breakpoint } from "@/app/utilities/breakpoints";
 import { MobileNavMenu } from "./MobileNavMenu";
-import { client } from "@/app/lib/client";
+import { client } from "@/app/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 
 export interface NavBarProps extends NavBarType {}
