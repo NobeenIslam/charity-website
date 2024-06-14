@@ -29,3 +29,4 @@ cd into Sanity Folder
 To generate types for schemas: `npx sanity-codegen` in root
 When you create a schema add it to `index.js` in the schemas folder
 When you create a new block add it to the `blocks` array in `blocks.js`
+When you create the component, make sure it goes into the switch case in `renderBlocks.js`
