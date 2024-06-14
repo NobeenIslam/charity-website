@@ -29,7 +29,7 @@ export const InfoPanel = ({
         height={600}
       />
     </div>
-    <div className="w-full md:w-2/3 md:ml-8 text-center md:text-left">
+    <div className="w-full md:w-2/3 md:ml-8 text-left">
       <h2 className="text-3xl font-bold text-gray-900 mb-4">{heading}</h2>
       <div className="text-gray-700">
         <PortableText value={body} />
