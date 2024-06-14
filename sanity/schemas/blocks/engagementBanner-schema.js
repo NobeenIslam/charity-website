@@ -15,4 +15,11 @@ export default {
       of: [{type: 'block'}],
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Engagement Banner',
+      };
+    },
+  },
 }

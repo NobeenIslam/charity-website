@@ -28,4 +28,11 @@ export default {
     },
     ctaButton,
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Homepage Hero',
+      };
+    },
+  },
 }

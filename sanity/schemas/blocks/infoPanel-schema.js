@@ -28,4 +28,11 @@ export default {
     },
     coloursField('backgroundColour', 'Background Colour'),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Info Panel',
+      };
+    },
+  },
 }
