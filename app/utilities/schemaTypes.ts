@@ -63,7 +63,9 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  blocks: Array<SanityKeyed<Project> | SanityKeyed<HomepageHero>>;
+  blocks: Array<
+    SanityKeyed<Project> | SanityKeyed<HomepageHero> | SanityKeyed<InfoPanel>
+  >;
 }
 
 /**
@@ -232,6 +234,50 @@ export type HomepageHero = {
      */
     buttonLink?: string;
   };
+};
+
+export type InfoPanel = {
+  _type: "infoPanel";
+  /**
+   * Heading — `string`
+   *
+   *
+   */
+  heading?: string;
+
+  /**
+   * Body — `array`
+   *
+   *
+   */
+  body?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Background Colour — `string`
+   *
+   *
+   */
+  backgroundColour?:
+    | "bg-red-200"
+    | "bg-green-200"
+    | "bg-blue-200"
+    | "bg-yellow-200"
+    | "bg-indigo-200"
+    | "bg-purple-200"
+    | "bg-pink-200"
+    | "bg-gray-200";
 };
 
 export type Documents = Page | NavBar;

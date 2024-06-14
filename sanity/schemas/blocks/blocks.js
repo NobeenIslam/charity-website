@@ -1,6 +1,7 @@
 const allBlocks = [
   {type: 'project', title: 'Project'},
   {type: 'homepageHero', title: 'Homepage Hero'},
+  {type: 'infoPanel', title: 'Info Panel'},
 ]
 
 export default () => {
