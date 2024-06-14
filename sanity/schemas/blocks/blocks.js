@@ -1,7 +1,10 @@
+
+//Add block type here
 const allBlocks = [
   {type: 'project', title: 'Project'},
   {type: 'homepageHero', title: 'Homepage Hero'},
   {type: 'infoPanel', title: 'Info Panel'},
+  {type: 'engagementBanner', title: 'Engagement Banner'},
 ]
 
 export default () => {

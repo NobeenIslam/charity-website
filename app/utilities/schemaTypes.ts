@@ -64,7 +64,10 @@ export interface Page extends SanityDocument {
    *
    */
   blocks: Array<
-    SanityKeyed<Project> | SanityKeyed<HomepageHero> | SanityKeyed<InfoPanel>
+    | SanityKeyed<Project>
+    | SanityKeyed<HomepageHero>
+    | SanityKeyed<InfoPanel>
+    | SanityKeyed<EngagementBanner>
   >;
 }
 
@@ -278,6 +281,23 @@ export type InfoPanel = {
     | "bg-purple-200"
     | "bg-pink-200"
     | "bg-gray-200";
+};
+
+export type EngagementBanner = {
+  _type: "engagementBanner";
+  /**
+   * Heading — `string`
+   *
+   *
+   */
+  heading?: string;
+
+  /**
+   * Body — `array`
+   *
+   *
+   */
+  body?: Array<SanityKeyed<SanityBlock>>;
 };
 
 export type Documents = Page | NavBar;
