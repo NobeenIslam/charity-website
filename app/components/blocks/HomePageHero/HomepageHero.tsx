@@ -25,7 +25,7 @@ export const HomepageHero = ({
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="relative z-10 text-left text-white p-4 w-1/2 ml-4">
+      <div className="relative z-10 text-left text-white p-4 w-3/4 md:w-1/2 ml-4">
         <h1 className="text-4xl font-bold mb-4">{heading}</h1>
         <PortableText value={description} />
         <Button className="mt-4" aria-label={ctaButton?.buttonAccessibleLabel}>
