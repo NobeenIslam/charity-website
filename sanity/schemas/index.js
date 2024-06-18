@@ -7,10 +7,10 @@ import infoPanel from './blocks/infoPanel-schema.js'
 import engagementBanner from './blocks/engagementBanner-schema.js'
 
 //Add document schema here
-const documentTypes = [page, navbar]
+const documentTypes = [page, navbar, project]
 
 //Add block schema here
-const blockTypes = [project, navItem, homepageHero, infoPanel, engagementBanner]
+const blockTypes = [navItem, homepageHero, infoPanel, engagementBanner]
 
 export const schemaTypes = [...documentTypes, ...blockTypes]
 
