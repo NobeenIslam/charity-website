@@ -25,12 +25,16 @@ export async function getPageBySlug(slug: string): Promise<Page> {
   return client.fetch(pageBySlugQuery(slug));
 }
 
-const projectsQuery = groq`*[_type == "project"]{
-    ...
-  }`;
+const projectsGridQuery = groq`*[_type == "project"]{
+  _id,
+  title,
+  summary,
+  cardImage,
+  link
+}`;
 
-export async function getProjects(): Promise<Project> {
-  return client.fetch(projectsQuery);
+export async function getProjectsForGrid(): Promise<Project[]> {
+  return client.fetch(projectsGridQuery);
 }
 
 const homepageQuery = groq`*[_type == "page" && title == "Home"]{

@@ -64,7 +64,7 @@ export interface Page extends SanityDocument {
    *
    */
   blocks: Array<
-    | SanityKeyed<Project>
+    | SanityKeyed<ProjectGrid>
     | SanityKeyed<HomepageHero>
     | SanityKeyed<InfoPanel>
     | SanityKeyed<EngagementBanner>
@@ -106,8 +106,14 @@ export interface NavBar extends SanityDocument {
   };
 }
 
-export type Project = {
+/**
+ * Project
+ *
+ *
+ */
+export interface Project extends SanityDocument {
   _type: "project";
+
   /**
    * Title — `string`
    *
@@ -116,25 +122,18 @@ export type Project = {
   title?: string;
 
   /**
-   * Slug — `slug`
+   * Summary — `text`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  summary?: string;
 
   /**
-   * Description — `text`
+   * Card Image — `image`
    *
    *
    */
-  description?: string;
-
-  /**
-   * Main Image — `image`
-   *
-   *
-   */
-  mainImage?: {
+  cardImage: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -142,27 +141,41 @@ export type Project = {
   };
 
   /**
-   * Body — `array`
+   * Link — `url`
    *
    *
    */
-  body?: Array<
-    | SanityKeyed<SanityBlock>
-    | SanityKeyed<{
-        _type: "image";
-        asset: SanityReference<SanityImageAsset>;
-        crop?: SanityImageCrop;
-        hotspot?: SanityImageHotspot;
-      }>
-  >;
+  link?: string;
 
   /**
-   * Category — `string`
+   * CTA — `object`
    *
    *
    */
-  category?: "education" | "healthcare" | "environment";
-};
+  ctaButton?: {
+    _type: "ctaButton";
+    /**
+     * Button Text — `string`
+     *
+     *
+     */
+    buttonText?: string;
+
+    /**
+     * Button - Accessible Label — `string`
+     *
+     * This will help screen reader users understand where the link will redirect them to.
+     */
+    buttonAccessibleLabel?: string;
+
+    /**
+     * Button Link — `string`
+     *
+     *
+     */
+    buttonLink?: string;
+  };
+}
 
 export type NavItem = {
   _type: "navItem";
@@ -300,4 +313,21 @@ export type EngagementBanner = {
   body?: Array<SanityKeyed<SanityBlock>>;
 };
 
-export type Documents = Page | NavBar;
+export type ProjectGrid = {
+  _type: "projectGrid";
+  /**
+   * Heading — `string`
+   *
+   *
+   */
+  heading?: string;
+
+  /**
+   * Body — `array`
+   *
+   *
+   */
+  body?: Array<SanityKeyed<SanityBlock>>;
+};
+
+export type Documents = Page | NavBar | Project;
