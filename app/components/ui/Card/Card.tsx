@@ -12,31 +12,32 @@ import type {
   SanityImageHotspot,
   SanityImageAsset,
 } from "sanity-codegen";
+import { Button } from "@/app/components/ui/Button";
+
+export type ctaType = {
+  buttonText?: string;
+  buttonAccessibleLabel?: string;
+  buttonLink?: string;
+};
 
 export interface CardProps {
   title: string;
   cardBody: string;
-  ctaText: string;
+  cta?: ctaType;
   cardImage: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
-  link: string;
+  link?: string;
 }
 
-export const Card = ({
-  title,
-  cardBody,
-  cardImage,
-  link,
-  ctaText,
-}: CardProps) => {
+export const Card = ({ title, cardBody, cardImage, link, cta }: CardProps) => {
   const imageProps = useNextSanityImage(client, cardImage);
 
   return (
-    <Link href={link} passHref>
+    <Link href={link ? link : ""} passHref>
       <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer border-gray-500">
         <div className="relative w-full">
           <Image
@@ -52,9 +53,10 @@ export const Card = ({
             <p className="text-gray-700 mb-4">{cardBody}</p>
           </div>
           <div className="flex ">
-            <button className="bg-green-500 text-white px-4 py-2 rounded-lg">
-              {ctaText}
-            </button>
+            {/* TODO implement onClickFunction and or link */}
+            <Button aria-label={cta?.buttonAccessibleLabel}>
+              {cta?.buttonText}
+            </Button>
           </div>
         </div>
       </div>
