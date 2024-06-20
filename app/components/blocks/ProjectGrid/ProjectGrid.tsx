@@ -31,10 +31,16 @@ export const ProjectGrid = ({
   });
 
   return (
-    <div>
-      <h2>{heading}</h2>
-      <PortableText value={body} />
-      <div className="grid">{projectCards}</div>
+    <div className="gutter py-12">
+      <div className="text-center mb-8">
+        <h2 className="text-4xl font-bold text-gray-900">{heading}</h2>
+        <div className="mt-4 text-gray-600">
+          <PortableText value={body} />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
+        {projectCards}
+      </div>
     </div>
   );
 };
