@@ -1,5 +1,11 @@
-import { getAllSlugs, getHomePage, getPageBySlug } from "../queries";
+import {
+  getAllSlugs,
+  getHomePage,
+  getPageBySlug,
+  getProjectsForGrid,
+} from "../queries";
 import { renderBlocks } from "../utilities/renderBlocks";
+import { Project } from "@/app/utilities/schemaTypes";
 
 export const dynamicParams = false;
 
@@ -28,5 +34,10 @@ export default async function Page({ params }: { params: ParamsObject }) {
     ? await getPageBySlug(slug.join("/"))
     : await getHomePage();
 
-  return <div>{renderBlocks(pageData?.blocks)}</div>;
+  let projectCardsData: Project[] = [];
+  if (pageData.blocks.find((block) => block._type === "projectGrid")) {
+    projectCardsData = await getProjectsForGrid();
+  }
+
+  return <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>;
 }
