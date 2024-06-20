@@ -1,4 +1,30 @@
 import { ProjectGridProps } from "./ProjectGrid";
+import { CardProps } from "./../../ui/Card";
+import { Project as SanityProjectType } from "../../../utilities/schemaTypes";
+
+const projectCardMock: SanityProjectType = {
+  _createdAt: "2024-04-24T12:05:34Z",
+  _id: "27b0c0f3-b75e-4aec-a2c7-947c4e349ef3",
+  _rev: "jnmmtSmwJOIdIOTlWpBmhE",
+  _type: "project",
+  ctaButton: {
+    _type: "ctaButton",
+    buttonText: "Donate",
+    buttonAccessibleLabel: "Donate",
+    buttonLink: "/",
+  },
+  cardImage: {
+    _type: "image",
+    asset: {
+      _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
+      _type: "reference",
+    },
+  },
+  link: "/",
+  summary: "Summary",
+  title: "Test",
+  _updatedAt: "2024-06-19T18:40:02.331Z",
+};
 
 export const projectGridMock: ProjectGridProps = {
   _type: "projectGrid",
@@ -32,22 +58,12 @@ export const projectGridMock: ProjectGridProps = {
   ],
   heading: "Project Grid",
   projectCardsData: [
-    {
-      _createdAt: "2024-04-24T12:05:34Z",
-      _id: "27b0c0f3-b75e-4aec-a2c7-947c4e349ef3",
-      _rev: "jnmmtSmwJOIdIOTlWpBmhE",
-      _type: "project",
-      cardImage: {
-        _type: "image",
-        asset: {
-          _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
-          _type: "reference",
-        },
-      },
-      link: "/",
-      summary: "Summary",
-      title: "Test",
-      _updatedAt: "2024-06-19T18:40:02.331Z",
-    },
+    projectCardMock,
+    projectCardMock,
+    projectCardMock,
+    projectCardMock,
+    projectCardMock,
+    projectCardMock,
+    projectCardMock,
   ],
 };
