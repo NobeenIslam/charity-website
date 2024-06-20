@@ -54,9 +54,11 @@ export const Card = ({ title, cardBody, cardImage, link, cta }: CardProps) => {
           </div>
           <div className="flex ">
             {/* TODO implement onClickFunction and or link */}
-            <Button aria-label={cta?.buttonAccessibleLabel}>
-              {cta?.buttonText}
-            </Button>
+            {cta && (
+              <Button aria-label={cta.buttonAccessibleLabel}>
+                {cta.buttonText}
+              </Button>
+            )}
           </div>
         </div>
       </div>
