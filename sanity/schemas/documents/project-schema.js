@@ -1,6 +1,6 @@
-import ctaButton from "../misc/ctaButton";
+import ctaButton from '../misc/ctaButton'
 
-export default ({
+export default {
   name: 'project',
   title: 'Project',
   type: 'document',
@@ -12,7 +12,7 @@ export default ({
     },
     {
       name: 'summary',
-      title: 'Sescription',
+      title: 'Summary',
       type: 'text',
     },
     {
@@ -22,15 +22,18 @@ export default ({
       options: {
         hotspot: true,
       },
+      codegen: {required: true},
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'link',
       title: 'Link',
       type: 'url',
-      validation: Rule => Rule.required().uri({
-        allowRelative: true,
-      }),
+      validation: (Rule) =>
+        Rule.required().uri({
+          allowRelative: true,
+        }),
     },
-    ctaButton
+    ctaButton,
   ],
-})
+}
