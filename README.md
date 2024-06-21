@@ -1,5 +1,16 @@
+## Local files
+
+You will need a '.env.local' file:
+
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_PROJECT_ID=[Redacted] (ask me for the ID)
+
+
 ## Getting Started
-First, run the development server:
+Do a `npm install` in root
+Go into `/sanity` and do another `npm install`
+
+To run the development servers:
 
 ```bash
 npm run dev
@@ -24,9 +35,13 @@ cd into Sanity Folder
 
 ```npm run dev```
 
+## Plop things:
+
+To speed up some of the boiler-plate when you create a new component just do 'npx plop'
+
 ## Schemas things:
 
 To generate types for schemas: `npx sanity-codegen` in root
 When you create a schema add it to `index.js` in the schemas folder
 When you create a new block add it to the `blocks` array in `blocks.js`
-When you create the component, make sure it goes into the switch case in `renderBlocks.js`
+For blocks, make sure it goes into the switch case in `renderBlocks.js`
