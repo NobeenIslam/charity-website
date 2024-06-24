@@ -4,7 +4,9 @@ import "./styles/globals.css";
 import { roboto as robotoVariable } from "./styles";
 import localFont from "next/font/local";
 import { NavBar } from "./components/NavBar";
-import { getNavBar } from "./queries";
+import { Footer } from "./components/Footer";
+
+import { getFooter, getNavBar } from "./queries";
 
 const roboto = localFont({
   variable: "--font-roboto" satisfies typeof robotoVariable,
@@ -43,12 +45,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const navBar = await getNavBar();
+  const footer = await getFooter();
 
   return (
     <html lang="en">
       <body className={`${roboto.variable} font-sans`}>
         <NavBar {...navBar} />
         <main>{children}</main>
+        <Footer {...footer} />
       </body>
     </html>
   );

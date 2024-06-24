@@ -1,4 +1,9 @@
-import { Page, Project, NavBar } from "@/app/utilities/schemaTypes";
+import {
+  Page as SanityPageType,
+  Project as SanityProjectType,
+  NavBar as SanityNavBarType,
+  Footer as SanityFooterType,
+} from "./utilities/schemaTypes";
 import { client } from "./utilities/client";
 import { groq } from "next-sanity";
 
@@ -21,7 +26,7 @@ const pageBySlugQuery = (slug: string) => {
   `;
 };
 
-export async function getPageBySlug(slug: string): Promise<Page> {
+export async function getPageBySlug(slug: string): Promise<SanityPageType> {
   return client.fetch(pageBySlugQuery(slug));
 }
 
@@ -33,7 +38,7 @@ const projectsGridQuery = groq`*[_type == "project"]{
   link
 }`;
 
-export async function getProjectsForGrid(): Promise<Project[]> {
+export async function getProjectsForGrid(): Promise<SanityProjectType[]> {
   return client.fetch(projectsGridQuery);
 }
 
@@ -43,7 +48,7 @@ const homepageQuery = groq`*[_type == "page" && title == "Home"]{
   blocks
 }[0]`;
 
-export async function getHomePage(): Promise<Page> {
+export async function getHomePage(): Promise<SanityPageType> {
   return client.fetch(homepageQuery);
 }
 
@@ -57,6 +62,20 @@ const navBarQuery = groq`*[_type == "navBar"]{
 }[0]
 `;
 
-export async function getNavBar(): Promise<NavBar> {
+export async function getNavBar(): Promise<SanityNavBarType> {
   return client.fetch(navBarQuery);
+}
+
+const footerQuery = groq`*[_type == "footer"]{
+  mainText,
+  footerLinks[]{
+    ...
+  },
+  socialLinks[]{
+    ...
+  }
+}[0]
+`;
+export async function getFooter(): Promise<SanityFooterType> {
+  return client.fetch(footerQuery);
 }
