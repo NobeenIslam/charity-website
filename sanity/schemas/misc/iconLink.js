@@ -7,6 +7,8 @@ export default {
       name: 'icon',
       title: 'Icon',
       type: 'image',
+      codegen: {required: true},
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'link',

@@ -367,7 +367,7 @@ export type IconLink = {
    *
    *
    */
-  icon?: {
+  icon: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
