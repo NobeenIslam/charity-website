@@ -177,22 +177,35 @@ export interface Project extends SanityDocument {
   };
 }
 
-export type NavItem = {
-  _type: "navItem";
-  /**
-   * Nav Item Title — `string`
-   *
-   *
-   */
-  title?: string;
+/**
+ * Footer
+ *
+ *
+ */
+export interface Footer extends SanityDocument {
+  _type: "footer";
 
   /**
-   * Nav Item Link — `string`
+   * Main Text — `string`
    *
    *
    */
-  link?: string;
-};
+  mainText?: string;
+
+  /**
+   * Footer Links — `array`
+   *
+   *
+   */
+  footerLinks?: Array<SanityKeyed<NavItem>>;
+
+  /**
+   * Social Links — `array`
+   *
+   *
+   */
+  socialLinks?: Array<SanityKeyed<IconLink>>;
+}
 
 export type HomepageHero = {
   _type: "homepageHero";
@@ -330,4 +343,43 @@ export type ProjectGrid = {
   body?: Array<SanityKeyed<SanityBlock>>;
 };
 
-export type Documents = Page | NavBar | Project;
+export type NavItem = {
+  _type: "navItem";
+  /**
+   * Nav Item Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Nav Item Link — `string`
+   *
+   *
+   */
+  link?: string;
+};
+
+export type IconLink = {
+  _type: "iconLink";
+  /**
+   * Icon — `image`
+   *
+   *
+   */
+  icon: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Link — `string`
+   *
+   *
+   */
+  link?: string;
+};
+
+export type Documents = Page | NavBar | Project | Footer;
