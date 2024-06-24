@@ -38,7 +38,7 @@ export const Card = ({ title, cardBody, cardImage, link, cta }: CardProps) => {
 
   return (
     <Link href={link ? link : ""} passHref>
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer border-gray-500">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer border-gray-500 flex flex-col h-full ">
         <div className="relative w-full">
           <Image
             {...imageProps}
