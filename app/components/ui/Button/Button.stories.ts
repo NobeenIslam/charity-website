@@ -16,6 +16,10 @@ const meta: Meta<typeof Button> = {
         "link",
       ],
     },
+    size: {
+      control: "select",
+      options: ["default", "sm", "lg", "icon"],
+    },
   },
 };
 
@@ -26,7 +30,6 @@ export const Default: Story = {
   args: {
     variant: "default",
     children: "Hello",
+    size: "default",
   },
 };
-
-
