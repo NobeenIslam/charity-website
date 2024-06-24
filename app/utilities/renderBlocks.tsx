@@ -18,8 +18,6 @@ export function renderBlocks(blocks: any[], projectCardsData: any[]) {
 //Evverytime you create a block you need add it here so it can render properly
 export function renderSanityBlock(block: any, projectCardsData: any[]) {
   switch (block._type) {
-    case "projectGrid":
-      return <Projects key={block._key} {...block} />;
     case "homepageHero":
       return <HomepageHero key={block._key} {...block}></HomepageHero>;
     case "infoPanel":
