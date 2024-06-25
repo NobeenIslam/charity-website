@@ -32,7 +32,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     );
   });
   return (
-    <div className="sticky top-0 z-50 flex items-center p-1 bg-white border-b border-gray-200">
+    <div className="gutter-x sticky top-0 z-50 flex items-center p-1 bg-white border-b border-gray-200">
       <div className="flex-shrink-0">
         {logo && (
           <Image {...imageProps} width={50} height={50} alt="charity-logo" />
