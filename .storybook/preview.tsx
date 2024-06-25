@@ -1,30 +1,30 @@
 import * as React from "react";
 import type { Preview } from "@storybook/react";
 import "../app/styles/globals.css";
-import { roboto as robotoVariable } from "../app/styles";
+import { fontVariable } from "../app/styles";
 import localFont from "next/font/local";
 
 //path in localFont here needs to match what is in staticdirs in main.ts
-const roboto = localFont({
-  variable: "--font-roboto" satisfies typeof robotoVariable,
+const font = localFont({
+  variable: "--font-montserrat" satisfies typeof fontVariable,
   src: [
     {
-      path: "../fonts/Roboto-Regular.ttf",
+      path: "../fonts/Montserrat-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../fonts/Roboto-Italic.ttf",
+      path: "../fonts/Montserrat-Italic.ttf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "../fonts/Roboto-Bold.ttf",
+      path: "../fonts/Montserrat-Bold.ttf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../fonts/Roboto-BoldItalic.ttf",
+      path: "../fonts/Montserrat-BoldItalic.ttf",
       weight: "700",
       style: "italic",
     },
@@ -43,7 +43,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <div
-        className={`${roboto.variable} font-sans`}
+        className={`${font.variable} font-sans`}
       >
         <Story />
       </div>

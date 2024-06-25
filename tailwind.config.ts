@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { roboto } from "./app/styles";
+import { fontVariable } from "./app/styles";
 
 const config = {
   darkMode: ["class"],
@@ -26,7 +26,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: [`var(${roboto})`],
+        sans: [`var(${fontVariable})`], //This being overriden and used in layout is what is setting the font for the whole website. The variable passing in is doing something different I believe.
       },
       colors: {
         border: "hsl(var(--border))",
