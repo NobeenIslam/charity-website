@@ -63,9 +63,11 @@ export const ProjectGrid = ({
           <PortableText value={body} />
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
-        {projectCards}
-      </div>
+      <div className="container mx-auto px-4">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+    {projectCards}
+  </div>
+</div>
       <div className="flex justify-center mt-8 space-x-4">
         {visibleCount < projectCardsData.length && (
           <div className="flex justify-center mt-8">

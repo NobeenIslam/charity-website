@@ -1,7 +1,7 @@
 "use client";
 
 import { NavBar as NavBarType } from "../../utilities/schemaTypes";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
 import BurgerSvg from "@/public/icons/burger.svg";
@@ -17,6 +17,23 @@ export interface NavBarProps extends NavBarType {}
 const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleClick = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
@@ -26,16 +43,16 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
 
   const navLinks = navItems?.map((navItem) => {
     return (
-      <Button key={navItem.title} href={navItem.link} variant={"link"}>
+      <Button key={navItem.title} href={navItem.link} variant={"link"} className={`text-lg ${isScrolled ? 'text-black' : 'text-white'}`}>
         {navItem.title}
       </Button>
     );
   });
   return (
-    <div className="sticky top-0 z-50 flex items-center p-1 bg-white border-b border-gray-200">
+    <div className={`gutter-x py-4 fixed top-0 left-0 right-0 z-50 flex items-center ${isScrolled ? 'bg-gray-100 ' : 'bg-transparent'}  transition-colors duration-300`}>
       <div className="flex-shrink-0">
         {logo && (
-          <Image {...imageProps} width={50} height={50} alt="charity-logo" />
+          <Image {...imageProps} width={75} height={75} alt="charity-logo" />
         )}
       </div>
       {isMobile ? (
@@ -54,7 +71,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
           )}
         </div>
       ) : (
-        <div className="flex space-x-4">{navLinks}</div>
+        <div className="flex space-x-9">{navLinks}</div>
       )}
     </div>
   );

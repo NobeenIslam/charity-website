@@ -54,4 +54,9 @@
   .gutter {
     @apply mx-auto p-16 sm:p-20 lg:p-24 xl:p-28;
   }
+
+  .gutter-x{
+    @apply mx-auto px-16 sm:px-20 lg:px-24 xl:px-28;
+
+  }
 }
