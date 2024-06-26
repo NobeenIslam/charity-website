@@ -5,7 +5,7 @@ import React from "react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-red">
+    <div className="min-h-screen flex items-center justify-center bg-orange-500">
       <div className="container">
         <div className="flex flex-col items-start sm:items-center ">
           <p className="font-bold text-2xl mb-2 ">PAGE NOT FOUND</p>
