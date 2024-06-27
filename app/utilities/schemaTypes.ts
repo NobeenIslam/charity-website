@@ -122,58 +122,66 @@ export interface Project extends SanityDocument {
   title?: string;
 
   /**
-   * Summary — `text`
+   * Card — `object`
    *
    *
    */
-  summary?: string;
-
-  /**
-   * Card Image — `image`
-   *
-   *
-   */
-  cardImage: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Link — `url`
-   *
-   *
-   */
-  link?: string;
-
-  /**
-   * CTA — `object`
-   *
-   *
-   */
-  ctaButton?: {
-    _type: "ctaButton";
+  card?: {
+    _type: "card";
     /**
-     * Button Text — `string`
+     *  Summary — `text`
      *
      *
      */
-    buttonText?: string;
+    summary?: string;
 
     /**
-     * Button - Accessible Label — `string`
-     *
-     * This will help screen reader users understand where the link will redirect them to.
-     */
-    buttonAccessibleLabel?: string;
-
-    /**
-     * Button Link — `string`
+     * Image — `image`
      *
      *
      */
-    buttonLink?: string;
+    image?: {
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+    };
+
+    /**
+     * Link — `url`
+     *
+     *
+     */
+    link?: string;
+
+    /**
+     * CTA — `object`
+     *
+     *
+     */
+    ctaButton?: {
+      _type: "ctaButton";
+      /**
+       * Button Text — `string`
+       *
+       *
+       */
+      buttonText?: string;
+
+      /**
+       * Button - Accessible Label — `string`
+       *
+       * This will help screen reader users understand where the link will redirect them to.
+       */
+      buttonAccessibleLabel?: string;
+
+      /**
+       * Button Link — `string`
+       *
+       *
+       */
+      buttonLink?: string;
+    };
   };
 }
 

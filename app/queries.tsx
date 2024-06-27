@@ -30,16 +30,16 @@ export async function getPageBySlug(slug: string): Promise<SanityPageType> {
   return client.fetch(pageBySlugQuery(slug));
 }
 
-const projectsGridQuery = groq`*[_type == "project"]{
+export type ProjectCardType = Pick<SanityProjectType, "card" | "title" | "_id">;
+
+const projectCardsQuery = groq`*[_type == "project"]{
   _id,
   title,
-  summary,
-  cardImage,
-  link
+  card
 }`;
 
-export async function getProjectsForGrid(): Promise<SanityProjectType[]> {
-  return client.fetch(projectsGridQuery);
+export async function getProjectCardsForGrid(): Promise<ProjectCardType[]> {
+  return client.fetch(projectCardsQuery);
 }
 
 const homepageQuery = groq`*[_type == "page" && title == "Home"]{

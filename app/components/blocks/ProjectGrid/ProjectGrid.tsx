@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { PortableText } from "../../../utilities/portableText";
 import { ProjectGrid as SanityProjectGridType } from "../../../utilities/schemaTypes";
-import { Project as SanityProjectType } from "../../../utilities/schemaTypes";
 import { Card } from "@/app/components/ui/Card";
 import { Button } from "@/app/components/ui/Button";
+import { ProjectCardType } from "@/app/queries";
 
 export interface ProjectGridProps extends SanityProjectGridType {
-  projectCardsData: SanityProjectType[];
+  projectCardsData: ProjectCardType[];
 }
 
 export const ProjectGrid = ({
@@ -40,16 +40,15 @@ export const ProjectGrid = ({
   const projectCards = projectCardsData
     .slice(0, visibleCount)
     .map((projectCardData) => {
-      const { _id, summary, cardImage, title, link, ctaButton } =
-        projectCardData;
+      const { _id, card, title } = projectCardData;
       return (
         <div key={_id} className="max-w-sm">
           <Card
             title={title || ""}
-            cardBody={summary || ""}
-            cardImage={cardImage}
-            link={link}
-            cta={ctaButton}
+            body={card?.summary || ""}
+            image={card?.image}
+            link={card?.link}
+            cta={card?.ctaButton}
           />
         </div>
       );
@@ -64,10 +63,10 @@ export const ProjectGrid = ({
         </div>
       </div>
       <div className="container mx-auto px-4">
-  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-    {projectCards}
-  </div>
-</div>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+          {projectCards}
+        </div>
+      </div>
       <div className="flex justify-center mt-8 space-x-4">
         {visibleCount < projectCardsData.length && (
           <div className="flex justify-center mt-8">

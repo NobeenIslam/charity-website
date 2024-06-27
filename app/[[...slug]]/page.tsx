@@ -2,7 +2,8 @@ import {
   getAllSlugs,
   getHomePage,
   getPageBySlug,
-  getProjectsForGrid,
+  getProjectCardsForGrid,
+  ProjectCardType,
 } from "../queries";
 import { renderBlocks } from "../utilities/renderBlocks";
 import { Project } from "@/app/utilities/schemaTypes";
@@ -34,9 +35,9 @@ export default async function Page({ params }: { params: ParamsObject }) {
     ? await getPageBySlug(slug.join("/"))
     : await getHomePage();
 
-  let projectCardsData: Project[] = [];
+  let projectCardsData: ProjectCardType[] = [];
   if (pageData.blocks.find((block) => block._type === "projectGrid")) {
-    projectCardsData = await getProjectsForGrid();
+    projectCardsData = await getProjectCardsForGrid();
   }
 
   return <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>;

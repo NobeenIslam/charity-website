@@ -1,29 +1,45 @@
 import { ProjectGridProps } from "./ProjectGrid";
 import { CardProps } from "./../../ui/Card";
 import { Project as SanityProjectType } from "../../../utilities/schemaTypes";
+import { ProjectCardType } from "../../../queries";
 
-const projectCardMock: SanityProjectType = {
-  _createdAt: "2024-04-24T12:05:34Z",
-  _id: "27b0c0f3-b75e-4aec-a2c7-947c4e349ef3",
-  _rev: "jnmmtSmwJOIdIOTlWpBmhE",
-  _type: "project",
-  ctaButton: {
-    _type: "ctaButton",
-    buttonText: "Donate",
-    buttonAccessibleLabel: "Donate",
-    buttonLink: "/",
-  },
-  cardImage: {
-    _type: "image",
-    asset: {
-      _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
-      _type: "reference",
-    },
-  },
-  link: "/",
-  summary: "Summary",
+const projectCardMock: ProjectCardType = {
+  _id: "123556",
   title: "Test",
-  _updatedAt: "2024-06-19T18:40:02.331Z",
+  card: {
+    _type: "card",
+    ctaButton: {
+      _type: "ctaButton",
+      buttonText: "Donate",
+      buttonAccessibleLabel: "Donate",
+      buttonLink: "/",
+    },
+    image: {
+      _type: "image",
+      asset: {
+        _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
+        _type: "reference",
+      },
+    },
+    link: "/",
+    summary: "Summary",
+  },
+};
+
+const projectCardMockWithNoImage: ProjectCardType = {
+  _id: "123556",
+  title: "Test",
+  card: {
+    _type: "card",
+    ctaButton: {
+      _type: "ctaButton",
+      buttonText: "Donate",
+      buttonAccessibleLabel: "Donate",
+      buttonLink: "/",
+    },
+    link: "/",
+    summary: "Summary",
+  },
 };
 
 export const projectGridMock: ProjectGridProps = {
@@ -58,8 +74,7 @@ export const projectGridMock: ProjectGridProps = {
   ],
   heading: "Project Grid",
   projectCardsData: [
-    projectCardMock,
-    projectCardMock,
+    projectCardMockWithNoImage,
     projectCardMock,
     projectCardMock,
     projectCardMock,

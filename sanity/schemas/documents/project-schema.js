@@ -11,29 +11,34 @@ export default {
       type: 'string',
     },
     {
-      name: 'summary',
-      title: 'Summary',
-      type: 'text',
+      name: 'card',
+      title: 'Card',
+      type: 'object',
+      fields: [
+        {
+          name: 'summary',
+          title: ' Summary',
+          type: 'text',
+        },
+        {
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          name: 'link',
+          title: 'Link',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              allowRelative: true,
+            }),
+        },
+        ctaButton,
+      ],
     },
-    {
-      name: 'cardImage',
-      title: 'Card Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      codegen: {required: true},
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'link',
-      title: 'Link',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.required().uri({
-          allowRelative: true,
-        }),
-    },
-    ctaButton,
   ],
 }
