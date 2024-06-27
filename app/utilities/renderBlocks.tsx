@@ -1,11 +1,14 @@
-import { Projects } from "../components/blocks/Projects";
 import { HomepageHero } from "../components/blocks/HomePageHero";
 import { InfoPanel } from "../components/blocks/InfoPanel";
 import { EngagementBanner } from "../components/blocks/EngagementBanner";
 import { ProjectGrid } from "../components/blocks/ProjectGrid";
 import React from "react";
+import { ProjectCardType } from "@/app/queries";
 
-export function renderBlocks(blocks: any[], projectCardsData: any[]) {
+export function renderBlocks(
+  blocks: any[],
+  projectCardsData: ProjectCardType[]
+) {
   if (!blocks) {
     return [];
   }

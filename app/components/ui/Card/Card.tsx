@@ -34,7 +34,6 @@ export interface CardProps {
 }
 
 export const Card = ({ title, body, image, link, cta }: CardProps) => {
-console.log({title,body,image, link, cta})
 
   const imageProps = image
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
