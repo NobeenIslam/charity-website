@@ -183,6 +183,64 @@ export interface Project extends SanityDocument {
       buttonLink?: string;
     };
   };
+
+  /**
+   * Page — `object`
+   *
+   *
+   */
+  page?: {
+    _type: "page";
+    /**
+     * Blog Post — `array`
+     *
+     *
+     */
+    blogPost?: Array<SanityKeyed<SanityBlock>>;
+
+    /**
+     * Images For Page — `array`
+     *
+     *
+     */
+    postImages?: Array<
+      SanityKeyed<{
+        _type: "image";
+        asset: SanityReference<SanityImageAsset>;
+        crop?: SanityImageCrop;
+        hotspot?: SanityImageHotspot;
+      }>
+    >;
+
+    /**
+     * CTA — `object`
+     *
+     *
+     */
+    ctaButton?: {
+      _type: "ctaButton";
+      /**
+       * Button Text — `string`
+       *
+       *
+       */
+      buttonText?: string;
+
+      /**
+       * Button - Accessible Label — `string`
+       *
+       * This will help screen reader users understand where the link will redirect them to.
+       */
+      buttonAccessibleLabel?: string;
+
+      /**
+       * Button Link — `string`
+       *
+       *
+       */
+      buttonLink?: string;
+    };
+  };
 }
 
 /**
@@ -242,6 +300,13 @@ export type HomepageHero = {
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Content Alignment — `string`
+   *
+   *
+   */
+  contentAlignment?: "left" | "center";
 
   /**
    * CTA — `object`
