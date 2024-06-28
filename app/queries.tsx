@@ -42,6 +42,19 @@ export async function getProjectCardsForGrid(): Promise<ProjectCardType[]> {
   return client.fetch(projectCardsQuery);
 }
 
+export type ProjectPageType = Pick<SanityProjectType, "page" | "title" | "_id">;
+
+const projectPagesQuery = groq`*[_type == "project"]{
+  _id,
+  title,
+  page
+}`;
+
+export async function getProjectPages(): Promise<ProjectPageType[]> {
+  return client.fetch(projectPagesQuery);
+}
+
+
 const homepageQuery = groq`*[_type == "page" && title == "Home"]{
   _id,
   title,
