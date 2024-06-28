@@ -6,9 +6,9 @@ import {
   ProjectCardType,
 } from "../queries";
 import { renderBlocks } from "../utilities/renderBlocks";
-import { Project } from "@/app/utilities/schemaTypes";
 
 export const dynamicParams = false;
+//Dynamic segments not included in generateStaticParams will return a 404.
 
 interface ParamsObject {
   slug?: string[]; // Make the `slug` optional
