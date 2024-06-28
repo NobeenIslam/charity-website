@@ -25,7 +25,7 @@ export const HomepageHero = ({
 
   return (
     <div
-      className={`gutter relative flex ${alignmentClasses} h-screen bg-cover bg-center `}
+      className={`gutter relative flex items-center ${alignmentClasses} h-screen bg-cover bg-center `}
       style={{
         backgroundImage: `url(${backgroundImageProps.src})`,
       }}
