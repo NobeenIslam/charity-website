@@ -40,5 +40,27 @@ export default {
         ctaButton,
       ],
     },
+    {
+      name: 'page',
+      title: 'Page',
+      type: 'object',
+      fields: [
+        {
+          name: 'blogPost',
+          title: 'Blog Post',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'postImages',
+          title: 'Images For Page',
+          type: 'array',
+          of: [{type: 'image'}],
+          validation: (Rule) =>
+            Rule.max(2).error('The project page only supports 2 images at the moment'),
+        },
+        ctaButton,
+      ],
+    },
   ],
 }
