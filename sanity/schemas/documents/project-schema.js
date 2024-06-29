@@ -6,6 +6,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name:'slug',
+      title:'Slug',
+      type:'slug'
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
