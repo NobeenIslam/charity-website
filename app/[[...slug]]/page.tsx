@@ -3,8 +3,8 @@ import {
   getHomePage,
   getPageBySlug,
   getProjectCardsForGrid,
-  ProjectCardType,
-} from "../queries";
+} from "../queries/queryFunctions";
+import { ProjectCardType } from "../queries/queryTypes";
 import { renderBlocks } from "../utilities/renderBlocks";
 
 export const dynamicParams = false;
