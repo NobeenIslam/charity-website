@@ -32,7 +32,7 @@ export async function getProjectCardsForGrid(): Promise<ProjectCardType[]> {
   }
 
 
-export async function getProjectPages(slug: string): Promise<ProjectPageType[]> {
+export async function getProjectBySlug(slug: string): Promise<ProjectPageType> {
     return client.fetch(projectBySlugQuery(slug));
   }
 
