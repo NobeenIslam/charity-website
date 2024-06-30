@@ -23,8 +23,6 @@ export default {
       options: {
         hotspot: true,
       },
-      codegen: {required: true},
-      validation: (Rule) => Rule.required(),
     },
     {
       name: 'contentAlignment',

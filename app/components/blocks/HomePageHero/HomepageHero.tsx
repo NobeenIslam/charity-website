@@ -16,7 +16,7 @@ export const HomepageHero = ({
   ctaButton,
   contentAlignment,
 }: HomepageHeroProps) => {
-  const backgroundImageProps = useNextSanityImage(client, backgroundImage, {});
+  const backgroundImageUrl = backgroundImage? useNextSanityImage(client, backgroundImage, {}).src : '/card-fallback.jpg';
 
   const alignmentClasses =
     contentAlignment === "center"
@@ -27,7 +27,7 @@ export const HomepageHero = ({
     <div
       className={`gutter relative flex items-center ${alignmentClasses} h-screen bg-cover bg-center `}
       style={{
-        backgroundImage: `url(${backgroundImageProps.src})`,
+        backgroundImage: `url(${backgroundImageUrl})`,
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>

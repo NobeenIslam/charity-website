@@ -301,7 +301,7 @@ export type HomepageHero = {
    *
    *
    */
-  backgroundImage: {
+  backgroundImage?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
