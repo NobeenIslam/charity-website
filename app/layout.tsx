@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 
-import { getFooter, getNavBar } from "./queries";
+import { getFooter, getNavBar } from "./queries/queryFunctions";
 
 const font = localFont({
   variable: "--font-montserrat" satisfies typeof fontVariable,
