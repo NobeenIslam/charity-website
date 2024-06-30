@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         backgroundImage={projectPost.card?.image}
         _type="homepageHero"
       />
-      {projectPost.page?.primaryTextSection && (
+      {projectPost.page.primaryTextSection && (
         <PortableText value={projectPost.page.primaryTextSection} />
       )}
       {postImageProps.length >= 1 && (
@@ -46,7 +46,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           className="rounded-t-lg"
         />
       )}
-      {projectPost.page?.secondaryTextSection && (
+      {projectPost.page.secondaryTextSection && (
         <PortableText value={projectPost.page.secondaryTextSection} />
       )}
       {postImageProps.length === 2 && (
