@@ -49,10 +49,18 @@ export default {
       name: 'page',
       title: 'Page',
       type: 'object',
+      codegen: {required: true},
+      validation: (Rule) => Rule.required(),
       fields: [
         {
-          name: 'blogPost',
-          title: 'Blog Post',
+          name: 'primaryTextSection',
+          title: 'Primary Text Section',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'secondaryTextSection',
+          title: 'Secondary Text Section',
           type: 'array',
           of: [{type: 'block'}],
         },

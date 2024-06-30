@@ -196,14 +196,21 @@ export interface Project extends SanityDocument {
    *
    *
    */
-  page?: {
+  page: {
     _type: "page";
     /**
-     * Blog Post — `array`
+     * Primary Text Section — `array`
      *
      *
      */
-    blogPost?: Array<SanityKeyed<SanityBlock>>;
+    primaryTextSection?: Array<SanityKeyed<SanityBlock>>;
+
+    /**
+     * Secondary Text Section — `array`
+     *
+     *
+     */
+    secondaryTextSection?: Array<SanityKeyed<SanityBlock>>;
 
     /**
      * Images For Page — `array`
