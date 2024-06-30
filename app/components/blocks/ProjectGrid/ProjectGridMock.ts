@@ -1,7 +1,7 @@
 import { ProjectGridProps } from "./ProjectGrid";
 import { CardProps } from "./../../ui/Card";
 import { Project as SanityProjectType } from "../../../utilities/schemaTypes";
-import { ProjectCardType } from "../../../queries";
+import { ProjectCardType } from "../../../queries/queryTypes";
 
 const projectCardMock: ProjectCardType = {
   _id: "123556",
@@ -44,6 +44,7 @@ const projectCardMockWithNoImage: ProjectCardType = {
 
 export const projectGridMock: ProjectGridProps = {
   _type: "projectGrid",
+  showAllProjects: false,
   body: [
     {
       _key: "b0164d5272d6",

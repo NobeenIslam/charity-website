@@ -14,6 +14,12 @@ export default {
       type: 'array',
       of: [{type: 'block'}],
     },
+    {
+      name: 'showAllProjects',
+      title: 'Show All Projects',
+      type: 'boolean',
+      initialValue: false,
+    },
   ],
   preview: {
     prepare() {

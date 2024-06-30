@@ -428,6 +428,13 @@ export type ProjectGrid = {
    *
    */
   body?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Show All Projects — `boolean`
+   *
+   *
+   */
+  showAllProjects?: boolean;
 };
 
 export type NavItem = {
