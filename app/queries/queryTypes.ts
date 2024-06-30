@@ -4,6 +4,6 @@ import {
 
 export type ProjectCardType = Pick<SanityProjectType, "card" | "title" | "_id">;
 
-export type ProjectPageType = Pick<SanityProjectType, "page" | "title" | "_id" | "slug">;
+export type ProjectPageType = Pick<SanityProjectType, "page" | "title" | "_id" | "slug" | 'card'>;
 
 export type ProjectSlugType = Pick<SanityProjectType, "slug">;

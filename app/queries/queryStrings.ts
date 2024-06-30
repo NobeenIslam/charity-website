@@ -56,7 +56,8 @@ export const projectBySlugQuery = (slug: string) => {
         _id,
         title,
         "slug": slug.current,
-        page
+        card,
+        page,
       }[0]
     `;
   };
