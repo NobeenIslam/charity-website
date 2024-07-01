@@ -10,7 +10,7 @@ import { PortableText } from "../../utilities/portableText";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../utilities/client";
-import { ProjectPageType } from "@/app/queries/queryTypes";
+import { ProjectPageType } from "../../queries/queryTypes";
 
 export interface ProjectPageContentProps {
   projectPost: ProjectPageType;
