@@ -27,7 +27,7 @@ const ProjectPageContent = ({ projectPost }: ProjectPageContentProps) => {
     <div>
       <HomepageHero
         heading={projectPost.title}
-        backgroundImage={projectPost.card?.image}
+        backgroundImage={projectPost.image}
         _type="homepageHero"
       />
       {projectPost.page.primaryTextSection && (

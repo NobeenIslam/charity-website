@@ -15,7 +15,7 @@ export const ProjectGrid = ({
   heading,
   body,
   projectCardsData,
-  showAllProjects
+  showAllProjects,
 }: ProjectGridProps) => {
   const howManyCardsAreInitiallyVisible = 3;
   const [visibleCount, setVisibleCount] = useState(
@@ -38,37 +38,35 @@ export const ProjectGrid = ({
     );
   };
 
-
-  const projectCards = showAllProjects? projectCardsData
-    .slice(0, visibleCount)
-    .map((projectCardData) => {
-      const { _id, card, title } = projectCardData;
-      return (
-        <div key={_id} className="max-w-sm">
-          <Card
-            title={title || ""}
-            body={card?.summary || ""}
-            image={card?.image}
-            link={card?.link}
-            cta={card?.ctaButton}
-          />
-        </div>
-      );
-    }): projectCardsData
-    .map((projectCardData) => {
-      const { _id, card, title } = projectCardData;
-      return (
-        <div key={_id} className="max-w-sm">
-          <Card
-            title={title || ""}
-            body={card?.summary || ""}
-            image={card?.image}
-            link={card?.link}
-            cta={card?.ctaButton}
-          />
-        </div>
-      );
-    })
+  const projectCards = showAllProjects
+    ? projectCardsData.slice(0, visibleCount).map((projectCardData) => {
+        const { _id, card, title, image } = projectCardData;
+        return (
+          <div key={_id} className="max-w-sm">
+            <Card
+              title={title || ""}
+              body={card?.summary || ""}
+              image={image}
+              link={card?.link}
+              cta={card?.ctaButton}
+            />
+          </div>
+        );
+      })
+    : projectCardsData.map((projectCardData) => {
+        const { _id, card, title, image } = projectCardData;
+        return (
+          <div key={_id} className="max-w-sm">
+            <Card
+              title={title || ""}
+              body={card?.summary || ""}
+              image={image}
+              link={card?.link}
+              cta={card?.ctaButton}
+            />
+          </div>
+        );
+      });
 
   return (
     <div className="gutter py-12">

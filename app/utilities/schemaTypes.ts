@@ -129,6 +129,18 @@ export interface Project extends SanityDocument {
   title?: string;
 
   /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
    * Card — `object`
    *
    *
@@ -141,18 +153,6 @@ export interface Project extends SanityDocument {
      *
      */
     summary?: string;
-
-    /**
-     * Image — `image`
-     *
-     *
-     */
-    image?: {
-      _type: "image";
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-    };
 
     /**
      * Link — `url`

@@ -16,6 +16,15 @@ export default {
       type: 'string',
     },
     {
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      description: 'This image will be used for the card and the hero in each project page',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'card',
       title: 'Card',
       type: 'object',
@@ -24,14 +33,6 @@ export default {
           name: 'summary',
           title: ' Summary',
           type: 'text',
-        },
-        {
-          name: 'image',
-          title: 'Image',
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
         },
         {
           name: 'link',
