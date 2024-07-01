@@ -4,6 +4,13 @@ import { ProjectCardType } from "../../../queries/queryTypes";
 const projectCardMock: ProjectCardType = {
   _id: "123556",
   title: "Test",
+  image: {
+    _type: "image",
+    asset: {
+      _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
+      _type: "reference",
+    },
+  },
   card: {
     _type: "card",
     ctaButton: {
@@ -12,13 +19,7 @@ const projectCardMock: ProjectCardType = {
       buttonAccessibleLabel: "Donate",
       buttonLink: "/",
     },
-    image: {
-      _type: "image",
-      asset: {
-        _ref: "image-00cfcccf0c1cd1ff27690b9b1ee801a25eb8ee6c-2296x1056-png",
-        _type: "reference",
-      },
-    },
+
     link: "/",
     summary: "Summary",
   },
