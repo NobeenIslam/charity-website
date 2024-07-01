@@ -16,7 +16,10 @@ export const HomepageHero = ({
   ctaButton,
   contentAlignment,
 }: HomepageHeroProps) => {
-  const backgroundImageUrl = backgroundImage? useNextSanityImage(client, backgroundImage, {}).src : '/card-fallback.jpg';
+  const backgroundImageUrl = backgroundImage
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    ? useNextSanityImage(client, backgroundImage, {}).src
+    : "/card-fallback.jpg";
 
   const alignmentClasses =
     contentAlignment === "center"
@@ -36,9 +39,14 @@ export const HomepageHero = ({
       >
         <h1 className="text-6xl font-bold mb-4">{heading}</h1>
         <PortableText value={description} />
-        <Button className="mt-4" aria-label={ctaButton?.buttonAccessibleLabel}>
-          {ctaButton?.buttonText}
-        </Button>
+        {ctaButton && (
+          <Button
+            className="mt-4"
+            aria-label={ctaButton.buttonAccessibleLabel}
+          >
+            {ctaButton.buttonText}
+          </Button>
+        )}
       </div>
     </div>
   );
