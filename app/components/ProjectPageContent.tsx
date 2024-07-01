@@ -5,12 +5,12 @@
 // https://stackoverflow.com/questions/72095900/typeerror-cannot-read-properties-of-null-reading-usememo
 
 import React from "react";
-import { HomepageHero } from "../../components/blocks/HomePageHero";
-import { PortableText } from "../../utilities/portableText";
+import { HomepageHero } from "./blocks/HomePageHero";
+import { PortableText } from "../utilities/portableText";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { client } from "../../utilities/client";
-import { ProjectPageType } from "../../queries/queryTypes";
+import { client } from "../utilities/client";
+import { ProjectPageType } from "../queries/queryTypes";
 
 export interface ProjectPageContentProps {
   projectPost: ProjectPageType;

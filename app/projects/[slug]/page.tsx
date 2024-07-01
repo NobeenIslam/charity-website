@@ -3,7 +3,7 @@ import {
   getProjectBySlug,
   getProjectSlugs,
 } from "../../queries/queryFunctions";
-import { ProjectPageContent } from "./ProjectPageContent";
+import { ProjectPageContent } from "../../components/ProjectPageContent";
 
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.
