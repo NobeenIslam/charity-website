@@ -1,13 +1,15 @@
+import React from "react";
 import {
   getAllSlugs,
   getHomePage,
   getPageBySlug,
-  getProjectsForGrid,
-} from "../queries";
+  getProjectCardsForGrid,
+} from "../queries/queryFunctions";
+import { ProjectCardType } from "../queries/queryTypes";
 import { renderBlocks } from "../utilities/renderBlocks";
-import { Project } from "@/app/utilities/schemaTypes";
 
 export const dynamicParams = false;
+//Dynamic segments not included in generateStaticParams will return a 404.
 
 interface ParamsObject {
   slug?: string[]; // Make the `slug` optional
@@ -34,9 +36,9 @@ export default async function Page({ params }: { params: ParamsObject }) {
     ? await getPageBySlug(slug.join("/"))
     : await getHomePage();
 
-  let projectCardsData: Project[] = [];
+  let projectCardsData: ProjectCardType[] = [];
   if (pageData.blocks.find((block) => block._type === "projectGrid")) {
-    projectCardsData = await getProjectsForGrid();
+    projectCardsData = await getProjectCardsForGrid();
   }
 
   return <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>;

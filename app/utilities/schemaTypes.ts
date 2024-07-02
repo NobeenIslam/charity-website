@@ -115,6 +115,13 @@ export interface Project extends SanityDocument {
   _type: "project";
 
   /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
    * Title — `string`
    *
    *
@@ -122,18 +129,11 @@ export interface Project extends SanityDocument {
   title?: string;
 
   /**
-   * Summary — `text`
+   * Image — `image`
    *
    *
    */
-  summary?: string;
-
-  /**
-   * Card Image — `image`
-   *
-   *
-   */
-  cardImage: {
+  image?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -141,39 +141,119 @@ export interface Project extends SanityDocument {
   };
 
   /**
-   * Link — `url`
+   * Card — `object`
    *
    *
    */
-  link?: string;
+  card?: {
+    _type: "card";
+    /**
+     *  Summary — `text`
+     *
+     *
+     */
+    summary?: string;
+
+    /**
+     * Link — `url`
+     *
+     *
+     */
+    link?: string;
+
+    /**
+     * CTA — `object`
+     *
+     *
+     */
+    ctaButton?: {
+      _type: "ctaButton";
+      /**
+       * Button Text — `string`
+       *
+       *
+       */
+      buttonText?: string;
+
+      /**
+       * Button - Accessible Label — `string`
+       *
+       * This will help screen reader users understand where the link will redirect them to.
+       */
+      buttonAccessibleLabel?: string;
+
+      /**
+       * Button Link — `string`
+       *
+       *
+       */
+      buttonLink?: string;
+    };
+  };
 
   /**
-   * CTA — `object`
+   * Page — `object`
    *
    *
    */
-  ctaButton?: {
-    _type: "ctaButton";
+  page: {
+    _type: "page";
     /**
-     * Button Text — `string`
+     * Primary Text Section — `array`
      *
      *
      */
-    buttonText?: string;
+    primaryTextSection?: Array<SanityKeyed<SanityBlock>>;
 
     /**
-     * Button - Accessible Label — `string`
+     * Secondary Text Section — `array`
      *
-     * This will help screen reader users understand where the link will redirect them to.
+     *
      */
-    buttonAccessibleLabel?: string;
+    secondaryTextSection?: Array<SanityKeyed<SanityBlock>>;
 
     /**
-     * Button Link — `string`
+     * Images For Page — `array`
      *
      *
      */
-    buttonLink?: string;
+    postImages?: Array<
+      SanityKeyed<{
+        _type: "image";
+        asset: SanityReference<SanityImageAsset>;
+        crop?: SanityImageCrop;
+        hotspot?: SanityImageHotspot;
+      }>
+    >;
+
+    /**
+     * CTA — `object`
+     *
+     *
+     */
+    ctaButton?: {
+      _type: "ctaButton";
+      /**
+       * Button Text — `string`
+       *
+       *
+       */
+      buttonText?: string;
+
+      /**
+       * Button - Accessible Label — `string`
+       *
+       * This will help screen reader users understand where the link will redirect them to.
+       */
+      buttonAccessibleLabel?: string;
+
+      /**
+       * Button Link — `string`
+       *
+       *
+       */
+      buttonLink?: string;
+    };
   };
 }
 
@@ -228,12 +308,19 @@ export type HomepageHero = {
    *
    *
    */
-  backgroundImage: {
+  backgroundImage?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Content Alignment — `string`
+   *
+   *
+   */
+  contentAlignment?: "left" | "center";
 
   /**
    * CTA — `object`
@@ -341,6 +428,13 @@ export type ProjectGrid = {
    *
    */
   body?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Show All Projects — `boolean`
+   *
+   *
+   */
+  showAllProjects?: boolean;
 };
 
 export type NavItem = {

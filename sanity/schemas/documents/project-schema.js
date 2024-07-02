@@ -6,34 +6,75 @@ export default {
   type: 'document',
   fields: [
     {
+      name:'slug',
+      title:'Slug',
+      type:'slug'
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
     },
     {
-      name: 'summary',
-      title: 'Summary',
-      type: 'text',
-    },
-    {
-      name: 'cardImage',
-      title: 'Card Image',
+      name: 'image',
+      title: 'Image',
       type: 'image',
+      description: 'This image will be used for the card and the hero in each project page',
       options: {
         hotspot: true,
       },
-      codegen: {required: true},
-      validation: (Rule) => Rule.required(),
     },
     {
-      name: 'link',
-      title: 'Link',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.required().uri({
-          allowRelative: true,
-        }),
+      name: 'card',
+      title: 'Card',
+      type: 'object',
+      fields: [
+        {
+          name: 'summary',
+          title: ' Summary',
+          type: 'text',
+        },
+        {
+          name: 'link',
+          title: 'Link',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              allowRelative: true,
+            }),
+        },
+        ctaButton,
+      ],
     },
-    ctaButton,
+    {
+      name: 'page',
+      title: 'Page',
+      type: 'object',
+      codegen: {required: true},
+      validation: (Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'primaryTextSection',
+          title: 'Primary Text Section',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'secondaryTextSection',
+          title: 'Secondary Text Section',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'postImages',
+          title: 'Images For Page',
+          type: 'array',
+          of: [{type: 'image'}],
+          validation: (Rule) =>
+            Rule.max(2).error('The project page only supports 2 images at the moment'),
+        },
+        ctaButton,
+      ],
+    },
   ],
 }
