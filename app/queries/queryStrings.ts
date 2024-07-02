@@ -57,6 +57,7 @@ export const projectBySlugQuery = (slug: string) => {
         "slug": slug.current,
         card,
         page,
+        image,
       }[0]
     `;
 };
