@@ -11,13 +11,17 @@ interface DonationFormProps {
   projectId: string;
   title: string;
   summary: string;
-  image: ImageType
+  image: ImageType;
 }
 
-
-const DonationForm = ({projectId,title,summary,image}: DonationFormProps) => {
+const DonationForm = ({
+  projectId,
+  title,
+  summary,
+  image,
+}: DonationFormProps) => {
   const [amount, setAmount] = useState<number>(30);
-  const [customAmount, setCustomAmount] = useState<string>('');
+  const [customAmount, setCustomAmount] = useState<string>("");
   //TODO: Pull in function from context that will add to cart
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -29,34 +33,39 @@ const DonationForm = ({projectId,title,summary,image}: DonationFormProps) => {
 
   const handleAmountChange = (selectedAmount: number) => {
     setAmount(selectedAmount);
-    setCustomAmount('');
+    setCustomAmount("");
   };
 
+  console.log({customAmount})
 
-
-  return     <form onSubmit={handleSubmit} className="space-y-4">
-  <h2 className="text-xl font-bold">{title}</h2>
-  <p className="text-gray-600">{summary}</p>
-  <RadioGroup
-    options={[30, 50, 100, 500, 1000, 2000, 5000, 10000,30000]}
-    selectedValue={amount}
-    onChange={handleAmountChange}
-  />
-  <div>
-    <Label htmlFor="custom-amount">Other amount</Label>
-    <Input
-      type="number"
-      id="custom-amount"
-      value={customAmount}
-      onChange={(e) => {
-        setCustomAmount(e.target.value);
-        setAmount(0);
-      }}
-      placeholder="Enter custom amount"
-    />
-  </div>
-  <Button type="submit" className="w-full">Add Donation</Button>
-</form>;
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-xl font-bold">{title}</h2>
+      <p className="text-gray-600">{summary}</p>
+      <RadioGroup
+        options={[30, 50, 100, 500, 1000, 2000, 5000, 10000, 30000]}
+        selectedValue={amount}
+        onChange={handleAmountChange}
+      />
+      <div>
+        <Label htmlFor="custom-amount">Other amount</Label>
+        <Input
+          type="number"
+          id="custom-amount"
+          value={customAmount}
+          onChange={(e) => {
+            setCustomAmount(e.target.value);
+            setAmount(0);
+          }}
+          placeholder="Enter custom amount"
+          min="0"
+        />
+      </div>
+      <Button type="submit" className="w-full">
+        Add Donation
+      </Button>
+    </form>
+  );
 };
 
 export { DonationForm };
