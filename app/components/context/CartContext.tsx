@@ -1,15 +1,16 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
+import { ImageType } from "../../utilities/constants";
 
-interface CartItem {
+export interface CartItem {
   projectId: string;
   title: string;
   summary: string;
-  imageUrl: string;
+  image: ImageType;
   amount: number;
   quantity: number;
 }
 
-interface CartContextType {
+export interface CartContextType {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (projectId: string) => void;
@@ -24,23 +25,28 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const useCart = () => {
   const context = useContext(CartContext);
   if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.projectId === item.projectId);
+      const existingItem = prevCart.find(
+        (cartItem) => cartItem.projectId === item.projectId
+      );
       if (existingItem) {
-        return prevCart.map((cartItem) =>
-          cartItem.projectId === item.projectId
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem 
-            //Iterates over cartItems and returns the same item until it reaches the one where ID matches and updates the quantity
+        return prevCart.map(
+          (cartItem) =>
+            cartItem.projectId === item.projectId
+              ? { ...cartItem, quantity: cartItem.quantity + 1 }
+              : cartItem
+          //Iterates over cartItems and returns the same item until it reaches the one where ID matches and updates the quantity
         );
       }
       return [...prevCart, { ...item, quantity: 1 }];
@@ -48,7 +54,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const removeFromCart = (projectId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.projectId !== projectId));
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.projectId !== projectId)
+    );
   };
 
   const updateQuantity = (projectId: string, quantity: number) => {
