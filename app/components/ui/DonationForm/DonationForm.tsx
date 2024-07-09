@@ -6,6 +6,7 @@ import { RadioGroup } from "../RadioGroup/RadioGroup";
 import { Label } from "../Label";
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { useCart } from "../../context/CartContext";
 
 interface DonationFormProps {
   projectId: string;
@@ -22,12 +23,19 @@ const DonationForm = ({
 }: DonationFormProps) => {
   const [amount, setAmount] = useState<number>(30);
   const [customAmount, setCustomAmount] = useState<string>("");
-  //TODO: Pull in function from context that will add to cart
+  const { addToCart } = useCart();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const donationAmount = customAmount ? parseFloat(customAmount) : amount;
-    //TODO: Call addcart function
+    addToCart({
+      projectId,
+      title,
+      summary,
+      image,
+      amount: donationAmount,
+      quantity: 1,
+    });
     // TODO: Close the sidebar or navigate to the cart page
   };
 
@@ -35,8 +43,6 @@ const DonationForm = ({
     setAmount(selectedAmount);
     setCustomAmount("");
   };
-
-  console.log({customAmount})
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
