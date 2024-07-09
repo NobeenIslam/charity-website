@@ -43,5 +43,9 @@ export default async function Page({ params }: { params: ParamsObject }) {
     projectCardsData = await getProjectCardsForGrid();
   }
 
-  return (<CartProvider><div>{renderBlocks(pageData?.blocks, projectCardsData)}</div></CartProvider>);
+  return (
+    <CartProvider>
+      <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>
+    </CartProvider>
+  );
 }
