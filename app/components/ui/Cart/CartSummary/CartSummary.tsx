@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Button } from "../Button";
-import { useCart } from "../../context/CartContext";
+import { Button } from "../../Button";
+import { useCart } from "../../../context/CartContext";
 
 const CartSummary = ({}) => {
   const { getTotalAmount } = useCart();

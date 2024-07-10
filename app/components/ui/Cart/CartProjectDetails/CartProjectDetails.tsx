@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { ImageType } from "../../../utilities/constants";
+import { ImageType } from "../../../../utilities/constants";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
-import { client } from "../../../utilities/client";
+import { client } from "../../../../utilities/client";
 
 export interface CartProjectDetailsProps {
   heading: string;
