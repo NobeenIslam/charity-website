@@ -5,7 +5,7 @@ import React from "react";
 
 const meta: Meta<typeof CartSummary> = {
   component: CartSummary,
-  //TODO: Implement Mock context and add decorator to pass required value in
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ maxWidth: "600px", padding: "1rem" }}>

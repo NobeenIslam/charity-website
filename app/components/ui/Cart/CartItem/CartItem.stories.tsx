@@ -6,6 +6,7 @@ import { CartItem } from "./CartItem";
 const meta: Meta<typeof CartItem> = {
   component: CartItem,
   args: cartItemMock,
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ maxWidth: "400px", padding: "1rem" }}>
