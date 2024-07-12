@@ -28,6 +28,7 @@ export const Default: Story = {
         {isOpen && (
           <BottomSheet
             {...args}
+            isOpen={isOpen}
             onClose={() => {
               setIsOpen(false);
             }}
@@ -37,7 +38,6 @@ export const Default: Story = {
     );
   },
   args: {
-    isOpen: false,
     children: "Hello",
   },
 };
