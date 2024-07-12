@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { Button } from "../../Button";
+import { ModalProps } from "../SideBarBottomSheet";
 
-interface SideBarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  title?: string;
-}
-
-export const SideBar: React.FC<SideBarProps> = ({
+export const SideBar: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   children,
