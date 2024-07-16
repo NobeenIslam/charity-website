@@ -27,7 +27,7 @@ export const BottomSheet: React.FC<ModalProps> = ({
             </Button>
           </div>
         </Sheet.Header>
-        <Sheet.Content>{children}</Sheet.Content>
+        <Sheet.Content className={"p-4"}>{children}</Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop />
     </Sheet>

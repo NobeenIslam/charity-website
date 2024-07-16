@@ -29,7 +29,7 @@ export const SideBar: React.FC<ModalProps> = ({
         }`}
       >
         <div className="flex justify-between items-center p-4">
-          <h2 className="text-xl font-bold">Donations</h2>
+          <h2 className="text-xl font-bold">{title}</h2>
           <Button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"

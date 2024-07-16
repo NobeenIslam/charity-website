@@ -40,6 +40,6 @@ export const Default: Story = {
   },
   args: {
     children: "Hello",
-    title: "SideBarBottomSheet Title",
+    title: "Title",
   },
 };
