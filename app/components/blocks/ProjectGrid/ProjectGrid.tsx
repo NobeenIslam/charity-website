@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { PortableText } from "../../../utilities/portableText";
 import { ProjectGrid as SanityProjectGridType } from "../../../utilities/schemaTypes";
-import { Card } from "@/app/components/ui/Card";
-import { Button } from "@/app/components/ui/Button";
-import { ProjectCardType } from "@/app/queries/queryTypes";
+import { Card } from "../../ui/Card";
+import { Button } from "../../ui/Button";
+import { ProjectCardType } from "../../../queries/queryTypes";
 
 export interface ProjectGridProps extends SanityProjectGridType {
   projectCardsData: ProjectCardType[];
