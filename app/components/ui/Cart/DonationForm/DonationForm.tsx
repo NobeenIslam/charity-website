@@ -46,8 +46,6 @@ const DonationForm = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <p className="text-gray-600">{summary}</p>
       <RadioGroup
         options={[30, 50, 100, 500, 1000, 2000, 5000, 10000, 30000]}
         selectedValue={amount}

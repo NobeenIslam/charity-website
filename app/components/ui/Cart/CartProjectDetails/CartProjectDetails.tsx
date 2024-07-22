@@ -20,7 +20,7 @@ const CartProjectDetails = ({
   const imageProps = useNextSanityImage(client, image);
 
   return (
-    <div className="flex items-center p-4 rounded-lg ">
+    <div className="flex items-center rounded-lg ">
       <div className="flex-grow pr-4">
         <h2 className="text-xl font-bold text-gray-800 mb-2">{heading}</h2>
         <p className="text-sm text-gray-600">{text}</p>

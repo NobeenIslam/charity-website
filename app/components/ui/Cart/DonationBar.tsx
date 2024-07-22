@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { imageForMocks, ImageType } from "../../../utilities/constants";
@@ -22,7 +22,7 @@ interface CartViewProps {
 }
 
 interface DonationViewProps {
-  projectDatForCart: ProjectDataForCartType;
+  projectDataForCart: ProjectDataForCartType;
   onViewCartClick: () => void;
 }
 
@@ -43,13 +43,13 @@ const CartView: React.FC<CartViewProps> = ({ onBackToDonationClick }) => {
 };
 
 const DonationView: React.FC<DonationViewProps> = ({
-  projectDatForCart,
+  projectDataForCart,
   onViewCartClick,
 }) => {
-  const { id, title, image, summary } = projectDatForCart;
+  const { id, title, image, summary } = projectDataForCart;
 
   return (
-    <div>
+    <div className="space-y-8">
       <CartProjectDetails heading={title} text={summary} image={image} />
       <DonationForm
         projectId={id}
@@ -57,7 +57,7 @@ const DonationView: React.FC<DonationViewProps> = ({
         summary={summary}
         image={image}
       />
-      <Button variant={"ghost"} onClick={onViewCartClick}>
+      <Button variant={"secondary"} onClick={onViewCartClick}>
         View Cart
       </Button>
     </div>
@@ -76,10 +76,14 @@ export const DonationBar = ({}) => {
   const toggleView = () => setShowDonationView(!showDonationView);
 
   return (
-    <SideBarBottomSheet isOpen={isDonationBarOpen} onClose={closeDonationBar}>
+    <SideBarBottomSheet
+      isOpen={isDonationBarOpen}
+      onClose={closeDonationBar}
+      title={"Donations"}
+    >
       {showDonationView ? (
         <DonationView
-          projectDatForCart={{
+          projectDataForCart={{
             id,
             title,
             summary,

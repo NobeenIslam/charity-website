@@ -24,7 +24,7 @@ export const SideBar: React.FC<ModalProps> = ({
         onClick={onClose}
       />
       <div
-        className={`absolute top-0 right-0 w-80 h-full bg-white shadow-lg ${
+        className={`absolute top-0 right-0 min-w-80 h-full bg-white shadow-lg ${
           isOpen ? "animate-slide-in-right" : "animate-slide-out-right"
         }`}
       >
