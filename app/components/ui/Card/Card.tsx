@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useNextSanityImage, UseNextSanityImageProps } from "next-sanity-image";
+import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../../utilities/client";
 import Link from "next/link";
 
@@ -31,23 +31,21 @@ export interface CardProps {
     hotspot?: SanityImageHotspot;
   };
   link?: string;
+  onClick: (e: React.MouseEvent) => void;
 }
 
-export const Card = ({ title, body, image, link, cta }: CardProps) => {
+export const Card = ({
+  title,
+  body,
+  image,
+  link,
+  cta,
+  onClick = () => {},
+}: CardProps) => {
   const imageProps = image
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
       useNextSanityImage(client, image)
     : { src: "" };
-
-  const [isDonationBarOpen, setisDonationBarOpen] = useState(false);
-
-  const openDonationBar = () => {
-    setisDonationBarOpen(true);
-  };
-
-  const closeDonationBar = () => {
-    setisDonationBarOpen(false);
-  };
 
   return (
     <Link href={link ? link : ""} passHref>
@@ -81,7 +79,7 @@ export const Card = ({ title, body, image, link, cta }: CardProps) => {
             {cta && (
               <Button
                 aria-label={cta.buttonAccessibleLabel}
-                onClick={openDonationBar}
+                onClick={onClick} 
               >
                 {cta.buttonText}
               </Button>

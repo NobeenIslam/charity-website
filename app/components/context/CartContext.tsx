@@ -1,3 +1,5 @@
+"use client"
+
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ImageType } from "../../utilities/constants";
 
@@ -18,6 +20,20 @@ export interface CartContextType {
   clearCart: () => void;
   getTotalAmount: () => number;
   getTotalItems: () => number;
+  isDonationBarOpen: boolean;
+  currentProject: {
+    id: string;
+    title: string;
+    summary: string;
+    image: ImageType;
+  } | null;
+  openDonationBar: (
+    id: string,
+    title: string,
+    summary: string,
+    image: ImageType
+  ) => void;
+  closeDonationBar: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -36,6 +52,28 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isDonationBarOpen, setIsDonationBarOpen] = useState(false);
+  const [currentProject, setCurrentProject] = useState<{
+    id: string;
+    title: string;
+    summary: string;
+    image: ImageType;
+  } | null>(null);
+
+  const openDonationBar = (
+    id: string,
+    title: string,
+    summary: string,
+    image: ImageType
+  ) => {
+    setCurrentProject({ id, title, summary, image });
+    setIsDonationBarOpen(true);
+  };
+
+  const closeDonationBar = () => {
+    setIsDonationBarOpen(false);
+    setCurrentProject(null);
+  };
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -91,6 +129,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         clearCart,
         getTotalAmount,
         getTotalItems,
+        isDonationBarOpen,
+        currentProject,
+        openDonationBar,
+        closeDonationBar,
       }}
     >
       {children}

@@ -24,8 +24,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const projectPost = await getProjectBySlug(slug);
 
   return (
-    <CartProvider>
       <ProjectPageContent projectPost={projectPost} />
-    </CartProvider>
   );
 }

@@ -1,5 +1,7 @@
+"use client"
+
 import React, { useState } from "react";
-import { ImageType } from "../../../utilities/constants";
+import { imageForMocks, ImageType } from "../../../utilities/constants";
 import { SideBarBottomSheet } from "../Modal/SideBarBottomSheet";
 import { CartProjectDetails } from "./CartProjectDetails";
 import { DonationForm } from "./DonationForm";
@@ -22,12 +24,6 @@ interface CartViewProps {
 interface DonationViewProps {
   projectDatForCart: ProjectDataForCartType;
   onViewCartClick: () => void;
-}
-
-interface DonationBarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  projectDatForCart: ProjectDataForCartType;
 }
 
 const CartView: React.FC<CartViewProps> = ({ onBackToDonationClick }) => {
@@ -68,22 +64,27 @@ const DonationView: React.FC<DonationViewProps> = ({
   );
 };
 
-export const DonationBar: React.FC<DonationBarProps> = ({
-  isOpen,
-  onClose,
-  projectDatForCart,
-}) => {
-  const { id, title, image, summary } = projectDatForCart;
+export const DonationBar = ({}) => {
+  const { isDonationBarOpen, closeDonationBar, currentProject } = useCart();
+
+  const { id, title, image, summary } = currentProject
+    ? currentProject
+    : { id: "", title: "", image: null, summary: "" };
 
   const [showDonationView, setShowDonationView] = useState(true);
 
   const toggleView = () => setShowDonationView(!showDonationView);
 
   return (
-    <SideBarBottomSheet isOpen={isOpen} onClose={onClose}>
+    <SideBarBottomSheet isOpen={isDonationBarOpen} onClose={closeDonationBar}>
       {showDonationView ? (
         <DonationView
-          projectDatForCart={{ id, title, summary, image }}
+          projectDatForCart={{
+            id,
+            title,
+            summary,
+            image: image || imageForMocks,
+          }}
           onViewCartClick={toggleView}
         />
       ) : (

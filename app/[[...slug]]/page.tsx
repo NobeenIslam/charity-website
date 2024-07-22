@@ -8,7 +8,6 @@ import {
 import { ProjectCardType } from "../queries/queryTypes";
 import { renderBlocks } from "../utilities/renderBlocks";
 
-import { CartProvider } from "../components/context/CartContext";
 
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.
@@ -44,8 +43,6 @@ export default async function Page({ params }: { params: ParamsObject }) {
   }
 
   return (
-    <CartProvider>
       <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>
-    </CartProvider>
   );
 }
