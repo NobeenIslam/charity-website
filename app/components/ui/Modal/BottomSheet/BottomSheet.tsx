@@ -11,12 +11,13 @@ export const BottomSheet: React.FC<ModalProps> = ({
   onClose,
   children,
   title = "Title",
+  footer,
 }) => {
   return (
     <Sheet isOpen={isOpen} onClose={onClose}>
       <Sheet.Container style={{ fontFamily: "Montserrat, sans-serif" }}>
         <Sheet.Header>
-          <div className="flex justify-between items-center p-4">
+          <div className="flex justify-between items-center p-4 border-b">
             <h2 className={`text-xl font-bold`}>{title}</h2>
             <Button
               onClick={onClose}
@@ -28,6 +29,9 @@ export const BottomSheet: React.FC<ModalProps> = ({
           </div>
         </Sheet.Header>
         <Sheet.Content className={"p-4"}>{children}</Sheet.Content>
+        {footer && (
+          <Sheet.Content className={"border-t p-4"}>{footer}</Sheet.Content>
+        )}
       </Sheet.Container>
       <Sheet.Backdrop />
     </Sheet>

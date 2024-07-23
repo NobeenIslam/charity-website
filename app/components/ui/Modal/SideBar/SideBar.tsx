@@ -8,6 +8,7 @@ export const SideBar: React.FC<ModalProps> = ({
   onClose,
   children,
   title = "Sidebar",
+  footer,
 }) => {
   return (
     <div
@@ -28,7 +29,7 @@ export const SideBar: React.FC<ModalProps> = ({
           isOpen ? "animate-slide-in-right" : "animate-slide-out-right"
         }`}
       >
-        <div className="flex justify-between items-center p-4">
+        <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold">{title}</h2>
           <Button
             onClick={onClose}
@@ -38,7 +39,8 @@ export const SideBar: React.FC<ModalProps> = ({
             <X size={24} />
           </Button>
         </div>
-        <div className="p-4 overflow-y-auto">{children}</div>
+        <div className="p-4 overflow-y-auto min-h-[100rem]">{children}</div>
+        {footer && <div className="border-t p-4">{footer}</div>}
       </div>
     </div>
   );

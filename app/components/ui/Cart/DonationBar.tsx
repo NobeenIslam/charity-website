@@ -9,6 +9,7 @@ import { CartItem } from "./CartItem";
 import { CartSummary } from "./CartSummary";
 import { useCart } from "../../context/CartContext";
 import { Button } from "../Button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type ProjectDataForCartType = {
   id: string;
@@ -17,16 +18,11 @@ type ProjectDataForCartType = {
   image: ImageType;
 };
 
-interface CartViewProps {
-  onBackToDonationClick: () => void;
-}
-
 interface DonationViewProps {
   projectDataForCart: ProjectDataForCartType;
-  onViewCartClick: () => void;
 }
 
-const CartView: React.FC<CartViewProps> = ({ onBackToDonationClick }) => {
+const CartView: React.FC = ({}) => {
   const { cart } = useCart();
 
   return (
@@ -34,18 +30,11 @@ const CartView: React.FC<CartViewProps> = ({ onBackToDonationClick }) => {
       {cart.map((item) => (
         <CartItem key={item.projectId} {...item} />
       ))}
-      <CartSummary />
-      <Button variant={"ghost"} onClick={onBackToDonationClick}>
-        Back to Donation
-      </Button>
     </div>
   );
 };
 
-const DonationView: React.FC<DonationViewProps> = ({
-  projectDataForCart,
-  onViewCartClick,
-}) => {
+const DonationView: React.FC<DonationViewProps> = ({ projectDataForCart }) => {
   const { id, title, image, summary } = projectDataForCart;
 
   return (
@@ -57,9 +46,6 @@ const DonationView: React.FC<DonationViewProps> = ({
         summary={summary}
         image={image}
       />
-      <Button variant={"secondary"} onClick={onViewCartClick}>
-        View Cart
-      </Button>
     </div>
   );
 };
@@ -77,25 +63,59 @@ export const DonationBar = ({}) => {
     ? currentProject
     : { id: "", title: "", image: null, summary: "" };
 
+  const footerButtons = (
+    <div
+      className={`absolute bottom-0 left-0 right-0 p-4 border-t bg-white flex flex-col items-center space-y-5`}
+    >
+      {isCartViewOpen && (
+        <div className="w-full">
+          <CartSummary />
+        </div>
+      )}
+      <div className="flex justify-between item-center w-full">
+        <Button
+          variant="outline"
+          onClick={toggleCartView}
+          disabled={!isCartViewOpen}
+          className="flex items-center"
+        >
+          <ArrowLeft className="mr-2" /> Donation
+        </Button>
+        <Button
+          variant="outline"
+          onClick={toggleCartView}
+          disabled={isCartViewOpen}
+          className="flex items-center"
+        >
+          Cart <ArrowRight className="ml-2" />
+        </Button>
+      </div>
+    </div>
+  );
+
   return (
     <SideBarBottomSheet
       isOpen={isDonationBarOpen}
       onClose={closeDonationBar}
       title={"Donations"}
+      footer={footerButtons}
     >
-      {isCartViewOpen ? (
-        <CartView onBackToDonationClick={toggleCartView} />
-      ) : (
-        <DonationView
-          projectDataForCart={{
-            id,
-            title,
-            summary,
-            image: image || imageForMocks,
-          }}
-          onViewCartClick={toggleCartView}
-        />
-      )}
+      <div className="flex flex-col h-full relative">
+        <div className="flex-grow overflow-y-auto pb-16">
+          {isCartViewOpen ? (
+            <CartView />
+          ) : (
+            <DonationView
+              projectDataForCart={{
+                id,
+                title,
+                summary,
+                image: image || imageForMocks,
+              }}
+            />
+          )}
+        </div>
+      </div>
     </SideBarBottomSheet>
   );
 };

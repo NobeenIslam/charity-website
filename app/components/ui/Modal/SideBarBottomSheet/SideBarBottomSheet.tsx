@@ -10,6 +10,7 @@ export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  footer?: React.ReactNode;
   title?: string;
 }
 
@@ -18,17 +19,28 @@ const SideBarBottomSheet = ({
   onClose,
   title,
   children,
+  footer,
 }: ModalProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
 
   return (
     <>
       {isMobile ? (
-        <BottomSheet isOpen={isOpen} onClose={onClose} title={title}>
+        <BottomSheet
+          isOpen={isOpen}
+          onClose={onClose}
+          title={title}
+          footer={footer}
+        >
           {children}
         </BottomSheet>
       ) : (
-        <SideBar isOpen={isOpen} onClose={onClose} title={title}>
+        <SideBar
+          isOpen={isOpen}
+          onClose={onClose}
+          title={title}
+          footer={footer}
+        >
           {children}
         </SideBar>
       )}
