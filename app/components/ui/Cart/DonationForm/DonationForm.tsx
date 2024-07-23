@@ -23,7 +23,7 @@ const DonationForm = ({
 }: DonationFormProps) => {
   const [amount, setAmount] = useState<number>(30);
   const [customAmount, setCustomAmount] = useState<string>("");
-  const { addToCart } = useCart();
+  const { addToCart, toggleCartView } = useCart();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const DonationForm = ({
       amount: donationAmount,
       quantity: 1,
     });
-    // TODO: Close the sidebar or navigate to the cart page
+    toggleCartView();
   };
 
   const handleAmountChange = (selectedAmount: number) => {

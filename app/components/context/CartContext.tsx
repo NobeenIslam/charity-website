@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ImageType } from "../../utilities/constants";
@@ -34,6 +34,9 @@ export interface CartContextType {
     image: ImageType
   ) => void;
   closeDonationBar: () => void;
+  isCartViewOpen: boolean;
+  toggleCartView: () => void;
+  openDonationView: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -59,21 +62,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     summary: string;
     image: ImageType;
   } | null>(null);
-
-  const openDonationBar = (
-    id: string,
-    title: string,
-    summary: string,
-    image: ImageType
-  ) => {
-    setCurrentProject({ id, title, summary, image });
-    setIsDonationBarOpen(true);
-  };
-
-  const closeDonationBar = () => {
-    setIsDonationBarOpen(false);
-    setCurrentProject(null);
-  };
+  const [isCartViewOpen, setIsCartViewOpen] = useState(false);
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -119,6 +108,30 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const openDonationBar = (
+    id: string,
+    title: string,
+    summary: string,
+    image: ImageType
+  ) => {
+    setCurrentProject({ id, title, summary, image });
+    setIsDonationBarOpen(true);
+  };
+
+  const closeDonationBar = () => {
+    setIsDonationBarOpen(false);
+    setCurrentProject(null);
+    setIsCartViewOpen(false);
+  };
+
+  const toggleCartView = () => {
+    setIsCartViewOpen((prev) => !prev);
+  };
+
+  const openDonationView = () => {
+    setIsCartViewOpen(false);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -133,6 +146,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         currentProject,
         openDonationBar,
         closeDonationBar,
+        isCartViewOpen,
+        toggleCartView,
+        openDonationView,
       }}
     >
       {children}

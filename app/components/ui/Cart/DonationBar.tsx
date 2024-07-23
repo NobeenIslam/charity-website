@@ -65,15 +65,17 @@ const DonationView: React.FC<DonationViewProps> = ({
 };
 
 export const DonationBar = ({}) => {
-  const { isDonationBarOpen, closeDonationBar, currentProject } = useCart();
+  const {
+    isDonationBarOpen,
+    closeDonationBar,
+    isCartViewOpen,
+    toggleCartView,
+    currentProject,
+  } = useCart();
 
   const { id, title, image, summary } = currentProject
     ? currentProject
     : { id: "", title: "", image: null, summary: "" };
-
-  const [showDonationView, setShowDonationView] = useState(true);
-
-  const toggleView = () => setShowDonationView(!showDonationView);
 
   return (
     <SideBarBottomSheet
@@ -81,7 +83,9 @@ export const DonationBar = ({}) => {
       onClose={closeDonationBar}
       title={"Donations"}
     >
-      {showDonationView ? (
+      {isCartViewOpen ? (
+        <CartView onBackToDonationClick={toggleCartView} />
+      ) : (
         <DonationView
           projectDataForCart={{
             id,
@@ -89,10 +93,8 @@ export const DonationBar = ({}) => {
             summary,
             image: image || imageForMocks,
           }}
-          onViewCartClick={toggleView}
+          onViewCartClick={toggleCartView}
         />
-      ) : (
-        <CartView onBackToDonationClick={toggleView} />
       )}
     </SideBarBottomSheet>
   );
