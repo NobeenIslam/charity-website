@@ -15,7 +15,8 @@ export const BottomSheet: React.FC<ModalProps> = ({
 }) => {
   return (
     <Sheet isOpen={isOpen} onClose={onClose}>
-      <Sheet.Container style={{ fontFamily: "Montserrat, sans-serif" }}>
+      {/* There was previously an in-line style applying a font family to the sheet. But that was only for storybook. It actually works fine in the main app */}
+      <Sheet.Container>
         <Sheet.Header>
           <div className="flex justify-between items-center p-4 border-b">
             <h2 className={`text-xl font-bold`}>{title}</h2>
