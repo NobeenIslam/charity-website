@@ -33,10 +33,12 @@ export interface CartContextType {
     summary: string,
     image: ImageType
   ) => void;
-  closeDonationBar: () => void;
+  closeBar: () => void;
   isCartViewOpen: boolean;
   toggleCartView: () => void;
   openDonationView: () => void;
+  isCartBarOpen: boolean;
+  openCartBar: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -63,6 +65,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     image: ImageType;
   } | null>(null);
   const [isCartViewOpen, setIsCartViewOpen] = useState(false);
+
+  const [isCartBarOpen, setIsCartBarOpen] = useState(false);
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -118,10 +122,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setIsDonationBarOpen(true);
   };
 
-  const closeDonationBar = () => {
+  const closeBar = () => {
     setIsDonationBarOpen(false);
     setCurrentProject(null);
     setIsCartViewOpen(false);
+    setIsCartBarOpen(false);
   };
 
   const toggleCartView = () => {
@@ -131,6 +136,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const openDonationView = () => {
     setIsCartViewOpen(false);
   };
+
+  const openCartBar = () => setIsCartBarOpen(true);
 
   return (
     <CartContext.Provider
@@ -145,10 +152,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         isDonationBarOpen,
         currentProject,
         openDonationBar,
-        closeDonationBar,
+        closeBar,
         isCartViewOpen,
         toggleCartView,
         openDonationView,
+        isCartBarOpen,
+        openCartBar,
       }}
     >
       {children}

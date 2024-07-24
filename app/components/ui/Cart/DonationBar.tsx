@@ -53,7 +53,7 @@ const DonationView: React.FC<DonationViewProps> = ({ projectDataForCart }) => {
 export const DonationBar = ({}) => {
   const {
     isDonationBarOpen,
-    closeDonationBar,
+    closeBar,
     isCartViewOpen,
     toggleCartView,
     currentProject,
@@ -96,7 +96,7 @@ export const DonationBar = ({}) => {
   return (
     <SideBarBottomSheet
       isOpen={isDonationBarOpen}
-      onClose={closeDonationBar}
+      onClose={closeBar}
       title={"Donations"}
       footer={footerButtons}
     >
@@ -114,6 +114,35 @@ export const DonationBar = ({}) => {
               }}
             />
           )}
+        </div>
+      </div>
+    </SideBarBottomSheet>
+  );
+};
+
+//I created a separate Bar, beacuse there were implications if you could open the Donation Bar with the two views from the cart button, but without project information available. This was the easiest way around
+
+export const CartBar = ({}) => {
+  const { isCartBarOpen, closeBar } = useCart();
+
+  const footer = (
+    <div
+      className={`absolute bottom-0 left-0 right-0 p-4 border-t bg-white w-full `}
+    >
+      <CartSummary />
+    </div>
+  );
+
+  return (
+    <SideBarBottomSheet
+      isOpen={isCartBarOpen}
+      onClose={closeBar}
+      title={"Cart"}
+      footer={footer}
+    >
+      <div className="flex flex-col h-full relative">
+        <div className="flex-grow overflow-y-auto pb-16">
+          <CartView />
         </div>
       </div>
     </SideBarBottomSheet>

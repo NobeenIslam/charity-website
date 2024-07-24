@@ -44,7 +44,7 @@ export const mockContextValue: CartContextType = {
   openDonationBar: () => {
     console.log("Opening Donation Bar");
   },
-  closeDonationBar: () => {
+  closeBar: () => {
     console.log("Closing Donation Bar");
   },
   isCartViewOpen: false,
@@ -53,5 +53,9 @@ export const mockContextValue: CartContextType = {
   },
   openDonationView: () => {
     console.log("Opening Donation View");
+  },
+  isCartBarOpen: false,
+  openCartBar: () => {
+    console.log("Opening Cart Bar");
   },
 };
