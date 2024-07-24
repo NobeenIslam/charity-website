@@ -39,4 +39,19 @@ export const mockContextValue: CartContextType = {
   },
   getTotalAmount: () => 100,
   getTotalItems: () => 1,
+  isDonationBarOpen: false,
+  currentProject: null,
+  openDonationBar: () => {
+    console.log("Opening Donation Bar");
+  },
+  closeDonationBar: () => {
+    console.log("Closing Donation Bar");
+  },
+  isCartViewOpen: false,
+  toggleCartView: () => {
+    console.log("Toggling Views");
+  },
+  openDonationView: () => {
+    console.log("Opening Donation View");
+  },
 };
