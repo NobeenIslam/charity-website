@@ -54,6 +54,15 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
       </Button>
     );
   });
+
+  let iconColour;
+
+  if (isScrolled) {
+    iconColour = "black";
+  } else {
+    iconColour = "white";
+  }
+
   return (
     <div
       className={`gutter-x py-4 fixed top-0 left-0 right-0 z-50 flex items-center ${
@@ -67,7 +76,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
       </div>
       {isMobile ? (
         <div className="ml-auto mr-2 flex items-center">
-          <CartIcon color={`${isScrolled ? "white" : "black"}`} />
+          <CartIcon color={iconColour} />
           <Button variant={"ghost"} onClick={handleClick}>
             {isMobileNavOpen ? (
               <CrossSvg width={15} height={15} />
@@ -82,7 +91,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
       ) : (
         <div className="flex space-x-9 ml-auto items-center">
           {navLinks}
-          <CartIcon color={`${isScrolled ? "black" : "white"}`} />
+          <CartIcon color={iconColour} />
         </div>
       )}
     </div>
