@@ -4,8 +4,7 @@ import { NavBar as NavBarType } from "../../utilities/schemaTypes";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
-import BurgerSvg from "@/public/icons/burger.svg";
-import CrossSvg from "@/public/icons/cross.svg";
+import { Menu, X } from "lucide-react";
 import { useMediaQuery } from "@mui/material";
 import { breakpoint } from "@/app/utilities/breakpoints";
 import { MobileNavMenu } from "./MobileNavMenu";
@@ -55,13 +54,23 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     );
   });
 
-  let iconColour;
+  const iconColour = isScrolled ? "black" : "white";
 
-  if (isScrolled) {
-    iconColour = "black";
-  } else {
-    iconColour = "white";
-  }
+  const HamburgerButton = () => (
+    <button
+      className={`p-2 rounded-full transition-colors duration-200 ${
+        iconColour === "white" ? "hover:bg-white/20" : "hover:bg-gray-200"
+      }`}
+      onClick={handleClick}
+      aria-label={isMobileNavOpen ? "Close menu" : "Open menu"}
+    >
+      {isMobileNavOpen ? (
+        <X className="h-6 w-6" color={iconColour} />
+      ) : (
+        <Menu className="h-6 w-6" color={iconColour} />
+      )}
+    </button>
+  );
 
   return (
     <div
@@ -75,15 +84,9 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
         )}
       </div>
       {isMobile ? (
-        <div className="ml-auto mr-2 flex items-center">
+        <div className="ml-auto mr-2 flex items-center space-x-2">
           <CartIcon color={iconColour} />
-          <Button variant={"ghost"} onClick={handleClick}>
-            {isMobileNavOpen ? (
-              <CrossSvg width={15} height={15} />
-            ) : (
-              <BurgerSvg width={20} height={20} />
-            )}
-          </Button>
+          <HamburgerButton />
           {isMobileNavOpen && (
             <MobileNavMenu navItems={navItems} onClose={handleClick} />
           )}
