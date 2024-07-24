@@ -13,7 +13,7 @@ const CartIcon = ({ color }: CartIconProps) => {
   const { getTotalItems, openCartBar } = useCart();
   const itemCount = getTotalItems();
 
-  //DIdn;t use Button component here, because I needed specific hover styles to match the SVG changing colour
+  //Didn't use Button component here, because I needed specific hover styles to match the SVG changing colour
 
   return (
     <button
