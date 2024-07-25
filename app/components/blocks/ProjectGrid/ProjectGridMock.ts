@@ -3,7 +3,7 @@ import { ProjectCardType } from "../../../queries/queryTypes";
 
 const projectCardMock: ProjectCardType = {
   _id: "123556",
-  title: "Test",
+  title: "Tests",
   image: {
     _type: "image",
     asset: {

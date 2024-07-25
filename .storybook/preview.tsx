@@ -3,6 +3,8 @@ import type { Preview } from "@storybook/react";
 import "../app/styles/globals.css";
 import { fontVariable } from "../app/styles";
 import localFont from "next/font/local";
+import { CartContext } from "../app/components/context/CartContext";
+import { mockContextValue } from "../app/components/context/StorybookCartContext";
 
 //path in localFont here needs to match what is in staticdirs in main.ts
 const font = localFont({
@@ -41,13 +43,15 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <div
-        className={`${font.variable} font-sans`}
-      >
-        <Story />
-      </div>
-    ),
+    (Story) => {
+      return (
+        <CartContext.Provider value={mockContextValue}>
+          <div className={`${font.variable} font-sans`}>
+            <Story />
+          </div>
+        </CartContext.Provider>
+      );
+    },
   ],
 };
 

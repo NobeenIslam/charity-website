@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { useNextSanityImage, UseNextSanityImageProps } from "next-sanity-image";
+import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../../utilities/client";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ import type {
   SanityImageHotspot,
   SanityImageAsset,
 } from "sanity-codegen";
-import { Button } from "@/app/components/ui/Button";
+import { Button } from "../Button";
 
 export type ctaType = {
   buttonText?: string;
@@ -31,10 +31,17 @@ export interface CardProps {
     hotspot?: SanityImageHotspot;
   };
   link?: string;
+  onClick: (e: React.MouseEvent) => void;
 }
 
-export const Card = ({ title, body, image, link, cta }: CardProps) => {
-
+export const Card = ({
+  title,
+  body,
+  image,
+  link,
+  cta,
+  onClick = () => {},
+}: CardProps) => {
   const imageProps = image
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
       useNextSanityImage(client, image)
@@ -70,7 +77,10 @@ export const Card = ({ title, body, image, link, cta }: CardProps) => {
           <div className="flex ">
             {/* TODO implement onClickFunction and or link */}
             {cta && (
-              <Button aria-label={cta.buttonAccessibleLabel}>
+              <Button
+                aria-label={cta.buttonAccessibleLabel}
+                onClick={onClick} 
+              >
                 {cta.buttonText}
               </Button>
             )}

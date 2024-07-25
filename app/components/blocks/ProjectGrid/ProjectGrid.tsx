@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import { PortableText } from "../../../utilities/portableText";
 import { ProjectGrid as SanityProjectGridType } from "../../../utilities/schemaTypes";
-import { Card } from "@/app/components/ui/Card";
-import { Button } from "@/app/components/ui/Button";
-import { ProjectCardType } from "@/app/queries/queryTypes";
+import { Card } from "../../ui/Card";
+import { Button } from "../../ui/Button";
+import { ProjectCardType } from "../../../queries/queryTypes";
+import { useCart } from "../../context/CartContext";
+import { imageForMocks } from "../../../utilities/constants";
 
 export interface ProjectGridProps extends SanityProjectGridType {
   projectCardsData: ProjectCardType[];
@@ -17,6 +19,8 @@ export const ProjectGrid = ({
   projectCardsData,
   showAllProjects,
 }: ProjectGridProps) => {
+  const { openDonationBar } = useCart(); // Use the openDonationBar function from context
+
   const howManyCardsAreInitiallyVisible = 3;
   const [visibleCount, setVisibleCount] = useState(
     howManyCardsAreInitiallyVisible
@@ -41,6 +45,17 @@ export const ProjectGrid = ({
   const projectCards = showAllProjects
     ? projectCardsData.slice(0, visibleCount).map((projectCardData) => {
         const { _id, card, title, image } = projectCardData;
+
+        const handleClickDonate = (e: React.MouseEvent) => {
+          e.preventDefault(); // Prevent link of card triggering when clicking button
+
+          openDonationBar(
+            _id,
+            title || "Title",
+            card?.summary || "",
+            image || imageForMocks
+          ); // Open the donation bar with project details
+        };
         return (
           <div key={_id} className="max-w-sm">
             <Card
@@ -49,12 +64,24 @@ export const ProjectGrid = ({
               image={image}
               link={card?.link}
               cta={card?.ctaButton}
+              onClick={handleClickDonate}
             />
           </div>
         );
       })
     : projectCardsData.map((projectCardData) => {
         const { _id, card, title, image } = projectCardData;
+
+        const handleClickDonate = (e: React.MouseEvent) => {
+          e.preventDefault(); // Prevent link of card triggering when clicking button
+          openDonationBar(
+            _id,
+            title || "Title",
+            card?.summary || "",
+            image || imageForMocks
+          ); // Open the donation bar with project details
+        };
+
         return (
           <div key={_id} className="max-w-sm">
             <Card
@@ -63,6 +90,7 @@ export const ProjectGrid = ({
               image={image}
               link={card?.link}
               cta={card?.ctaButton}
+              onClick={handleClickDonate}
             />
           </div>
         );

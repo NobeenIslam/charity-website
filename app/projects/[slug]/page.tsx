@@ -5,6 +5,8 @@ import {
 } from "../../queries/queryFunctions";
 import { ProjectPageContent } from "../../components/ProjectPageContent";
 
+import { CartProvider } from "../../components/context/CartContext";
+
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.
 
@@ -21,5 +23,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const projectPost = await getProjectBySlug(slug);
 
-  return <ProjectPageContent projectPost={projectPost} />;
+  return (
+      <ProjectPageContent projectPost={projectPost} />
+  );
 }

@@ -8,6 +8,7 @@ import {
 import { ProjectCardType } from "../queries/queryTypes";
 import { renderBlocks } from "../utilities/renderBlocks";
 
+
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.
 
@@ -41,5 +42,7 @@ export default async function Page({ params }: { params: ParamsObject }) {
     projectCardsData = await getProjectCardsForGrid();
   }
 
-  return <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>;
+  return (
+      <div>{renderBlocks(pageData?.blocks, projectCardsData)}</div>
+  );
 }

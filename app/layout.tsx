@@ -5,6 +5,8 @@ import { fontVariable } from "./styles";
 import localFont from "next/font/local";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
+import { CartProvider } from "@/app/components/context/CartContext";
+import { CartBar, DonationBar } from "./components/ui/Cart/DonationBar";
 
 import { getFooter, getNavBar } from "./queries/queryFunctions";
 
@@ -49,11 +51,15 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${font.variable} font-sans`}>
-        <NavBar {...navBar} />
-        <main>{children}</main>
-        <Footer {...footer} />
-      </body>
+      <CartProvider>
+        <body className={`${font.variable} font-sans`}>
+          <NavBar {...navBar} />
+          <main>{children}</main>
+          <Footer {...footer} />
+          <DonationBar />
+          <CartBar />
+        </body>
+      </CartProvider>
     </html>
   );
 }
