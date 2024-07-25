@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { imageForMocks, ImageType } from "../../../utilities/constants";
-import { SideBarBottomSheet } from "../Modal/SideBarBottomSheet";
+import { imageForMocks, ImageType } from '@/utilities/constants';
+import { SideBarBottomSheet } from '@/components/ui/Modal/SideBarBottomSheet';
 import { CartProjectDetails } from "./CartProjectDetails";
 import { DonationForm } from "./DonationForm";
 import { CartItem } from "./CartItem";
 import { CartSummary } from "./CartSummary";
-import { useCart } from "../../context/CartContext";
-import { Button } from "../Button";
+import { useCart } from '@/components/context/CartContext';
+import { Button } from '@/components/ui/Button';
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type ProjectDataForCartType = {

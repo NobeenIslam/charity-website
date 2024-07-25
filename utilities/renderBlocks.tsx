@@ -1,9 +1,9 @@
-import { HomepageHero } from "../components/blocks/HomePageHero";
-import { InfoPanel } from "../components/blocks/InfoPanel";
-import { EngagementBanner } from "../components/blocks/EngagementBanner";
-import { ProjectGrid } from "../components/blocks/ProjectGrid";
+import { HomepageHero } from '@/components/blocks/HomePageHero';
+import { InfoPanel } from '@/components/blocks/InfoPanel';
+import { EngagementBanner } from '@/components/blocks/EngagementBanner';
+import { ProjectGrid } from '@/components/blocks/ProjectGrid';
 import React from "react";
-import { ProjectCardType } from "../queries/queryTypes";
+import { ProjectCardType } from '@/queries/queryTypes';
 
 export function renderBlocks(
   blocks: any[],

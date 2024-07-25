@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { CartContextType, CartItem } from "./CartContext";
-import { imageForMocks } from "../../utilities/constants";
+import { imageForMocks } from '@/utilities/constants';
 
 //Storybook error when using context as the stories don't have access to the provider. This fixes.
 

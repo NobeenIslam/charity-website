@@ -1,4 +1,4 @@
-import { HomepageHero as SanityHomepageHeroType } from "../../../utilities/schemaTypes";
+import { HomepageHero as SanityHomepageHeroType } from '@/utilities/schemaTypes';
 
 export const homepageHeroMock: SanityHomepageHeroType = {
   _type: "homepageHero",

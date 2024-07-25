@@ -1,4 +1,4 @@
-import { Project as SanityProjectType } from "../utilities/schemaTypes";
+import { Project as SanityProjectType } from '@/utilities/schemaTypes';
 
 export type ProjectCardType = Pick<
   SanityProjectType,

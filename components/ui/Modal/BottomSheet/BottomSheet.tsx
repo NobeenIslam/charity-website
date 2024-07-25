@@ -2,9 +2,8 @@
 import React from "react";
 import { Sheet } from "react-modal-sheet";
 import { X } from "lucide-react";
-import { Button } from "../../Button";
-import { ModalProps } from "../SideBarBottomSheet";
-import { fontVariable } from "../../../../../styles";
+import { Button } from "@/components/ui/Button";
+import { ModalProps } from "@/components/ui/Modal/SideBarBottomSheet";
 
 export const BottomSheet: React.FC<ModalProps> = ({
   isOpen,

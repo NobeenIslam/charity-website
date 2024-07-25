@@ -2,9 +2,9 @@
 
 import { useMediaQuery } from "@mui/material";
 import React from "react";
-import { breakpoint } from "../../../../utilities/breakpoints";
-import { SideBar } from "../SideBar";
-import { BottomSheet } from "../BottomSheet";
+import { breakpoint } from '@/utilities/breakpoints';
+import { SideBar } from '@/components/ui/Modal/SideBar';
+import { BottomSheet } from '@/components/ui/Modal/BottomSheet';
 
 export interface ModalProps {
   isOpen: boolean;

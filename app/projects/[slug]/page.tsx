@@ -2,8 +2,8 @@ import React from "react";
 import {
   getProjectBySlug,
   getProjectSlugs,
-} from "../../../queries/queryFunctions";
-import { ProjectPageContent } from "../../../components/ProjectPageContent";
+} from '@/queries/queryFunctions';
+import { ProjectPageContent } from '@/components/ProjectPageContent';
 
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.

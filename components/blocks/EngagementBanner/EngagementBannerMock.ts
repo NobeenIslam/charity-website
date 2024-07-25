@@ -1,4 +1,4 @@
-import { EngagementBanner as SanityEngagementBannerType } from "../../../utilities/schemaTypes";
+import { EngagementBanner as SanityEngagementBannerType } from '@/utilities/schemaTypes';
 
 export const engagementBannerMock: SanityEngagementBannerType = {
   _type: "engagementBanner",

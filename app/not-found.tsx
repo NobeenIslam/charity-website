@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "../components/ui/Button/Button";
+import { Button } from '@/components/ui/Button/Button';
 import React from "react";
 
 export default function NotFound() {

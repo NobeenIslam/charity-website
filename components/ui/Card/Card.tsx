@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { client } from "../../../utilities/client";
+import { client } from '@/utilities/client';
 import Link from "next/link";
 
 import type {
@@ -12,7 +12,7 @@ import type {
   SanityImageHotspot,
   SanityImageAsset,
 } from "sanity-codegen";
-import { Button } from "../Button";
+import { Button } from '@/components/ui/Button';
 
 export type ctaType = {
   buttonText?: string;

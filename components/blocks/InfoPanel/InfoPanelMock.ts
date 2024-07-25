@@ -1,4 +1,4 @@
-import { InfoPanel as SanityInfoPanelType } from "../../../utilities/schemaTypes";
+import { InfoPanel as SanityInfoPanelType } from '@/utilities/schemaTypes';
 
 export const infoPanelMock: SanityInfoPanelType = {
   _type: "infoPanel",

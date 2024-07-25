@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { PortableText } from "../../../utilities/portableText";
-import { ProjectGrid as SanityProjectGridType } from "../../../utilities/schemaTypes";
-import { Card } from "../../ui/Card";
-import { Button } from "../../ui/Button";
-import { ProjectCardType } from "../../../queries/queryTypes";
-import { useCart } from "../../context/CartContext";
-import { imageForMocks } from "../../../utilities/constants";
+import { PortableText } from '@/utilities/portableText';
+import { ProjectGrid as SanityProjectGridType } from '@/utilities/schemaTypes';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+import { ProjectCardType } from '@/queries/queryTypes';
+import { useCart } from '@/components/context/CartContext';
+import { imageForMocks } from '@/utilities/constants';
 
 export interface ProjectGridProps extends SanityProjectGridType {
   projectCardsData: ProjectCardType[];

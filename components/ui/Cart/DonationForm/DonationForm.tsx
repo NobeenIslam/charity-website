@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { ImageType } from "../../../../utilities/constants";
-import { RadioGroup } from "../../RadioGroup/RadioGroup";
-import { Label } from "../../Label";
-import { Input } from "../../Input";
-import { Button } from "../../Button";
-import { useCart } from "../../../context/CartContext";
+import { ImageType } from '@/utilities/constants';
+import { RadioGroup } from '@/components/ui/RadioGroup/RadioGroup';
+import { Label } from '@/components/ui/Label';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
+import { useCart } from '@/components/context/CartContext';
 
 interface DonationFormProps {
   projectId: string;

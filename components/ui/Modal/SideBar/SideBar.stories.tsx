@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { SideBar } from "./SideBar";
 import { useState } from "react";
-import { Button } from "../../Button";
+import { Button } from '@/components/ui/Button';
 import React from "react";
 
 const meta: Meta<typeof SideBar> = {

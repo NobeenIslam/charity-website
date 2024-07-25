@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button } from "../ui/Button"; // Assuming you have a Button component
+import { Button } from "@/components/ui/Button";
 import { NavItem } from "@/app/utilities/schemaTypes";
 
 interface MobileNavMenuProps {

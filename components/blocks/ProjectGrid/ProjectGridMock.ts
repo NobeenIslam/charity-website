@@ -1,5 +1,5 @@
 import { ProjectGridProps } from "./ProjectGrid";
-import { ProjectCardType } from "../../../queries/queryTypes";
+import { ProjectCardType } from '@/queries/queryTypes';
 
 const projectCardMock: ProjectCardType = {
   _id: "123556",

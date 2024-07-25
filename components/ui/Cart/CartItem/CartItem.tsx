@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import { Button } from "../../Button";
+import { Button } from '@/components/ui/Button';
 import { Minus, Plus, X } from "lucide-react";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
-import { client } from "../../../../utilities/client";
+import { client } from '@/utilities/client';
 import {
   SanityImageAsset,
   SanityImageCrop,
   SanityImageHotspot,
   SanityReference,
 } from "sanity-codegen";
-import { useCart } from "../../../context/CartContext";
+import { useCart } from '@/components/context/CartContext';
 
 export interface CartItemProps {
   projectId: string;

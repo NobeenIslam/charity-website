@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { PortableText } from "../../../utilities/portableText";
-import { EngagementBanner as SanityEngagementBannerType } from "../../../utilities/schemaTypes";
+import { PortableText } from '@/utilities/portableText';
+import { EngagementBanner as SanityEngagementBannerType } from '@/utilities/schemaTypes';
 
 export interface EngagementBannerProps extends SanityEngagementBannerType {}
 

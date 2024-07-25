@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { CartProjectDetails } from "./CartProjectDetails";
-import { imageForMocks } from "../../../../utilities/constants";
+import { imageForMocks } from '@/utilities/constants';
 import React from "react";
 
 const meta: Meta<typeof CartProjectDetails> = {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { ImageType } from "../../utilities/constants";
+import { ImageType } from '@/utilities/constants';
 
 export interface CartItem {
   projectId: string;

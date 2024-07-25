@@ -1,16 +1,16 @@
 "use client";
 
-import { NavBar as NavBarType } from "../../utilities/schemaTypes";
+import { NavBar as NavBarType } from '@/utilities/schemaTypes';
 import React, { useEffect, useState } from "react";
-import { Button } from "../ui/Button";
+import { Button } from '@/components/ui/Button';
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useMediaQuery } from "@mui/material";
-import { breakpoint } from "../../utilities/breakpoints";
+import { breakpoint } from '@/utilities/breakpoints';
 import { MobileNavMenu } from "./MobileNavMenu";
-import { client } from "../../utilities/client";
+import { client } from '@/utilities/client';
 import { useNextSanityImage } from "next-sanity-image";
-import { CartIcon } from "../ui/Cart/CartIcon";
+import { CartIcon } from '@/components/ui/Cart/CartIcon';
 
 export interface NavBarProps extends NavBarType {}
 

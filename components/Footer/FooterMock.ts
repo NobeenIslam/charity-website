@@ -1,4 +1,4 @@
-import { Footer as SanityFooterType } from "../../utilities/schemaTypes";
+import { Footer as SanityFooterType } from '@/utilities/schemaTypes';
 
 const footerMock: SanityFooterType = {
   _createdAt: "2024-06-20T17:19:42Z",

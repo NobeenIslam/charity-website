@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { Button } from "../../Button";
-import { ModalProps } from "../SideBarBottomSheet";
+import { Button } from '@/components/ui/Button';
+import { ModalProps } from '@/components/ui/Modal/SideBarBottomSheet';
 
 export const SideBar: React.FC<ModalProps> = ({
   isOpen,

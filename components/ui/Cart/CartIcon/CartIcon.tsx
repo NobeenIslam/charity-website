@@ -2,8 +2,8 @@
 
 import React from "react";
 import { ShoppingCart } from "lucide-react";
-import { Button } from "../../Button";
-import { useCart } from "../../../context/CartContext";
+import { Button } from '@/components/ui/Button';
+import { useCart } from '@/components/context/CartContext';
 
 export interface CartIconProps {
   color: string;

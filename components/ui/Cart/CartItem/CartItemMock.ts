@@ -1,4 +1,4 @@
-import { imageForMocks } from "../../../../utilities/constants";
+import { imageForMocks } from '@/utilities/constants';
 import { CartItemProps } from "./CartItem";
 
 const cartItemMock: CartItemProps = {

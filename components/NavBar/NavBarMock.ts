@@ -1,4 +1,4 @@
-import { NavBar as SanityNavBarType } from "../../lib/schemaTypes";
+import { NavBar as SanityNavBarType } from '@/lib/schemaTypes';
 
 const navBarMock: SanityNavBarType = {
   _createdAt: "2024-05-30T16:18:12Z",

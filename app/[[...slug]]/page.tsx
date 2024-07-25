@@ -4,9 +4,9 @@ import {
   getHomePage,
   getPageBySlug,
   getProjectCardsForGrid,
-} from "../../queries/queryFunctions";
-import { ProjectCardType } from "../../queries/queryTypes";
-import { renderBlocks } from "../../utilities/renderBlocks";
+} from '@/queries/queryFunctions';
+import { ProjectCardType } from '@/queries/queryTypes';
+import { renderBlocks } from '@/utilities/renderBlocks';
 
 export const dynamicParams = false;
 //Dynamic segments not included in generateStaticParams will return a 404.

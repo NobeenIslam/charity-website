@@ -2,7 +2,7 @@ import {
   Page as SanityPageType,
   NavBar as SanityNavBarType,
   Footer as SanityFooterType,
-} from "../utilities/schemaTypes";
+} from '@/utilities/schemaTypes';
 import {
   allSlugsQuery,
   footerQuery,
@@ -13,7 +13,7 @@ import {
   projectCardsQuery,
   projectSlugsQuery,
 } from "./queryStrings";
-import { client } from "../utilities/client";
+import { client } from '@/utilities/client';
 import {
   ProjectCardType,
   ProjectPageType,
