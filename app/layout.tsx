@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import { fontVariable } from "../styles";
 import localFont from "next/font/local";
-import { NavBar } from "./components/NavBar";
-import { Footer } from "./components/Footer";
-import { CartProvider } from "@/app/components/context/CartContext";
-import { CartBar, DonationBar } from "./components/ui/Cart/DonationBar";
+import { NavBar } from "../components/NavBar";
+import { Footer } from "../components/Footer";
+import { CartProvider } from "../components/context/CartContext";
+import { CartBar, DonationBar } from "../components/ui/Cart/DonationBar";
 
 import { getFooter, getNavBar } from "../queries/queryFunctions";
 
