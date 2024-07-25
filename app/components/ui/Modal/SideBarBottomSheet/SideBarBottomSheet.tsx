@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from "@mui/material";
 import React from "react";
-import { breakpoint } from "../../../../utilities/breakpoints";
+import { breakpoint } from "../../../../../utilities/breakpoints";
 import { SideBar } from "../SideBar";
 import { BottomSheet } from "../BottomSheet";
 

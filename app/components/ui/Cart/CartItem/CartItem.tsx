@@ -5,7 +5,7 @@ import { Button } from "../../Button";
 import { Minus, Plus, X } from "lucide-react";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
-import { client } from "../../../../utilities/client";
+import { client } from "../../../../../utilities/client";
 import {
   SanityImageAsset,
   SanityImageCrop,

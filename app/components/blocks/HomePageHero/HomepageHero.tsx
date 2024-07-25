@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { PortableText } from "../../../utilities/portableText";
-import { HomepageHero as SanityHomepageHeroType } from "../../../utilities/schemaTypes";
+import { PortableText } from "../../../../utilities/portableText";
+import { HomepageHero as SanityHomepageHeroType } from "../../../../utilities/schemaTypes";
 import { Button } from "../../ui/Button";
-import { client } from "../../../utilities/client";
+import { client } from "../../../../utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 
 export interface HomepageHeroProps extends SanityHomepageHeroType {}
@@ -17,8 +17,8 @@ export const HomepageHero = ({
   contentAlignment,
 }: HomepageHeroProps) => {
   const backgroundImageUrl = backgroundImage
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    ? useNextSanityImage(client, backgroundImage, {}).src
+    ? // eslint-disable-next-line react-hooks/rules-of-hooks
+      useNextSanityImage(client, backgroundImage, {}).src
     : "/card-fallback.jpg";
 
   const alignmentClasses =
@@ -40,10 +40,7 @@ export const HomepageHero = ({
         <h1 className="text-6xl font-bold mb-4">{heading}</h1>
         <PortableText value={description} />
         {ctaButton && (
-          <Button
-            className="mt-4"
-            aria-label={ctaButton.buttonAccessibleLabel}
-          >
+          <Button className="mt-4" aria-label={ctaButton.buttonAccessibleLabel}>
             {ctaButton.buttonText}
           </Button>
         )}

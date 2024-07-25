@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { imageForMocks, ImageType } from "../../../utilities/constants";
+import { imageForMocks, ImageType } from "../../../../utilities/constants";
 import { SideBarBottomSheet } from "../Modal/SideBarBottomSheet";
 import { CartProjectDetails } from "./CartProjectDetails";
 import { DonationForm } from "./DonationForm";

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
-import { client } from "../../../utilities/client";
+import { client } from "../../../../utilities/client";
 import Link from "next/link";
 
 import type {
@@ -77,10 +77,7 @@ export const Card = ({
           <div className="flex ">
             {/* TODO implement onClickFunction and or link */}
             {cta && (
-              <Button
-                aria-label={cta.buttonAccessibleLabel}
-                onClick={onClick} 
-              >
+              <Button aria-label={cta.buttonAccessibleLabel} onClick={onClick}>
                 {cta.buttonText}
               </Button>
             )}

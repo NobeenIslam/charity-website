@@ -1,9 +1,9 @@
 "use client";
 
-import { Footer as FooterType } from "../../utilities/schemaTypes";
+import { Footer as FooterType } from "../../../utilities/schemaTypes";
 import React from "react";
 import { Button } from "../ui/Button";
-import { client } from "../../utilities/client";
+import { client } from "../../../utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 
