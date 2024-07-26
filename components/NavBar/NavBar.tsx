@@ -35,7 +35,7 @@ const MobileNavMenu = ({
   };
   return (
     <div
-      className={`fixed left-0 right-0 top-navbar z-40 bg-gray-100 shadow-lg overflow-hidden
+      className={`fixed left-0 right-0 top-navbar z-40 bg-gray-100 shadow-lg overflow-hidden border-t border-gray-200
         ${isOpen ? "animate-shutter-down" : "h-0"}
       `}
     >
@@ -124,7 +124,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   return (
     <div>
       <div
-        className={`gutter-x py-4 fixed top-0 left-0 right-0 z-50 flex items-center ${navBarColour} h-navbar`}
+        className={`gutter-x py-4 fixed top-0 left-0 right-0 z-30 flex items-center ${navBarColour} h-navbar`}
       >
         <div className="flex-shrink-0">
           {logo && (
