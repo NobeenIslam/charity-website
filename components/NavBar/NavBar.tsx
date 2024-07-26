@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import { CartIcon } from "@/components/ui/Cart/CartIcon";
+import Link from "next/link";
 
 export interface NavBarProps extends NavBarType {}
 
@@ -134,7 +135,15 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
       >
         <div className="flex-shrink-0">
           {logo && (
-            <Image {...imageProps} width={75} height={75} alt="charity-logo" />
+            <Link href="/" aria-label="Go to homepage">
+              <Image
+                {...imageProps}
+                width={75}
+                height={75}
+                alt="charity-logo"
+                className="cursor-pointer" // Optional: adds a pointer cursor on hover
+              />
+            </Link>
           )}
         </div>
         {isMobile ? (
