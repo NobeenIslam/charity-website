@@ -101,9 +101,15 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     );
   });
 
-  const iconColour = isScrolled || isMobileNavOpen ? "black" : "white";
+  //IsMobile declared here too as otherwise mobile nav could be clicked open and then browser window changes and navbar still stays in the wrong colour
+
+  const iconColour =
+    isScrolled || (isMobile && isMobileNavOpen) ? "black" : "white";
+
   const navBarColour =
-    isScrolled || isMobileNavOpen ? "bg-gray-100 " : "bg-transparent";
+    isScrolled || (isMobile && isMobileNavOpen)
+      ? "bg-gray-100 "
+      : "bg-transparent";
 
   const HamburgerButton = () => (
     <button
