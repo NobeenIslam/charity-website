@@ -29,7 +29,7 @@ const config = {
         navbar: "80px",
       },
       inset: {
-        navbar: "64px", // This adds a top-navbar class
+        navbar: "80px", // This adds a top-navbar class
       },
       fontFamily: {
         sans: [`var(${fontVariable})`], //This being overriden and used in layout is what is setting the font for the whole website. The variable passing in is doing something different I believe.
