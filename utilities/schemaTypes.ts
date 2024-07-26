@@ -131,7 +131,7 @@ export interface Project extends SanityDocument {
   /**
    * Image — `image`
    *
-   *
+   * This image will be used for the card and the hero in each project page
    */
   image?: {
     _type: "image";
@@ -444,14 +444,14 @@ export type NavItem = {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * Nav Item Link — `string`
    *
    *
    */
-  link?: string;
+  link: string;
 };
 
 export type IconLink = {
