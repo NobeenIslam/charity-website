@@ -1,18 +1,65 @@
 "use client";
 
-import { NavBar as NavBarType } from '@/utilities/schemaTypes';
+import { NavBar as NavBarType } from "@/utilities/schemaTypes";
 import React, { useEffect, useState } from "react";
-import { Button } from '@/components/ui/Button';
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useMediaQuery } from "@mui/material";
-import { breakpoint } from '@/utilities/breakpoints';
-import { MobileNavMenu } from "./MobileNavMenu";
-import { client } from '@/utilities/client';
+import { breakpoint } from "@/utilities/breakpoints";
+
+import { NavItem } from "@/utilities/schemaTypes";
+import { useRouter } from "next/navigation";
+import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
-import { CartIcon } from '@/components/ui/Cart/CartIcon';
+import { CartIcon } from "@/components/ui/Cart/CartIcon";
 
 export interface NavBarProps extends NavBarType {}
+
+interface MobileNavMenuProps {
+  navItems: NavItem[];
+  toggleMobileNav: () => void;
+  isOpen: boolean;
+}
+
+const MobileNavMenu = ({
+  navItems,
+  toggleMobileNav,
+  isOpen,
+}: MobileNavMenuProps) => {
+  const router = useRouter();
+
+  const handleClick = (link: string) => {
+    router.push(link);
+    toggleMobileNav();
+  };
+  return (
+    <div
+      className={`fixed left-0 right-0 top-navbar z-40 bg-gray-100 shadow-lg overflow-hidden
+        ${isOpen ? "animate-shutter-down" : "h-0"}
+      `}
+    >
+      <div className="flex flex-col">
+        {navItems.map((navItem) => (
+          <div
+            key={navItem.title}
+            className="py-2 border-b border-gray-200 last:border-b-0"
+          >
+            <Button
+              variant={"link"}
+              className={
+                "text-black text-lg font-semibold hover:text-gray-600 transition-colors w-full text-left"
+              }
+              onClick={() => handleClick(navItem.link)}
+            >
+              {navItem.title}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
@@ -35,7 +82,7 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     };
   }, []);
 
-  const handleClick = () => {
+  const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
@@ -54,14 +101,16 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     );
   });
 
-  const iconColour = isScrolled ? "black" : "white";
+  const iconColour = isScrolled || isMobileNavOpen ? "black" : "white";
+  const navBarColour =
+    isScrolled || isMobileNavOpen ? "bg-gray-100 " : "bg-transparent";
 
   const HamburgerButton = () => (
     <button
       className={`p-2 rounded-full transition-colors duration-200 ${
         iconColour === "white" ? "hover:bg-white/20" : "hover:bg-gray-200"
       }`}
-      onClick={handleClick}
+      onClick={toggleMobileNav}
       aria-label={isMobileNavOpen ? "Close menu" : "Open menu"}
     >
       {isMobileNavOpen ? (
@@ -73,29 +122,33 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   );
 
   return (
-    <div
-      className={`gutter-x py-4 fixed top-0 left-0 right-0 z-50 flex items-center ${
-        isScrolled ? "bg-gray-100 " : "bg-transparent"
-      }  transition-colors duration-300`}
-    >
-      <div className="flex-shrink-0">
-        {logo && (
-          <Image {...imageProps} width={75} height={75} alt="charity-logo" />
-        )}
-      </div>
-      {isMobile ? (
-        <div className="ml-auto mr-2 flex items-center space-x-2">
-          <CartIcon color={iconColour} />
-          <HamburgerButton />
-          {isMobileNavOpen && (
-            <MobileNavMenu navItems={navItems} onClose={handleClick} />
+    <div>
+      <div
+        className={`gutter-x py-4 fixed top-0 left-0 right-0 z-50 flex items-center ${navBarColour} h-navbar`}
+      >
+        <div className="flex-shrink-0">
+          {logo && (
+            <Image {...imageProps} width={75} height={75} alt="charity-logo" />
           )}
         </div>
-      ) : (
-        <div className="flex space-x-9 ml-auto items-center">
-          {navLinks}
-          <CartIcon color={iconColour} />
-        </div>
+        {isMobile ? (
+          <div className="ml-auto mr-2 flex items-center space-x-2">
+            <CartIcon color={iconColour} />
+            <HamburgerButton />
+          </div>
+        ) : (
+          <div className="flex space-x-9 ml-auto items-center">
+            {navLinks}
+            <CartIcon color={iconColour} />
+          </div>
+        )}
+      </div>
+      {isMobile && isMobileNavOpen && (
+        <MobileNavMenu
+          navItems={navItems}
+          toggleMobileNav={toggleMobileNav}
+          isOpen={isMobileNavOpen}
+        />
       )}
     </div>
   );

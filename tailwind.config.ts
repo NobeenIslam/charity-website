@@ -25,6 +25,12 @@ const config = {
       },
     },
     extend: {
+      height: {
+        navbar: "80px",
+      },
+      inset: {
+        navbar: "64px", // This adds a top-navbar class
+      },
       fontFamily: {
         sans: [`var(${fontVariable})`], //This being overriden and used in layout is what is setting the font for the whole website. The variable passing in is doing something different I believe.
       },
@@ -69,9 +75,9 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        dropdown: {
-          from: { transform: "translateY(-10%)", opacity: "0" },
-          to: { transform: "translateY(0)", opacity: "1" },
+        "shutter-down": {
+          "0%": { transform: "scaleY(0)", transformOrigin: "top" },
+          "100%": { transform: "scaleY(1)", transformOrigin: "top" },
         },
         "slide-in-right": {
           from: { transform: "translateX(100%)" },
@@ -91,7 +97,7 @@ const config = {
         },
       },
       animation: {
-        dropdown: "dropdown 0.5s ease-in-out forwards",
+        "shutter-down": "shutter-down 0.3s ease-in-out forwards",
         "slide-in-right": "slide-in-right 0.3s ease-out",
         "slide-out-right": "slide-out-right 0.3s ease-in",
         "fade-in": "fade-in 0.3s ease-out",
