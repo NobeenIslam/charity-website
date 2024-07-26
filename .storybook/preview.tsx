@@ -1,10 +1,10 @@
 import * as React from "react";
 import type { Preview } from "@storybook/react";
-import "../app/styles/globals.css";
-import { fontVariable } from "../app/styles";
+import "../styles/globals.css";
+import { fontVariable } from "../styles";
 import localFont from "next/font/local";
-import { CartContext } from "../app/components/context/CartContext";
-import { mockContextValue } from "../app/components/context/StorybookCartContext";
+import { CartContext } from "@/components/context/CartContext";
+import { mockContextValue } from "@/components/context/StorybookCartContext";
 
 //path in localFont here needs to match what is in staticdirs in main.ts
 const font = localFont({

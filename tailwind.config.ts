@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { fontVariable } from "./app/styles";
+import { fontVariable } from "./styles";
 
 const config = {
   darkMode: ["class"],
