@@ -1,5 +1,5 @@
 import ctaButton from '../misc/ctaButton'
-import {coloursField} from '../misc/colours'
+import {textColoursField} from '../misc/colours'
 
 export default {
   name: 'pageMessage',
@@ -20,7 +20,7 @@ export default {
       codegen: {required: true},
       validation: (Rule) => Rule.required(),
     },
-    coloursField('titleColour', 'Title Colour'),
+    textColoursField('titleColour', 'Title Colour'),
 
     {
       name: 'description',
@@ -29,7 +29,7 @@ export default {
       codegen: {required: true},
       validation: (Rule) => Rule.required(),
     },
-    coloursField('descriptionColour', 'Description Colour'),
+    textColoursField('descriptionColour', 'Description Colour'),
     ctaButton,
   ],
 }

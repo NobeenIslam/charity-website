@@ -10,15 +10,17 @@ export interface PageMessageProps extends PageMessageType {}
 
 const PageMessage = ({
   title,
-  titleColour,
+  titleColour = "black",
   description,
-  descriptionColour,
+  descriptionColour = "black",
   ctaButton,
 }: PageMessageProps) => {
+  console.log({ titleColour, descriptionColour });
+
   return (
     <div className="flex items-center justify-center min-h-[80vh] bg-white">
       <div className="bg-gray-100 p-8 rounded-lg shadow-md text-center max-w-7xl">
-        <h1 className={`text-3xl font-bold mb-4 text-${titleColour}}`}>
+        <h1 className={`text-3xl font-bold mb-4 text-${titleColour}`}>
           {title}
         </h1>
         <p className={`mb-6 text-${descriptionColour}`}>{description}</p>

@@ -317,14 +317,14 @@ export interface PageMessage extends SanityDocument {
    */
   titleColour?:
     | "black"
-    | "red-200"
-    | "green-200"
-    | "blue-200"
-    | "yellow-200"
-    | "indigo-200"
-    | "purple-200"
-    | "pink-200"
-    | "gray-200";
+    | "red-700"
+    | "green-700"
+    | "blue-700"
+    | "yellow-700"
+    | "indigo-700"
+    | "purple-700"
+    | "pink-700"
+    | "gray-700";
 
   /**
    * Description — `text`
@@ -340,14 +340,14 @@ export interface PageMessage extends SanityDocument {
    */
   descriptionColour?:
     | "black"
-    | "red-200"
-    | "green-200"
-    | "blue-200"
-    | "yellow-200"
-    | "indigo-200"
-    | "purple-200"
-    | "pink-200"
-    | "gray-200";
+    | "red-700"
+    | "green-700"
+    | "blue-700"
+    | "yellow-700"
+    | "indigo-700"
+    | "purple-700"
+    | "pink-700"
+    | "gray-700";
 
   /**
    * CTA — `object`
