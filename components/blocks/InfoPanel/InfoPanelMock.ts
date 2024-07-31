@@ -1,8 +1,8 @@
-import { InfoPanel as SanityInfoPanelType } from '@/utilities/schemaTypes';
+import { InfoPanel as SanityInfoPanelType } from "@/utilities/schemaTypes";
 
 export const infoPanelMock: SanityInfoPanelType = {
   _type: "infoPanel",
-  backgroundColour: "bg-green-200",
+  backgroundColour: "green-200",
   body: [
     {
       _key: "b0164d5272d6",
