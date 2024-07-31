@@ -2,19 +2,22 @@ import {
   Page as SanityPageType,
   NavBar as SanityNavBarType,
   Footer as SanityFooterType,
-} from '@/utilities/schemaTypes';
+} from "@/utilities/schemaTypes";
 import {
   allSlugsQuery,
   footerQuery,
   homepageQuery,
   navBarQuery,
+  notFoundPageQuery,
   pageBySlugQuery,
   projectBySlugQuery,
   projectCardsQuery,
   projectSlugsQuery,
+  successPageQuery,
 } from "./queryStrings";
-import { client } from '@/utilities/client';
+import { client } from "@/utilities/client";
 import {
+  PageMessageData,
   ProjectCardType,
   ProjectPageType,
   ProjectSlugType,
@@ -50,4 +53,12 @@ export async function getProjectBySlug(slug: string): Promise<ProjectPageType> {
 
 export async function getProjectSlugs(): Promise<ProjectSlugType[]> {
   return client.fetch(projectSlugsQuery);
+}
+
+export async function getNotFoundPageData(): Promise<PageMessageData> {
+  return client.fetch(notFoundPageQuery);
+}
+
+export async function getSuccessPageData(): Promise<PageMessageData> {
+  return client.fetch(successPageQuery);
 }

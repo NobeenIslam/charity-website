@@ -65,3 +65,31 @@ export const projectBySlugQuery = (slug: string) => {
 export const projectSlugsQuery = groq`*[_type == "project"]{
     slug,
   }`;
+
+export const notFoundPageQuery = groq`
+  *[_type == "pageMessage" && slug.current == "404"][0] {
+    title,
+    titleColour,
+    description,
+    descriptionColour,
+    ctaButton {
+      buttonText,
+      buttonAccessibleLabel,
+      buttonLink
+    }
+  }
+`;
+
+export const successPageQuery = groq`
+  *[_type == "pageMessage" && slug.current == "success"][0] {
+    title,
+    titleColour,
+    description,
+    descriptionColour,
+    ctaButton {
+      buttonText,
+      buttonAccessibleLabel,
+      buttonLink
+    }
+  }
+`;
