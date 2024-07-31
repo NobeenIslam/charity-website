@@ -4,6 +4,8 @@ import { PageMessageType } from "@/queries/queryTypes";
 import React from "react";
 import { Button } from "@/components/ui/Button";
 
+//Note this component is a bit different to other blocks, because it's taking data from a document type not an object so I can use it in both the 404 and success pages
+
 export interface PageMessageProps extends PageMessageType {}
 
 const PageMessage = ({
