@@ -1,4 +1,5 @@
-import { Project as SanityProjectType } from '@/utilities/schemaTypes';
+import { Project as SanityProjectType } from "@/utilities/schemaTypes";
+import { PageMessage as SanityPageMessageType } from "@/utilities/schemaTypes";
 
 export type ProjectCardType = Pick<
   SanityProjectType,
@@ -11,3 +12,8 @@ export type ProjectPageType = Pick<
 >;
 
 export type ProjectSlugType = Pick<SanityProjectType, "slug">;
+
+export type PageMessageType = Pick<
+  SanityPageMessageType,
+  "title" | "titleColour" | "description" | "descriptionColour" | "ctaButton"
+>;
