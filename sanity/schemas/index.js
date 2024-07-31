@@ -8,9 +8,10 @@ import engagementBanner from './blocks/engagementBanner-schema.js'
 import projectGrid from './blocks/projectGrid.js'
 import footer from './documents/footer-schema.js'
 import iconLink from './misc/iconLink.js'
+import solitaryPageMessage from './documents/pageMessage-schema.js'
 
 //Add document schema here
-const documentTypes = [page, navbar, project, footer]
+const documentTypes = [page, navbar, project, footer, solitaryPageMessage]
 
 //Add block schema here
 const blockTypes = [homepageHero, infoPanel, engagementBanner, projectGrid]
