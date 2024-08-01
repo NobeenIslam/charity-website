@@ -33,7 +33,7 @@ export async function getAllSlugs(): Promise<any> {
 }
 
 export async function getHomePage(): Promise<SanityPageType> {
-  return client.fetch(homepageQuery);
+  return client.fetch(homepageQuery, {}, { cache: "no-store" });
 }
 
 export async function getPageBySlug(slug: string): Promise<SanityPageType> {
