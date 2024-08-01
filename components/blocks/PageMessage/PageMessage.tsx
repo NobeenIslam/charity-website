@@ -15,7 +15,6 @@ const PageMessage = ({
   descriptionColour = "black",
   ctaButton,
 }: PageMessageProps) => {
-  console.log({ titleColour, descriptionColour });
 
   return (
     <div className="flex items-center justify-center min-h-[80vh] bg-white">

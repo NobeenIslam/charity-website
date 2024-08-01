@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
 import React from "react";
 import { getNotFoundPageData } from "@/queries/queryFunctions";
 import { PageMessage } from "@/components/blocks/PageMessage/PageMessage";
