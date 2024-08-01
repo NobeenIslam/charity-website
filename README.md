@@ -4,9 +4,12 @@ You will need a '.env.local' file:
 
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_PROJECT_ID=[Redacted] (ask me for the ID)
-
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=[]
+STRIPE_SECRET_KEY=[]
+NEXT_PUBLIC_BASE_URL=[]
 
 ## Getting Started
+
 Do a `npm install` in root
 Go into `/sanity` and do another `npm install`
 
@@ -24,16 +27,15 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
 ## Storybook
 
-```npm run storybook```
+`npm run storybook`
 
 ## Sanity Studio
 
 cd into Sanity Folder
 
-```npm run dev```
+`npm run dev`
 
 ## Plop things:
 
