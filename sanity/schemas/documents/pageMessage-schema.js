@@ -31,5 +31,12 @@ export default {
     },
     textColoursField('descriptionColour', 'Description Colour'),
     ctaButton,
+    {
+      name: 'isNavOnLightBackground',
+      title: 'Is Nav Bar on a Light background',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Enable for pages with light backgrounds to use dark text in the NavBar',
+    },
   ],
 }

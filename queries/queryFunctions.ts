@@ -7,6 +7,7 @@ import {
   allSlugsQuery,
   footerQuery,
   homepageQuery,
+  navBackgroundQuery,
   navBarQuery,
   notFoundPageQuery,
   pageBySlugQuery,
@@ -17,7 +18,8 @@ import {
 } from "./queryStrings";
 import { client } from "@/utilities/client";
 import {
-  PageMessageData,
+  NavThemeObjectType,
+  PageMessageType,
   ProjectCardType,
   ProjectPageType,
   ProjectSlugType,
@@ -55,10 +57,14 @@ export async function getProjectSlugs(): Promise<ProjectSlugType[]> {
   return client.fetch(projectSlugsQuery);
 }
 
-export async function getNotFoundPageData(): Promise<PageMessageData> {
+export async function getNotFoundPageData(): Promise<PageMessageType> {
   return client.fetch(notFoundPageQuery);
 }
 
-export async function getSuccessPageData(): Promise<PageMessageData> {
+export async function getSuccessPageData(): Promise<PageMessageType> {
   return client.fetch(successPageQuery);
+}
+
+export async function getNavBackgroundData(): Promise<NavThemeObjectType> {
+  return client.fetch(navBackgroundQuery);
 }

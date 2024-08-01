@@ -1,6 +1,6 @@
 import blocks from '../blocks/blocks'
 
-export default ({
+export default {
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -19,6 +19,13 @@ export default ({
         maxLength: 96,
       },
     },
+    {
+      name: 'isNavOnLightBackground',
+      title: 'Is Nav Bar on a Light background',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Enable for pages with light backgrounds to use dark text in the NavBar',
+    },
     blocks(),
   ],
-}) 
+}

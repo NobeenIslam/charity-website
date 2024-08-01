@@ -9,13 +9,16 @@ import { useMediaQuery } from "@mui/material";
 import { breakpoint } from "@/utilities/breakpoints";
 
 import { NavItem } from "@/utilities/schemaTypes";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import { CartIcon } from "@/components/ui/Cart/CartIcon";
 import Link from "next/link";
+import { NavThemeObjectType } from "@/queries/queryTypes";
 
-export interface NavBarProps extends NavBarType {}
+export interface NavBarProps extends NavBarType {
+  dataForNavTheme: NavThemeObjectType;
+}
 
 interface MobileNavMenuProps {
   navItems: NavItem[];
@@ -62,10 +65,11 @@ const MobileNavMenu = ({
   );
 };
 
-const NavBar = ({ navItems = [], logo }: NavBarProps) => {
+const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathName = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +91,30 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
+  const slug = pathName === "/" ? "home" : pathName.slice(1);
+
+  function findPageBySlug(slug: string) {
+    const regularPage = dataForNavTheme.pages.find(
+      (page) => page.slug === slug
+    );
+    if (regularPage) return regularPage;
+
+    const messagePage = dataForNavTheme.pageMessages.find(
+      (page) => page.slug === slug
+    );
+    if (messagePage) return messagePage;
+
+    return null;
+  }
+
+  const currentPageNavThemeInfo = findPageBySlug(slug);
+
+  const isNavOnLightBackground = currentPageNavThemeInfo
+    ? currentPageNavThemeInfo.isNavOnLightBackground
+    : false;
+
+  console.log({ isNavOnLightBackground });
+
   const imageProps = useNextSanityImage(client, logo, {});
 
   const navLinks = navItems?.map((navItem) => {
@@ -95,7 +123,9 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
         key={navItem.title}
         href={navItem.link}
         variant={"link"}
-        className={`text-lg ${isScrolled ? "text-black" : "text-white"}`}
+        className={`text-lg ${
+          isScrolled || isNavOnLightBackground ? "text-black" : "text-white"
+        }`}
       >
         {navItem.title}
       </Button>
@@ -105,7 +135,9 @@ const NavBar = ({ navItems = [], logo }: NavBarProps) => {
   //IsMobile declared here too as otherwise mobile nav could be clicked open and then browser window changes and navbar still stays in the wrong colour
 
   const iconColour =
-    isScrolled || (isMobile && isMobileNavOpen) ? "black" : "white";
+    isScrolled || isNavOnLightBackground || (isMobile && isMobileNavOpen)
+      ? "black"
+      : "white";
 
   const navBarColour =
     isScrolled || (isMobile && isMobileNavOpen)

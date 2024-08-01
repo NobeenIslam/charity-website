@@ -74,9 +74,7 @@ export const notFoundPageQuery = groq`
     description,
     descriptionColour,
     ctaButton {
-      buttonText,
-      buttonAccessibleLabel,
-      buttonLink
+      ...
     }
   }
 `;
@@ -88,9 +86,18 @@ export const successPageQuery = groq`
     description,
     descriptionColour,
     ctaButton {
-      buttonText,
-      buttonAccessibleLabel,
-      buttonLink
+      ...
     }
   }
 `;
+
+export const navBackgroundQuery = groq`{
+  "pages": *[_type == "page"] {
+    "slug": slug.current,
+    isNavOnLightBackground
+  },
+  "pageMessages": *[_type == "pageMessage"] {
+    "slug": slug.current,
+    isNavOnLightBackground
+  }
+}`;

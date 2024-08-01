@@ -1,14 +1,18 @@
 import React from "react";
 import type { Metadata } from "next";
 import "../styles/globals.css";
-import { fontVariable } from '@/styles';
+import { fontVariable } from "@/styles";
 import localFont from "next/font/local";
-import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
-import { CartProvider } from '@/components/context/CartContext';
-import { CartBar, DonationBar } from '@/components/ui/Cart/DonationBar';
+import { NavBar } from "@/components/NavBar";
+import { Footer } from "@/components/Footer";
+import { CartProvider } from "@/components/context/CartContext";
+import { CartBar, DonationBar } from "@/components/ui/Cart/DonationBar";
 
-import { getFooter, getNavBar } from '@/queries/queryFunctions';
+import {
+  getFooter,
+  getNavBackgroundData,
+  getNavBar,
+} from "@/queries/queryFunctions";
 
 const font = localFont({
   variable: "--font-montserrat" satisfies typeof fontVariable,
@@ -43,17 +47,18 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const navBar = await getNavBar();
   const footer = await getFooter();
+  const navBackgroundData = await getNavBackgroundData();
 
   return (
     <html lang="en">
       <CartProvider>
         <body className={`${font.variable} font-sans`}>
-          <NavBar {...navBar} />
+          <NavBar {...navBar} dataForNavTheme={navBackgroundData} />
           <main>{children}</main>
           <Footer {...footer} />
           <DonationBar />
