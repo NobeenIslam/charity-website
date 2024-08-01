@@ -1,7 +1,4 @@
-import {
-  PageMessage,
-  Project as SanityProjectType,
-} from "@/utilities/schemaTypes";
+import { Project as SanityProjectType } from "@/utilities/schemaTypes";
 import { PageMessage as SanityPageMessageType } from "@/utilities/schemaTypes";
 
 export type ProjectCardType = Pick<
@@ -29,4 +26,5 @@ type SlugAndNavThemeType = {
 export type NavThemeObjectType = {
   pages: SlugAndNavThemeType[];
   pageMessages: SlugAndNavThemeType[];
+  projects: SlugAndNavThemeType[];
 };

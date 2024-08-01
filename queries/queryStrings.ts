@@ -99,5 +99,9 @@ export const navBackgroundQuery = groq`{
   "pageMessages": *[_type == "pageMessage"] {
     "slug": slug.current,
     isNavOnLightBackground
+  },
+  "projects": *[_type == "project"] {
+    "slug": slug.current,
+    isNavOnLightBackground
   }
 }`;

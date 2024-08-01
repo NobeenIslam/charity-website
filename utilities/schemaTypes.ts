@@ -130,6 +130,13 @@ export interface Project extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
+   * Is Nav Bar on a Light background — `boolean`
+   *
+   * Enable for pages with light backgrounds to use dark text in the NavBar
+   */
+  isNavOnLightBackground?: boolean;
+
+  /**
    * Title — `string`
    *
    *

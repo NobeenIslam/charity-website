@@ -9,12 +9,13 @@ import { useMediaQuery } from "@mui/material";
 import { breakpoint } from "@/utilities/breakpoints";
 
 import { NavItem } from "@/utilities/schemaTypes";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import { CartIcon } from "@/components/ui/Cart/CartIcon";
 import Link from "next/link";
 import { NavThemeObjectType } from "@/queries/queryTypes";
+import { getNavThemeInfo } from "@/utilities/utils";
 
 export interface NavBarProps extends NavBarType {
   dataForNavTheme: NavThemeObjectType;
@@ -70,6 +71,7 @@ const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathName = usePathname();
+  const params = useParams<any>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,27 +93,7 @@ const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
-  const slug = pathName === "/" ? "home" : pathName.slice(1);
-
-  function findPageBySlug(slug: string) {
-    const regularPage = dataForNavTheme.pages.find(
-      (page) => page.slug === slug
-    );
-    if (regularPage) return regularPage;
-
-    const messagePage = dataForNavTheme.pageMessages.find(
-      (page) => page.slug === slug
-    );
-    if (messagePage) return messagePage;
-
-    return null;
-  }
-
-  const currentPageNavThemeInfo = findPageBySlug(slug);
-
-  const isNavOnLightBackground = currentPageNavThemeInfo
-    ? currentPageNavThemeInfo.isNavOnLightBackground
-    : false;
+  const isNavOnLightBackground = getNavThemeInfo(pathName, dataForNavTheme);
 
   const imageProps = useNextSanityImage(client, logo, {});
 
