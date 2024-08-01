@@ -11,13 +11,6 @@ export default {
       type: 'slug',
     },
     {
-      name: 'isNavOnLightBackground',
-      title: 'Is Nav Bar on a Light background',
-      type: 'boolean',
-      initialValue: false,
-      description: 'Enable for pages with light backgrounds to use dark text in the NavBar',
-    },
-    {
       name: 'title',
       title: 'Title',
       type: 'string',

@@ -8,11 +8,7 @@ import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/components/context/CartContext";
 import { CartBar, DonationBar } from "@/components/ui/Cart/DonationBar";
 
-import {
-  getFooter,
-  getNavBackgroundData,
-  getNavBar,
-} from "@/queries/queryFunctions";
+import { getAllSlugs, getFooter, getNavBar } from "@/queries/queryFunctions";
 
 const font = localFont({
   variable: "--font-montserrat" satisfies typeof fontVariable,
@@ -52,13 +48,15 @@ export default async function RootLayout({
 }) {
   const navBar = await getNavBar();
   const footer = await getFooter();
-  const navBackgroundData = await getNavBackgroundData();
+
+  //Just passed in to determine navTheme when page not scrolled.
+  const slugs = await getAllSlugs();
 
   return (
     <html lang="en">
       <CartProvider>
         <body className={`${font.variable} font-sans`}>
-          <NavBar {...navBar} dataForNavTheme={navBackgroundData} />
+          <NavBar {...navBar} slugs={slugs} />
           <main>{children}</main>
           <Footer {...footer} />
           <DonationBar />

@@ -1,4 +1,4 @@
-import { NavThemeObjectType } from "@/queries/queryTypes";
+import { Slug } from "@/queries/queryTypes";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -6,45 +6,34 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getNavThemeInfo(
+export function isNavBarOnLightBackground(
   pathName: string,
-  dataForNavTheme: NavThemeObjectType
-) {
-  // Deal with if path is home
-  if (pathName === "/") {
+  slugs: Slug[]
+): boolean {
+  // Remove leading slash
+  const path = pathName.slice(1);
+
+  // Home page
+  if (path === "") {
     return false;
   }
 
-  //All projects will have hero, so they will be on a background image
-  if (pathName.startsWith("/projects/")) {
+  // Project pages
+  if (path.startsWith("projects/")) {
     return false;
   }
 
-  // Pathname from usePathname comes with  / attached
-  let slug = pathName.slice(1);
-
-  // Deal with other types of pages. If slug doesn't exist at all will return null which is the 404 case
-  function findPageBySlug(slug: string) {
-    const regularPage = dataForNavTheme.pages.find(
-      (page) => page.slug === slug
-    );
-    if (regularPage) return regularPage;
-
-    const messagePage = dataForNavTheme.pageMessages.find(
-      (page) => page.slug === slug
-    );
-    if (messagePage) return messagePage;
-
-    const projectPage = dataForNavTheme.projects.find(
-      (project) => project.slug === slug
-    );
-    if (projectPage) return projectPage;
-
-    return null;
+  // Success page
+  if (path === "success") {
+    return true;
   }
 
-  const currentPageNavThemeInfo = findPageBySlug(slug);
+  // Check if the path matches any existing slug
+  const isExistingPage = slugs.some((slugObj) => slugObj.slug.current === path);
+  if (isExistingPage) {
+    return false; // Existing pages have dark background
+  }
 
-  // Default to true for 404 pages or any unmatched slug
-  return currentPageNavThemeInfo?.isNavOnLightBackground ?? true;
+  // If no slug exists, page will 404
+  return true;
 }

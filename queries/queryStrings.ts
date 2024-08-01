@@ -90,18 +90,3 @@ export const successPageQuery = groq`
     }
   }
 `;
-
-export const navBackgroundQuery = groq`{
-  "pages": *[_type == "page"] {
-    "slug": slug.current,
-    isNavOnLightBackground
-  },
-  "pageMessages": *[_type == "pageMessage"] {
-    "slug": slug.current,
-    isNavOnLightBackground
-  },
-  "projects": *[_type == "project"] {
-    "slug": slug.current,
-    isNavOnLightBackground
-  }
-}`;

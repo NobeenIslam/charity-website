@@ -7,7 +7,6 @@ import {
   allSlugsQuery,
   footerQuery,
   homepageQuery,
-  navBackgroundQuery,
   navBarQuery,
   notFoundPageQuery,
   pageBySlugQuery,
@@ -18,17 +17,17 @@ import {
 } from "./queryStrings";
 import { client } from "@/utilities/client";
 import {
-  NavThemeObjectType,
   PageMessageType,
   ProjectCardType,
   ProjectPageType,
   ProjectSlugType,
+  Slug,
 } from "./queryTypes";
 
 // This cache no store thing allows for my sanity changes to be reflected immediately. Was a next caching problem
 //www.sanity.io/answers/how-to-disable-cache-in-sanity-io-for-immediate-reflection-of-changes-made-in-the-studio-on-the-blog-
 
-export async function getAllSlugs(): Promise<any> {
+export async function getAllSlugs(): Promise<Slug[]> {
   return client.fetch(allSlugsQuery, {}, { cache: "no-store" });
 }
 
@@ -66,8 +65,4 @@ export async function getNotFoundPageData(): Promise<PageMessageType> {
 
 export async function getSuccessPageData(): Promise<PageMessageType> {
   return client.fetch(successPageQuery, {}, { cache: "no-store" });
-}
-
-export async function getNavBackgroundData(): Promise<NavThemeObjectType> {
-  return client.fetch(navBackgroundQuery, {}, { cache: "no-store" });
 }

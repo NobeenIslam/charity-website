@@ -14,11 +14,11 @@ import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import { CartIcon } from "@/components/ui/Cart/CartIcon";
 import Link from "next/link";
-import { NavThemeObjectType } from "@/queries/queryTypes";
-import { getNavThemeInfo } from "@/utilities/utils";
+import { isNavBarOnLightBackground } from "@/utilities/utils";
+import { Slug } from "@/queries/queryTypes";
 
 export interface NavBarProps extends NavBarType {
-  dataForNavTheme: NavThemeObjectType;
+  slugs: Slug[];
 }
 
 interface MobileNavMenuProps {
@@ -66,12 +66,11 @@ const MobileNavMenu = ({
   );
 };
 
-const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
+const NavBar = ({ navItems = [], logo, slugs }: NavBarProps) => {
   const isMobile = useMediaQuery(`(max-width:${breakpoint.sm})`);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathName = usePathname();
-  const params = useParams<any>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +92,7 @@ const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
-  const isNavOnLightBackground = getNavThemeInfo(pathName, dataForNavTheme);
+  const isNavOnLightBackground = isNavBarOnLightBackground(pathName, slugs);
 
   const imageProps = useNextSanityImage(client, logo, {});
 
