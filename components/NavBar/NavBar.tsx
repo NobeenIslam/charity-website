@@ -113,8 +113,6 @@ const NavBar = ({ navItems = [], logo, dataForNavTheme }: NavBarProps) => {
     ? currentPageNavThemeInfo.isNavOnLightBackground
     : false;
 
-  console.log({ isNavOnLightBackground });
-
   const imageProps = useNextSanityImage(client, logo, {});
 
   const navLinks = navItems?.map((navItem) => {
