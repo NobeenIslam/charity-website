@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "@/utilities/client";
 import { ProjectPageType } from "@/queries/queryTypes";
-import { ProjectHero } from "./ProejctHero";
+import { ProjectHero } from "./ProjectHero";
 
 export interface ProjectPageContentProps {
   projectPost: ProjectPageType;
