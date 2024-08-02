@@ -1,6 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useRef,
+} from "react";
 import { ImageType } from "@/utilities/constants";
 
 export interface CartItem {
@@ -68,6 +75,27 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const [isCartViewOpen, setIsCartViewOpen] = useState(false);
 
   const [isCartBarOpen, setIsCartBarOpen] = useState(false);
+
+  const [hasCartLoadedFromLocalStorage, sethasCartLoadedFromLocalStorage] =
+    useState(false);
+
+  useEffect(() => {
+    const loadCart = () => {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
+      sethasCartLoadedFromLocalStorage(true);
+    };
+
+    loadCart();
+  }, []);
+
+  useEffect(() => {
+    if (hasCartLoadedFromLocalStorage) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, hasCartLoadedFromLocalStorage]);
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
