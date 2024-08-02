@@ -6,17 +6,23 @@ import { Hero as SanityHeroType } from "@/utilities/schemaTypes";
 import { Button } from "@/components/ui/Button";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
+import { useCart } from "@/components/context/CartContext";
 
-export interface HeroProps extends SanityHeroType {}
+export interface ProjectHeroProps extends SanityHeroType {
+  projectId?: string; // Added: optional projectId for project pages
+  projectSummary?: string; // Added: optional project summary for project pages
+}
 
-export const Hero = ({
+export const ProjectHero = ({
   heading,
   description,
   backgroundImage,
   ctaButton,
   contentAlignment,
-}: HeroProps) => {
-
+  projectId,
+  projectSummary,
+}: ProjectHeroProps) => {
+  const { openDonationBar } = useCart();
 
   const backgroundImageUrl = backgroundImage
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,6 +33,18 @@ export const Hero = ({
     contentAlignment === "center"
       ? "justify-center text-center"
       : "justify-left text-left";
+
+  const handleDonateClick = () => {
+    openDonationBar(
+      projectId || "",
+      heading || "",
+      projectSummary || "",
+      backgroundImage || {
+        _type: "image",
+        asset: { _ref: "", _type: "reference" },
+      }
+    );
+  };
 
   return (
     <div
@@ -42,7 +60,11 @@ export const Hero = ({
         <h1 className="text-6xl font-bold mb-4">{heading}</h1>
         <PortableText value={description} />
         {ctaButton && (
-          <Button className="mt-4" aria-label={ctaButton.buttonAccessibleLabel}>
+          <Button
+            className="mt-4"
+            aria-label={ctaButton.buttonAccessibleLabel}
+            onClick={handleDonateClick}
+          >
             {ctaButton.buttonText}
           </Button>
         )}

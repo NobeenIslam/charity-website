@@ -5,12 +5,12 @@
 // https://stackoverflow.com/questions/72095900/typeerror-cannot-read-properties-of-null-reading-usememo
 
 import React from "react";
-import { Hero } from "./blocks/Hero";
 import { PortableText } from "@/utilities/portableText";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "@/utilities/client";
 import { ProjectPageType } from "@/queries/queryTypes";
+import { ProjectHero } from "./ProejctHero";
 
 export interface ProjectPageContentProps {
   projectPost: ProjectPageType;
@@ -26,11 +26,13 @@ const ProjectPageContent = ({ projectPost }: ProjectPageContentProps) => {
   return (
     <div>
       {" "}
-      <Hero
+      <ProjectHero
         heading={projectPost.title}
         backgroundImage={projectPost.image}
         _type="hero"
         ctaButton={projectPost.card?.ctaButton}
+        projectId={projectPost._id}
+        projectSummary={projectPost.card?.summary || ''}
       />
       <div className="max-w-7xl my-8 mx-auto p-8 sm:p-10 lg:p-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
