@@ -1,7 +1,7 @@
 //Add block type here
 const allBlocks = [
   {type: 'projectGrid', title: 'Project Grid'},
-  {type: 'homepageHero', title: 'Homepage Hero'},
+  {type: 'hero', title: 'Hero'},
   {type: 'infoPanel', title: 'Info Panel'},
   {type: 'engagementBanner', title: 'Engagement Banner'},
   {type: 'pageMessage', title: 'Page Message'},

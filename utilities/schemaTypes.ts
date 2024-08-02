@@ -65,7 +65,7 @@ export interface Page extends SanityDocument {
    */
   blocks: Array<
     | SanityKeyed<ProjectGrid>
-    | SanityKeyed<HomepageHero>
+    | SanityKeyed<Hero>
     | SanityKeyed<InfoPanel>
     | SanityKeyed<EngagementBanner>
     | SanityKeyed<PageMessage>
@@ -379,8 +379,8 @@ export interface PageMessage extends SanityDocument {
   };
 }
 
-export type HomepageHero = {
-  _type: "homepageHero";
+export type Hero = {
+  _type: "hero";
   /**
    * Heading — `string`
    *

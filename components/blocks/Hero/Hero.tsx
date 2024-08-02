@@ -2,20 +2,29 @@
 
 import React from "react";
 import { PortableText } from '@/utilities/portableText';
-import { HomepageHero as SanityHomepageHeroType } from '@/utilities/schemaTypes';
+import { Hero as SanityHeroType } from '@/utilities/schemaTypes';
 import { Button } from '@/components/ui/Button';
 import { client } from '@/utilities/client';
 import { useNextSanityImage } from "next-sanity-image";
+import { usePathname } from "next/navigation";
+import { useCart } from "@/components/context/CartContext";
 
-export interface HomepageHeroProps extends SanityHomepageHeroType {}
+export interface HeroProps extends SanityHeroType {
+  projectId?: string; // Added: optional projectId for project pages
+  projectSummary?: string; // Added: optional project summary for project pages
+}
 
-export const HomepageHero = ({
+export const Hero = ({
   heading,
   description,
   backgroundImage,
   ctaButton,
   contentAlignment,
-}: HomepageHeroProps) => {
+}: HeroProps) => {
+
+  const pathname = usePathname();
+  const { openDonationBar } = useCart(); 
+
   const backgroundImageUrl = backgroundImage
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
       useNextSanityImage(client, backgroundImage, {}).src

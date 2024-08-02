@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { homepageHeroMock } from "./HomepageHeroMock";
+import { homepageHeroMock } from "./HeroMock";
 
-import { HomepageHero } from "./HomepageHero";
+import { HomepageHero } from "./Hero";
 
 const meta: Meta<typeof HomepageHero> = {
   component: HomepageHero,
@@ -11,5 +11,4 @@ const meta: Meta<typeof HomepageHero> = {
 export default meta;
 type Story = StoryObj<typeof HomepageHero>;
 
-export const Default: Story = {
-};
+export const Default: Story = {};

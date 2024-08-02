@@ -1,9 +1,9 @@
-import { HomepageHero } from '@/components/blocks/HomePageHero';
-import { InfoPanel } from '@/components/blocks/InfoPanel';
-import { EngagementBanner } from '@/components/blocks/EngagementBanner';
-import { ProjectGrid } from '@/components/blocks/ProjectGrid';
+import { Hero } from "@/components/blocks/Hero";
+import { InfoPanel } from "@/components/blocks/InfoPanel";
+import { EngagementBanner } from "@/components/blocks/EngagementBanner";
+import { ProjectGrid } from "@/components/blocks/ProjectGrid";
 import React from "react";
-import { ProjectCardType } from '@/queries/queryTypes';
+import { ProjectCardType } from "@/queries/queryTypes";
 
 export function renderBlocks(
   blocks: any[],
@@ -21,8 +21,8 @@ export function renderBlocks(
 //Evverytime you create a block you need add it here so it can render properly
 export function renderSanityBlock(block: any, projectCardsData: any[]) {
   switch (block._type) {
-    case "homepageHero":
-      return <HomepageHero key={block._key} {...block}></HomepageHero>;
+    case "hero":
+      return <Hero key={block._key} {...block}></Hero>;
     case "infoPanel":
       return <InfoPanel key={block._key} {...block}></InfoPanel>;
     case "engagementBanner":
