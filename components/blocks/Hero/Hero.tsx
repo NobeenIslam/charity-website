@@ -16,8 +16,6 @@ export const Hero = ({
   ctaButton,
   contentAlignment,
 }: HeroProps) => {
-
-
   const backgroundImageUrl = backgroundImage
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
       useNextSanityImage(client, backgroundImage, {}).src
@@ -27,6 +25,18 @@ export const Hero = ({
     contentAlignment === "center"
       ? "justify-center text-center"
       : "justify-left text-left";
+
+  const handleDonateClick = async () => {
+    try {
+      const response = await fetch("/api/checkout-all-causes", {
+        method: "POST",
+      });
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error initiating checkout:", error);
+    }
+  };
 
   return (
     <div
@@ -42,7 +52,11 @@ export const Hero = ({
         <h1 className="text-6xl font-bold mb-4">{heading}</h1>
         <PortableText value={description} />
         {ctaButton && (
-          <Button className="mt-4" aria-label={ctaButton.buttonAccessibleLabel}>
+          <Button
+            className="mt-4"
+            aria-label={ctaButton.buttonAccessibleLabel}
+            onClick={handleDonateClick}
+          >
             {ctaButton.buttonText}
           </Button>
         )}
