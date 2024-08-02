@@ -22,19 +22,42 @@ export async function POST(request: Request) {
 
     const baseUrl = getBaseUrl();
 
-    const session = await stripe.checkout.sessions.create({
-      line_items: items.map((item: CartItem) => ({
-        price_data: {
-          currency: "gbp",
-          product_data: {
+    const lineItems = await Promise.all(
+      items.map(async (item: CartItem) => {
+        // Check if a product for this project already exists
+        let product = await stripe.products
+          .search({
+            query: `metadata['projectId']:'${item.projectId}'`,
+          })
+          .then((res) => res.data[0]);
+
+        // If not, create a new product
+        if (!product) {
+          product = await stripe.products.create({
             name: item.title,
             description: item.summary,
-          },
-          unit_amount: Math.round(item.amount * 100), // Stripe expects amounts in terms of smallest unit
-        },
-        quantity: item.quantity,
-      })),
+            metadata: { projectId: item.projectId },
+          });
+        }
+
+        // Create a price for this specific donation
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: Math.round(item.amount * 100),
+          currency: "gbp",
+        });
+
+        return {
+          price: price.id,
+          quantity: item.quantity,
+        };
+      })
+    );
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: lineItems,
       mode: "payment",
+      submit_type: "donate",
       success_url: `${baseUrl}/success`,
       cancel_url: `${baseUrl}`,
     });
