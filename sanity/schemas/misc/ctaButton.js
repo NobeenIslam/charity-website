@@ -7,13 +7,6 @@ export default {
       title: 'Button Text',
       name: 'buttonText',
       type: 'string',
-      validation: (Rule) =>
-        Rule.custom((buttonText, context) => {
-          const buttonURL = context.parent.buttonLink
-          return buttonText && !buttonURL
-            ? 'The Button Link field below must be filled in as well'
-            : true
-        }),
     },
     {
       title: 'Button - Accessible Label',
