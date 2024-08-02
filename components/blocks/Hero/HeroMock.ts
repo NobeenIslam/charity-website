@@ -1,7 +1,7 @@
-import { HomepageHero as SanityHomepageHeroType } from '@/utilities/schemaTypes';
+import { Hero as SanityHeroType } from "@/utilities/schemaTypes";
 
-export const homepageHeroMock: SanityHomepageHeroType = {
-  _type: "homepageHero",
+export const HeroMock: SanityHeroType = {
+  _type: "hero",
   contentAlignment: "left",
   backgroundImage: {
     _type: "image",

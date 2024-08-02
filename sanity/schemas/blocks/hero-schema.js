@@ -1,8 +1,8 @@
 import ctaButton from '../misc/ctaButton'
 
 export default {
-  name: 'homepageHero',
-  title: 'Homepage Hero',
+  name: 'hero',
+  title: 'Hero',
   type: 'object',
   fields: [
     {
@@ -42,7 +42,7 @@ export default {
   preview: {
     prepare() {
       return {
-        title: 'Homepage Hero',
+        title: 'Hero',
       }
     },
   },

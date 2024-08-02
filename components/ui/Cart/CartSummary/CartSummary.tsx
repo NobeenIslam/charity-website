@@ -1,11 +1,15 @@
 "use client";
 
 import React from "react";
-import { Button } from '@/components/ui/Button';
-import { useCart } from '@/components/context/CartContext';
+import { Button } from "@/components/ui/Button";
+import { useCart } from "@/components/context/CartContext";
 
 const CartSummary = ({}) => {
-  const { getTotalAmount } = useCart();
+  const { getTotalAmount, initiateCheckout } = useCart();
+
+  const handleCheckout = async () => {
+    await initiateCheckout();
+  };
 
   const total = getTotalAmount();
   return (
@@ -17,9 +21,7 @@ const CartSummary = ({}) => {
       <Button
         className="w-full font-bold"
         variant={"destructive"}
-        onClick={() => {
-          /* TODO: Implement checkout */
-        }}
+        onClick={handleCheckout}
       >
         Donate
       </Button>

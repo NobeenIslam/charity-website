@@ -65,9 +65,10 @@ export interface Page extends SanityDocument {
    */
   blocks: Array<
     | SanityKeyed<ProjectGrid>
-    | SanityKeyed<HomepageHero>
+    | SanityKeyed<Hero>
     | SanityKeyed<InfoPanel>
     | SanityKeyed<EngagementBanner>
+    | SanityKeyed<PageMessage>
   >;
 }
 
@@ -287,8 +288,99 @@ export interface Footer extends SanityDocument {
   socialLinks?: Array<SanityKeyed<IconLink>>;
 }
 
-export type HomepageHero = {
-  _type: "homepageHero";
+/**
+ * Page Message
+ *
+ *
+ */
+export interface PageMessage extends SanityDocument {
+  _type: "pageMessage";
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug: { _type: "slug"; current: string };
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Title Colour — `string`
+   *
+   *
+   */
+  titleColour?:
+    | "black"
+    | "red-700"
+    | "green-700"
+    | "blue-700"
+    | "yellow-700"
+    | "indigo-700"
+    | "purple-700"
+    | "pink-700"
+    | "gray-700";
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description: string;
+
+  /**
+   * Description Colour — `string`
+   *
+   *
+   */
+  descriptionColour?:
+    | "black"
+    | "red-700"
+    | "green-700"
+    | "blue-700"
+    | "yellow-700"
+    | "indigo-700"
+    | "purple-700"
+    | "pink-700"
+    | "gray-700";
+
+  /**
+   * CTA — `object`
+   *
+   *
+   */
+  ctaButton?: {
+    _type: "ctaButton";
+    /**
+     * Button Text — `string`
+     *
+     *
+     */
+    buttonText?: string;
+
+    /**
+     * Button - Accessible Label — `string`
+     *
+     * This will help screen reader users understand where the link will redirect them to.
+     */
+    buttonAccessibleLabel?: string;
+
+    /**
+     * Button Link — `string`
+     *
+     *
+     */
+    buttonLink?: string;
+  };
+}
+
+export type Hero = {
+  _type: "hero";
   /**
    * Heading — `string`
    *
@@ -386,14 +478,15 @@ export type InfoPanel = {
    *
    */
   backgroundColour?:
-    | "bg-red-200"
-    | "bg-green-200"
-    | "bg-blue-200"
-    | "bg-yellow-200"
-    | "bg-indigo-200"
-    | "bg-purple-200"
-    | "bg-pink-200"
-    | "bg-gray-200";
+    | "black"
+    | "red-200"
+    | "green-200"
+    | "blue-200"
+    | "yellow-200"
+    | "indigo-200"
+    | "purple-200"
+    | "pink-200"
+    | "gray-200";
 };
 
 export type EngagementBanner = {
@@ -476,4 +569,4 @@ export type IconLink = {
   link?: string;
 };
 
-export type Documents = Page | NavBar | Project | Footer;
+export type Documents = Page | NavBar | Project | Footer | PageMessage;

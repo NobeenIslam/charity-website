@@ -65,3 +65,28 @@ export const projectBySlugQuery = (slug: string) => {
 export const projectSlugsQuery = groq`*[_type == "project"]{
     slug,
   }`;
+
+//Slug in sanity must be 404
+export const notFoundPageQuery = groq`
+  *[_type == "pageMessage" && slug.current == "404"][0] {
+    title,
+    titleColour,
+    description,
+    descriptionColour,
+    ctaButton {
+      ...
+    }
+  }
+`;
+
+export const successPageQuery = groq`
+  *[_type == "pageMessage" && slug.current == "success"][0] {
+    title,
+    titleColour,
+    description,
+    descriptionColour,
+    ctaButton {
+      ...
+    }
+  }
+`;

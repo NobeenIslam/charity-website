@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { ImageType } from '@/utilities/constants';
+import { ImageType } from "@/utilities/constants";
 
 export interface CartItem {
   projectId: string;
@@ -39,6 +39,7 @@ export interface CartContextType {
   openDonationView: () => void;
   isCartBarOpen: boolean;
   openCartBar: () => void;
+  initiateCheckout: () => Promise<void>;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -139,6 +140,23 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   const openCartBar = () => setIsCartBarOpen(true);
 
+  const initiateCheckout = async () => {
+    try {
+      const response = await fetch("/api/checkout-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cart }),
+      });
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error initiating checkout:", error);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -158,6 +176,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         openDonationView,
         isCartBarOpen,
         openCartBar,
+        initiateCheckout,
       }}
     >
       {children}

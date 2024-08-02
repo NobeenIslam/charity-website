@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { PortableText } from '@/utilities/portableText';
-import { InfoPanel as SanityInfoPanelType } from '@/utilities/schemaTypes';
-import { client } from '@/utilities/client';
+import { PortableText } from "@/utilities/portableText";
+import { InfoPanel as SanityInfoPanelType } from "@/utilities/schemaTypes";
+import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 
@@ -19,7 +19,7 @@ export const InfoPanel = ({
 
   return (
     <div
-      className={`gutter ${backgroundColour} flex flex-col md:flex-row items-center md:items-start`}
+      className={`gutter bg-${backgroundColour} flex flex-col md:flex-row items-center md:items-start`}
     >
       <div className="flex-shrink-0 w-full md:w-1/3 mb-8 md:mb-0">
         <Image

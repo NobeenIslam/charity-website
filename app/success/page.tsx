@@ -1,9 +1,9 @@
 import React from "react";
-import { getNotFoundPageData } from "@/queries/queryFunctions";
+import { getSuccessPageData } from "@/queries/queryFunctions";
 import { PageMessage } from "@/components/blocks/PageMessage/PageMessage";
 
 export default async function NotFound() {
-  const pageData = await getNotFoundPageData();
+  const pageData = await getSuccessPageData();
 
   return (
     <PageMessage
