@@ -142,7 +142,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   const initiateCheckout = async () => {
     try {
-      const response = await fetch("/api/checkout", {
+      const response = await fetch("/api/checkout-cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
