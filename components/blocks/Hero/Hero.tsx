@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { PortableText } from "@/utilities/portableText";
 import { Hero as SanityHeroType } from "@/utilities/schemaTypes";
 import { Button } from "@/components/ui/Button";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
+import { ClipLoader } from "react-spinners"; 
 
 export interface HeroProps extends SanityHeroType {}
 
@@ -16,6 +17,8 @@ export const Hero = ({
   ctaButton,
   contentAlignment,
 }: HeroProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const backgroundImageUrl = backgroundImage
     ? // eslint-disable-next-line react-hooks/rules-of-hooks
       useNextSanityImage(client, backgroundImage, {}).src
@@ -27,6 +30,8 @@ export const Hero = ({
       : "justify-left text-left";
 
   const handleDonateClick = async () => {
+    setIsLoading(true);
+
     try {
       const response = await fetch("/api/checkout-all-causes", {
         method: "POST",
@@ -35,7 +40,7 @@ export const Hero = ({
       window.location.href = url;
     } catch (error) {
       console.error("Error initiating checkout:", error);
-    }
+    } 
   };
 
   return (
@@ -56,8 +61,18 @@ export const Hero = ({
             className="mt-4"
             aria-label={ctaButton.buttonAccessibleLabel}
             onClick={handleDonateClick}
+            disabled={isLoading}
           >
-            {ctaButton.buttonText}
+            {isLoading ? (
+              <ClipLoader
+                color={"#ffffff"}
+                loading={true}
+                size={20}
+                aria-label="Loading Spinner"
+              />
+            ) : (
+              ctaButton.buttonText
+            )}
           </Button>
         )}
       </div>

@@ -1,15 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/components/context/CartContext";
+import { ClipLoader } from "react-spinners";
 
 const CartSummary = ({}) => {
-  const { getTotalAmount, initiateCheckout } = useCart();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { getTotalAmount, initiateCheckout, cart } = useCart();
 
   const handleCheckout = async () => {
+    setIsLoading(true);
     await initiateCheckout();
   };
+
+  const isDisabled = cart.length === 0;
 
   const total = getTotalAmount();
   return (
@@ -22,8 +28,18 @@ const CartSummary = ({}) => {
         className="w-full font-bold"
         variant={"destructive"}
         onClick={handleCheckout}
+        disabled={isDisabled}
       >
-        Donate
+        {isLoading ? (
+          <ClipLoader
+            color={"#ffffff"}
+            loading={true}
+            size={20}
+            aria-label="Loading Spinner"
+          />
+        ) : (
+          "Donate"
+        )}
       </Button>
     </div>
   );
