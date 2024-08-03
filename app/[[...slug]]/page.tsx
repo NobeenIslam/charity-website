@@ -5,7 +5,7 @@ import {
   getPageBySlug,
   getProjectCardsForGrid,
 } from '@/queries/queryFunctions';
-import { ProjectCardType } from '@/queries/queryTypes';
+import { ProjectCardType, Slug } from '@/queries/queryTypes';
 import { renderBlocks } from '@/utilities/renderBlocks';
 
 export const dynamicParams = false;
@@ -15,7 +15,7 @@ interface ParamsObject {
   slug?: string[]; // Make the `slug` optional
 }
 export async function generateStaticParams() {
-  const slugs: { slug: { current: string; _type: string } }[] =
+  const slugs: Slug[] =
     await getAllSlugs();
 
   const paths: ParamsObject[] = slugs.map(({ slug }) => {
