@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'charity-website-studio',
 
   projectId: 'p4piayq8',
-  dataset: 'production',
+  dataset: process.env.NODE_ENV === 'development' ? 'development' : 'production', //development and production are the actual names of the datasets
 
   plugins: [structureTool(), visionTool()],
 
@@ -16,3 +16,5 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
+
+

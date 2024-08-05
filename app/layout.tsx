@@ -9,6 +9,8 @@ import { CartProvider } from "@/components/context/CartContext";
 import { CartBar, DonationBar } from "@/components/ui/Cart/DonationBar";
 
 import { getAllSlugs, getFooter, getNavBar } from "@/queries/queryFunctions";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const font = localFont({
   variable: "--font-montserrat" satisfies typeof fontVariable,
@@ -61,6 +63,8 @@ export default async function RootLayout({
           <Footer {...footer} />
           <DonationBar />
           <CartBar />
+          <SpeedInsights />
+          <Analytics /> 
         </body>
       </CartProvider>
     </html>
