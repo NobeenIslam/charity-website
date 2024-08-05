@@ -47,3 +47,10 @@ To generate types for schemas: `npx sanity-codegen` in root
 When you create a schema add it to `index.js` in the schemas folder
 When you create a new block add it to the `blocks` array in `blocks.js`
 For blocks, make sure it goes into the switch case in `renderBlocks.js`
+
+
+## Deployed Links:
+
+Website: https://charity-website-ivory.vercel.app/
+Sanity: https://charity-website.sanity.studio/
+
