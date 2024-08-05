@@ -37,3 +37,10 @@ export function isNavBarOnLightBackground(
   // If no slug exists, page will 404
   return true;
 }
+
+export function getBaseUrl() {
+    if (process.env.VERCEL_URL) {
+      return `https://${process.env.VERCEL_URL}`;
+    }
+    return "http://localhost:3000"; // Fallback for local development
+}

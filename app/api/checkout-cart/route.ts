@@ -1,5 +1,6 @@
 import { CartItem } from "@/components/context/CartContext";
 import { NextResponse } from "next/server";
+import { getBaseUrl } from "@/utilities/utils";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -9,16 +10,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(request: Request) {
   try {
     const { items }: { items: CartItem[] } = await request.json();
-
-    const getBaseUrl = () => {
-      if (process.env.NEXT_PUBLIC_BASE_URL) {
-        return process.env.NEXT_PUBLIC_BASE_URL;
-      }
-      if (process.env.VERCEL_URL) {
-        return `https://${process.env.VERCEL_URL}`;
-      }
-      return "http://localhost:3000"; // Fallback for local development
-    };
 
     const baseUrl = getBaseUrl();
 
