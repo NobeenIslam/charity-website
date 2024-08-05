@@ -31,8 +31,8 @@ import {
 export function sanityFetch<T>(query: string, params = {}) {
   const cacheOptions =
     process.env.NODE_ENV === "development"
-      ? { next: { revalidate: 60} }
-      : { next: { revalidate: 3600 } };
+      ? { next: { revalidate: 3600} }
+      : { next: { revalidate: 300 } };
 
   return client.fetch<T>(query, params, cacheOptions);
 }
