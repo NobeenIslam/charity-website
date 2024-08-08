@@ -50,5 +50,4 @@ For blocks, make sure it goes into the switch case in `renderBlocks.js`
 ## Deployed Links:
 
 Website: https://charity-website-ivory.vercel.app/
-Sanity: https://charity-website.sanity.studio/
 
