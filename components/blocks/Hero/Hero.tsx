@@ -6,7 +6,7 @@ import { Hero as SanityHeroType } from "@/utilities/schemaTypes";
 import { Button } from "@/components/ui/Button";
 import { client } from "@/utilities/client";
 import { useNextSanityImage } from "next-sanity-image";
-import { ClipLoader } from "react-spinners"; 
+import { ClipLoader } from "react-spinners";
 
 export interface HeroProps extends SanityHeroType {}
 
@@ -40,7 +40,7 @@ export const Hero = ({
       window.location.href = url;
     } catch (error) {
       console.error("Error initiating checkout:", error);
-    } 
+    }
   };
 
   return (
@@ -54,7 +54,9 @@ export const Hero = ({
       <div
         className={`relative z-10 ${alignmentClasses} text-white p-4 w-3/4 md:w-1/2 ml-4`}
       >
-        <h1 className="text-6xl font-bold mb-4">{heading}</h1>
+        <h1 className="text-5xl md:text-6xl font-bold mb-4 break-words">
+          {heading}
+        </h1>
         <PortableText value={description} />
         {ctaButton && (
           <Button

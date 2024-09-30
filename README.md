@@ -46,8 +46,12 @@ When you create a schema add it to `index.js` in the schemas folder
 When you create a new block add it to the `blocks` array in `blocks.js`
 For blocks, make sure it goes into the switch case in `renderBlocks.js`
 
-
 ## Deployed Links:
 
 Website: https://charity-website-ivory.vercel.app/
 
+Deployed Sanity Studio is only accessible through my Sanity Desk. I would need to add you as a user.
+
+## Note on Revalidation
+
+WHen updating the content in the studio, it will not apply to production immediately. Currently set to 60s (see queryFunction file)
